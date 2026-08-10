@@ -51,6 +51,27 @@ Completed response files are checked against their manifests. An incomplete
 file resumes from pending task IDs. A conflicting complete artifact is rejected
 rather than silently reused.
 
+## Stable-key validation experiment
+
+The archived 0.4845 test submission used the historical `legacy` primary-Qwen
+seed scheme, which binds sampling to input row positions. That archive remains
+immutable for exact historical reproduction. New controlled experiments use
+`stable-key`, which derives each primary-Qwen seed from `(base seed, relation,
+subject)` and is invariant to row order or relation subsetting.
+
+Run the complete validation experiment overnight with:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 \
+bash experiments/heterogeneous_agents/run_stable_key_validation_overnight.sh
+```
+
+The launcher is validation-only, resumable, freezes the selected seed scheme
+in `plan/FINAL_POLICY.json`, audits every recorded primary-Qwen generation seed,
+and writes the official local score to `analysis/FINAL_RESULT.json`. It does not
+run or package the test split. A stable-key test run must be considered only
+after this development result has been reviewed and the regime has been frozen.
+
 ## Moving to another machine
 
 Commit and push source code only. On the second machine:

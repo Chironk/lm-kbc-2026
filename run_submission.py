@@ -99,6 +99,9 @@ class Submission:
         self.dry_run = args.dry_run
         self.skip_inference = args.skip_inference
         self.stage = getattr(args, "stage", "all")
+        self.seed_scheme = getattr(args, "seed_scheme", "legacy")
+        if self.seed_scheme not in {"legacy", "stable-key"}:
+            raise ValueError(f"unsupported seed scheme: {self.seed_scheme!r}")
         self.rows = read_jsonl_file(self.input_path)
         self.area_revision: Optional[str] = None
 
@@ -174,7 +177,7 @@ class Submission:
                    "--aggregation-profile", "relation-v1",
                    "--shot-sampling", "legacy", "--prompt-profile", "single",
                    "--temperature-profile", "uniform", "--subject-retries", "1",
-                   "--seed", SEED, "--seed-scheme", "legacy",
+                   "--seed", SEED, "--seed-scheme", self.seed_scheme,
                    "--precision", precision, "--num-workers", str(workers),
                    "--max-tile-sub-batch", "10",
                    "--recover-unclosed-relations", recover]
@@ -255,7 +258,7 @@ class Submission:
             "n_consistency": 10,
             "n_shots": 5,
             "seed": int(SEED),
-            "seed_scheme": "legacy",
+            "seed_scheme": self.seed_scheme,
             "temperature_profile": "uniform",
             "prompt_profile": "single",
             "exclude_target_from_shots": True,
@@ -396,6 +399,7 @@ class Submission:
         manifest = {
             "created_utc": now(),
             "policy": self.policy_name,
+            "seed_scheme": self.seed_scheme,
             "policy_detail": self.policy,
             "input": str(self.input_path),
             "input_sha256": sha256(self.input_path),
@@ -464,6 +468,11 @@ def build_submission_parser() -> argparse.ArgumentParser:
     ap.add_argument("--policy", choices=sorted(POLICIES), required=True)
     ap.add_argument("--input", required=True)
     ap.add_argument("--output-dir", required=True)
+    ap.add_argument(
+        "--seed-scheme", choices=("legacy", "stable-key"), default="legacy",
+        help=("legacy binds stochastic sampling to input row positions; "
+              "stable-key binds it to (seed, relation, subject) and is the "
+              "required regime for new reproducible experiments"))
     ap.add_argument("--dry-run", action="store_true",
                     help="preflight + split + print commands; no model load")
     ap.add_argument("--skip-inference", action="store_true",

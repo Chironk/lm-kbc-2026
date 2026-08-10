@@ -122,6 +122,7 @@ MODEL_ARTIFACTS = (
     "component_models",
 )
 PRIMARY_POLICY = "v0495"
+PRIMARY_SEED_SCHEMES = {"legacy", "stable-key"}
 STRICT_NUMERIC_RELATIONS = frozenset({"hasCapacity"})
 DECODER_IMPLEMENTATIONS = {
     "final_submission": Path(__file__).resolve(),
@@ -192,6 +193,10 @@ def freeze(args: argparse.Namespace) -> int:
     output = Path(args.output_dir).resolve()
     source_plan = e2e._validate_plan(output)
     snapshot, model_paths = _snapshot_artifacts()
+    primary_seed_scheme = str(args.primary_seed_scheme)
+    if primary_seed_scheme not in PRIMARY_SEED_SCHEMES:
+        raise ContractError(
+            f"unsupported primary Qwen seed scheme: {primary_seed_scheme}")
     policy = {
         "schema": POLICY_SCHEMA,
         "policy_id": POLICY_ID,
@@ -212,6 +217,7 @@ def freeze(args: argparse.Namespace) -> int:
         "primary_runner": str((ROOT / "run_submission.py").resolve()),
         "primary_runner_sha256": sha256(ROOT / "run_submission.py"),
         "primary_policy": PRIMARY_POLICY,
+        "primary_seed_scheme": primary_seed_scheme,
         "snapshot_manifest": str(SNAPSHOT_MANIFEST.resolve()),
         "snapshot_manifest_sha256": sha256(SNAPSHOT_MANIFEST),
         "model_artifacts": {
@@ -272,6 +278,7 @@ def _validate_policy(output: Path) -> tuple[dict[str, Any], dict[str, Path]]:
         or policy.get("primary_runner_sha256")
             != sha256(ROOT / "run_submission.py")
         or policy.get("primary_policy") != PRIMARY_POLICY
+        or policy.get("primary_seed_scheme") not in PRIMARY_SEED_SCHEMES
         or policy.get("split") != source.get("split")
         or bool(policy.get("blind")) != bool(source.get("blind"))
     ):
@@ -486,7 +493,7 @@ def _prepare_base_row(
 
 
 def _primary_inputs(
-    output: Path, source_plan: Mapping[str, Any],
+    output: Path, source_plan: Mapping[str, Any], policy: Mapping[str, Any],
 ) -> tuple[
     dict[tuple[str, str], list[str]],
     dict[tuple[str, str], list[str]],
@@ -507,6 +514,7 @@ def _primary_inputs(
         dry_run=False,
         skip_inference=True,
         stage="compose",
+        seed_scheme=str(policy["primary_seed_scheme"]),
     )
     submission = PrimarySubmission(args)
     # This verifies every raw/prediction/manifest bundle against the exact
@@ -518,6 +526,7 @@ def _primary_inputs(
     prediction_path = primary_dir / f"submission_{PRIMARY_POLICY}.jsonl"
     if (
         manifest.get("policy") != PRIMARY_POLICY
+        or manifest.get("seed_scheme") != policy["primary_seed_scheme"]
         # PrimarySubmission is invoked on source_plan["input"] above, so its
         # manifest must bind to that exact official split artifact.  The
         # separately normalized INPUT_ROWS file is used by the heterogeneous
@@ -875,7 +884,7 @@ def build(args: argparse.Namespace) -> int:
     output = Path(args.output_dir).resolve()
     policy, model_paths = _validate_policy(output)
     source_plan = e2e._validate_plan(output)
-    primary, qwen_raw, system2 = _primary_inputs(output, source_plan)
+    primary, qwen_raw, system2 = _primary_inputs(output, source_plan, policy)
     base_rows = _assemble_from_primary(
         output, source_plan, primary, qwen_raw)
     if len(base_rows) != int(source_plan["rows"]):
@@ -954,6 +963,7 @@ def build(args: argparse.Namespace) -> int:
         "proof_changed_rows": proof_changes,
         "capacity_graph_correction": "strict_singleton_numeric_proof",
         "primary_qwen_policy": PRIMARY_POLICY,
+        "primary_qwen_seed_scheme": policy["primary_seed_scheme"],
         "qwen_system2_available": True,
         "semantic_inference_cache": cache_artifacts,
     }
@@ -1150,6 +1160,12 @@ def parser() -> argparse.ArgumentParser:
     ):
         current = subparsers.add_parser(command)
         current.add_argument("--output-dir", default=str(DEFAULT_OUTPUT))
+        if command == "freeze":
+            current.add_argument(
+                "--primary-seed-scheme",
+                choices=sorted(PRIMARY_SEED_SCHEMES),
+                default="legacy",
+            )
         current.set_defaults(function=function)
     score_parser = subparsers.add_parser("score-validation")
     score_parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT))

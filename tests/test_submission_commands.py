@@ -3,15 +3,19 @@ import types
 import unittest
 from pathlib import Path
 
-from run_inference import build_parser
+from run_inference import (
+    build_parser,
+    generation_seed_for,
+    subject_seed_base,
+)
 from run_submission import POLICIES, Submission, build_submission_parser
 
 
-def make_submission(policy: str) -> Submission:
+def make_submission(policy: str, seed_scheme: str = "legacy") -> Submission:
     args = types.SimpleNamespace(
         policy=policy, input="data/val.jsonl",
         output_dir=tempfile.mkdtemp(prefix=f"cmdtest_{policy}_"),
-        dry_run=True, skip_inference=False)
+        dry_run=True, skip_inference=False, seed_scheme=seed_scheme)
     sub = Submission(args)
     # avoid network in tests: the area revision is only needed for the command
     sub.area_revision = "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8"
@@ -51,6 +55,35 @@ class FrozenCommandParseTests(unittest.TestCase):
                 self.assertIn("synthetic_cot_faithful.jsonl", args.synthetic_cot)
                 self.assertTrue(args.model_revision,
                                 f"{policy}/{name}: revision must be pinned")
+
+    def test_stable_key_commands_select_stable_seed_scheme(self):
+        sub = make_submission("v0495", seed_scheme="stable-key")
+        for name, cmd in sub.commands().items():
+            if name == "system2":
+                continue
+            argv = cmd[cmd.index("run_inference.py") + 1:]
+            args = build_parser().parse_args(argv)
+            self.assertEqual(args.seed_scheme, "stable-key", name)
+
+    def test_stable_key_seed_is_invariant_to_row_position(self):
+        values = {
+            subject_seed_base(45, idx, "hasCapacity", "Example Arena",
+                              "stable-key")
+            for idx in (0, 17, 999)
+        }
+        self.assertEqual(len(values), 1)
+        generation_values = {
+            generation_seed_for(45, idx, "hasCapacity", "Example Arena", 0,
+                                "stable-key")
+            for idx in (0, 17, 999)
+        }
+        self.assertEqual(len(generation_values), 1)
+
+    def test_legacy_seed_remains_position_dependent(self):
+        self.assertNotEqual(
+            generation_seed_for(45, 0, "hasCapacity", "Example Arena", 0),
+            generation_seed_for(45, 1, "hasCapacity", "Example Arena", 0),
+        )
 
     def test_system2_input_includes_award(self):
         """Audit P0-4: test awards must be freshly generated."""

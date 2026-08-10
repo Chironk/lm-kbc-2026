@@ -165,6 +165,7 @@ def test_primary_manifest_binds_to_official_input_split() -> None:
         _write_jsonl(prediction_path, prediction)
         final._write_json(primary / "MANIFEST.json", {
             "policy": final.PRIMARY_POLICY,
+            "seed_scheme": "stable-key",
             "input_sha256": final.sha256(raw_split),
             "submission_sha256": final.sha256(prediction_path),
         })
@@ -175,6 +176,7 @@ def test_primary_manifest_binds_to_official_input_split() -> None:
             "input_rows_sha256": final.sha256(normalized),
             "rows": 1,
         }
+        policy = {"primary_seed_scheme": "stable-key"}
         submission = mock.MagicMock()
         with (
             mock.patch.object(final, "PrimarySubmission", return_value=submission),
@@ -183,7 +185,7 @@ def test_primary_manifest_binds_to_official_input_split() -> None:
             # It advances past the manifest check and fails only because this
             # focused fixture intentionally substitutes an invalid raw row.
             with pytest.raises(ContractError, match="invalid primary Qwen raw row"):
-                final._primary_inputs(output, plan)
+                final._primary_inputs(output, plan, policy)
         submission.validate_all_bundles.assert_called_once_with()
 
 
