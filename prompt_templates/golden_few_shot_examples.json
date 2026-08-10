@@ -1,0 +1,54 @@
+{
+  "hasArea": [
+    {"SubjectEntity": "Vatican City", "ObjectEntities": [["0.49"]]},
+    {"SubjectEntity": "Corregidor", "ObjectEntities": [["5.49"]]},
+    {"SubjectEntity": "Mallorca", "ObjectEntities": [["3620"]]},
+    {"SubjectEntity": "Lake Michigan", "ObjectEntities": [["57750"]]},
+    {"SubjectEntity": "Nigeria", "ObjectEntities": [["923768"]]}
+  ],
+  "hasCapacity": [
+    {"SubjectEntity": "Martin Family Stadium in Virginia", "ObjectEntities": [["1000"]]},
+    {"SubjectEntity": "Community Field in Iowa", "ObjectEntities": [["3200"]]},
+    {"SubjectEntity": "Estadio Cementos Progreso in Guatemala City", "ObjectEntities": [["14022"]]},
+    {"SubjectEntity": "Castelão in Fortaleza", "ObjectEntities": [["57876"]]},
+    {"SubjectEntity": "Allegiant Stadium in Clark County", "ObjectEntities": [["65000"]]}
+  ],
+  "awardWonBy": [
+    {
+      "SubjectEntity": "Premier League Player of the Season",
+      "ObjectEntities": [["Frank Lampard"], ["Thierry Henry"], ["Ruud van Nistelrooy"], ["Patrick Vieira"], ["Mohamed Salah"], ["Peter Schmeichel"], ["Wayne Rooney"], ["Cristiano Ronaldo"], ["Luis Suárez"]]
+    },
+    {
+      "SubjectEntity": "UEFA Team of the Year",
+      "ObjectEntities": [["Mesut Özil"], ["Paolo Maldini"], ["Luís Figo"], ["Gerard Piqué"], ["Cristiano Ronaldo"], ["David Beckham"], ["Franck Ribéry"], ["Inter Milan"], ["Lionel Messi"]]
+    },
+    {
+      "SubjectEntity": "Order of the Golden Fleece",
+      "ObjectEntities": [["Islam Karimov"], ["Nūrsūltan Nazarbaev"], ["Toomas Hendrik Ilves"], ["I. Bartholomeos"], ["Rasul Gamzatov"], ["Recep Tayyip Erdoğan"], ["Hans van Baalen"], ["Viktor Yushchenko"], ["Strobe Talbott"], ["Allahshukur Pashazadeh"], ["Jean-Yves Le Drian"], ["Serzh Sargsyan"], ["James Wolfensohn"], ["Alexander Vershbow"], ["Kirsan Ilyumzhinov"], ["Donald Rumsfeld"], ["Juan Antonio Samaranch"], ["Heydar Aliyev"], ["Süleyman Demirel"], ["Javier Solana"], ["Vladimer Chachibaia"], ["James Appathurai"], ["Yue Bin"], ["Lech Kończak"], ["Iosephus Manuel Durão Barroso"], ["Elizabeth II"], ["Hillary Clinton"], ["Gerhard Schröder"]]
+    }
+  ],
+  "companyTradesAtStockExchange": [
+    {"SubjectEntity": "McColl's", "ObjectEntities": [["London Stock Exchange"]]},
+    {"SubjectEntity": "Chubu Electric Power", "ObjectEntities": [["Tokyo Stock Exchange"], ["Nagoya Stock Exchange"]]},
+    {"SubjectEntity": "Bangladesh Cement Manufacturers Association", "ObjectEntities": []},
+    {"SubjectEntity": "Falabella", "ObjectEntities": [["Santiago Stock Exchange"]]},
+    {"SubjectEntity": "Foxconn", "ObjectEntities": [["Hong Kong Stock Exchange"], ["London Stock Exchange"], ["Taiwan Stock Exchange"]]}
+  ],
+  "countryLandBordersCountry": [
+    {"SubjectEntity": "New Zealand", "ObjectEntities": []},
+    {"SubjectEntity": "Cyprus", "ObjectEntities": [["United Kingdom"]]},
+    {"SubjectEntity": "Nicaragua", "ObjectEntities": [["Costa Rica"], ["Honduras"]]},
+    {"SubjectEntity": "Sierra Leone", "ObjectEntities": [["Guinea"], ["Liberia"]]},
+    {
+      "SubjectEntity": "Germany",
+      "ObjectEntities": [["Austria"], ["Belgium"], ["Czech Republic"], ["Denmark"], ["France"], ["Luxembourg"], ["Netherlands"], ["Poland"], ["Switzerland"]]
+    }
+  ],
+  "personHasCityOfDeath": [
+    {"SubjectEntity": "Dave Keon", "ObjectEntities": []},
+    {"SubjectEntity": "Uwe Timm", "ObjectEntities": []},
+    {"SubjectEntity": "Vicente Fernández", "ObjectEntities": [["Guadalajara"]]},
+    {"SubjectEntity": "Milan Lasica", "ObjectEntities": [["Bratislava"]]},
+    {"SubjectEntity": "Bulat Minzhilkiev", "ObjectEntities": [["Saint Petersburg"]]}
+  ]
+}

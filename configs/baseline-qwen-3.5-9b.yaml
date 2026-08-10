@@ -1,0 +1,44 @@
+model: "baseline_qwen_3_5_9b"
+llm_path: "Qwen/Qwen3.5-9B"
+prompt_templates_file: "prompt_templates/question_prompts.csv"
+max_new_tokens: 64
+batch_size: 2
+use_quantization: false
+enable_thinking: false
+few_shot: 5
+# Hand-curated few-shot exemplars per relation (not a random sample of
+# train.jsonl -- see the file for why: a random draw once produced 2
+# identical hasCapacity answers out of 5, which anchored the model into
+# predicting that same number for the majority of val subjects).
+golden_few_shot_file: "prompt_templates/golden_few_shot_examples.json"
+
+# Reasoning candidate prompts must not fabricate demonstration rationales.
+# The frozen production behavior uses only examples with a real curated
+# `Reason` field; the current golden file has none for city/award, so those
+# candidate prompts are explicitly zero-shot. `answer-only` is available as a
+# controlled ablation but is not part of the frozen v0501 policy.
+reasoning_demo_policy: "require-curated-reason"
+
+# awardWonBy has subjects with 200+ correct winners, far beyond what
+# max_new_tokens above can produce in one shot. These control the
+# multi-round "list more winners" elicitation used only for that relation.
+award_max_new_tokens: 256
+award_max_rounds: 4
+
+# hasArea/hasCapacity: no "why" to reason about a number, so plain N-sample
+# self-consistency (median aggregation, no judge) targets the round-number
+# collapse we measured (56%+ of greedy predictions were generic "10000").
+numeric_samples: 5
+numeric_sample_temperature: 0.8
+
+# personHasCityOfDeath (single-shot) and awardWonBy (per iterative round):
+# both fail via confident fabrication rather than plain not-knowing, so a
+# specific/checkable "Reason:" is diagnostic in a way a bare vote isn't.
+# N candidates-with-reasoning, then one judge call picks/synthesizes the
+# final answer from all N at once.
+judge_n_samples: 5
+judge_sample_temperature: 0.8
+judge_candidate_max_new_tokens: 96
+judge_max_new_tokens: 64
+judge_list_max_new_tokens: 256
+judge_list_candidate_max_new_tokens: 384

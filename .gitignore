@@ -1,0 +1,88 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django stuff:
+*.log
+
+# Mac os x stuff
+.DS_Store
+
+.code
+.vscode
+.ipynb_checkpoints
+
+*_bak.py
+*_bak.ipynb
+
+.idea/
+*_bak/
+
+tmp/
+
+slurm_*.sh
+output/
+
+# Private test ground truth
+data/test_gt.jsonl
+
+# Repository automation under scripts/ is source code and must remain
+# versioned. Put machine-specific helpers under scripts/local/ instead.
+scripts/local/
+data_rebuilt/
+CLAUDE.md
+
+# Wikidata response cache (scripts/build_labels.py)
+.wikidata_cache/
+
+# Secrets -- never commit real API keys
+.env
+experiments/elicitation/out/
+experiments/elicitation/out_fp16/
+experiments/elicitation/out_v2/
+experiments/city/out_train/
+experiments/city/out_val/
+
+# Generated heterogeneous-agent experiment artifacts.
+#
+# Historical artifacts already tracked by Git remain available in history and
+# in existing checkouts. New runs stay local unless a compact result is
+# deliberately copied to results/heterogeneous/.
+experiments/heterogeneous_agents/runs/**
+!experiments/heterogeneous_agents/runs/README.md
+
+# Local artifact inventories and transfer staging.
+.local-artifacts/
+
+# Local compact backup created by the workspace pruning utility. The JSON
+# inventory is reviewable source metadata; the compressed archive is local.
+archive/legacy_run_summaries_*.tar.gz
+
+# LaTeX/editor build products. Source .tex, reviewed PDFs, and selected PNGs
+# remain eligible for version control.
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+texput.log

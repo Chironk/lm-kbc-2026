@@ -1,0 +1,40 @@
+model: "baseline_qwen_3_5_9b"
+llm_path: "Qwen/Qwen3.5-9B"
+prompt_templates_file: "prompt_templates/question_prompts.csv"
+max_new_tokens: 64
+enable_thinking: false
+few_shot: 5
+golden_few_shot_file: "prompt_templates/golden_few_shot_examples.json"
+
+award_max_new_tokens: 256
+award_max_rounds: 4
+
+# 4-bit (NF4) quantization: measured at ~8.2GB per replica (vs ~11GB
+# available per 2080Ti), fitting fully on-GPU with no CPU offload -- unlike
+# 8-bit, which still needed CPU/disk offload even alone on a fresh GPU.
+# This is meant to be run with `-w 4` (one quantized replica per GPU, true
+# 4-way data parallelism), not compared directly to the fp16 config's
+# single/2-worker setup without accounting for the quantization itself.
+quantization: "4bit"
+
+# run_baseline.py's multi-worker dispatch scales this down proportionally
+# to each worker's GPU share (batch_size * gpus_per_worker / total_gpus).
+# At -w 4 (1 GPU/worker, 1/4 of total), 8 -> 2 per worker -- a modest first
+# guess given the ~2.8GB of headroom measured; adjust after profiling.
+# Note: this only governs the plain (countryLandBordersCountry /
+# companyTradesAtStockExchange) path -- the self-consistency/judge paths
+# below process one subject at a time, tiled by N, independent of batch_size.
+batch_size: 8
+
+# Same self-consistency / judge knobs as the fp16 config -- see there for
+# the reasoning. Benchmarked on this exact quantized setup: N=5 costs
+# ~1.5x a single sample on a long/grown-context generation, not ~5x, and
+# peak memory only grew ~8.4GB -> 8.6GB at N=5 (well under the 11GB budget).
+numeric_samples: 5
+numeric_sample_temperature: 0.8
+judge_n_samples: 5
+judge_sample_temperature: 0.8
+judge_candidate_max_new_tokens: 96
+judge_max_new_tokens: 64
+judge_list_max_new_tokens: 256
+judge_list_candidate_max_new_tokens: 384

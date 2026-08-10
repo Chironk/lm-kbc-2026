@@ -1,0 +1,103 @@
+{
+  "agents": [
+    {
+      "active_text_inference_parameter_count": 8953803264,
+      "allow_fp32_cpu_offload": false,
+      "device_map_strategy": "qwen35_four_gpu_or_single",
+      "id": "qwen_recall",
+      "model": "Qwen/Qwen3.5-9B",
+      "model_class": "multimodal",
+      "parameter_components": {
+        "active_text_parameters": 8953803264,
+        "vision_and_multimodal_only": 456010480
+      },
+      "parameter_upper_bound": 9409813744,
+      "precision": "4bit",
+      "quant_compute_dtype": "float16",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "role": "synthetic_cot_recall",
+      "runtime_dtype": "float16",
+      "strip_unused_vision": true,
+      "synthetic_shots": 5,
+      "unused_text_only_parameter_count": 456010480,
+      "unused_text_only_parameter_prefixes": [
+        "model.visual"
+      ],
+      "verified_parameter_count": 9409813744
+    },
+    {
+      "active_text_inference_parameter_count": 11766034176,
+      "allow_fp32_cpu_offload": false,
+      "demonstration_reasoning": true,
+      "device_map_strategy": "gemma3_text_single_gpu",
+      "fp16_lm_head_input_scale": 16.0,
+      "fp32_residual_stream": true,
+      "gated": true,
+      "id": "gemma_independent",
+      "model": "google/gemma-3-12b-it",
+      "model_class": "multimodal",
+      "parameter_components": {
+        "all_other_unique_parameters": 11766034176,
+        "multimodal_projector": 4424832,
+        "vision": 416866032
+      },
+      "parameter_upper_bound": 12187325040,
+      "precision": "4bit",
+      "proposal_max_new_tokens": {
+        "awardWonBy": 224,
+        "default": 80
+      },
+      "proposal_output": "bounded_reasoning",
+      "proposal_reasoning_words": 20,
+      "quant_compute_dtype": "float16",
+      "revision": "7553b6f39c33dc229bfbfe3831f7bcdbb6b738c7",
+      "role": "synthetic_cot_recall",
+      "runtime_dtype": "float16",
+      "strip_unused_vision": true,
+      "synthetic_shots": 5,
+      "text_only_runtime": true,
+      "unused_text_only_parameter_count": 421290864,
+      "unused_text_only_parameter_prefixes": [
+        "model.vision_tower",
+        "model.multi_modal_projector"
+      ],
+      "verified_parameter_count": 12187325040
+    },
+    {
+      "active_text_inference_parameter_count": 8489553920,
+      "allow_fp32_cpu_offload": false,
+      "demonstration_reasoning": true,
+      "device_map_strategy": "auto",
+      "fix_mistral_regex": true,
+      "id": "ministral_independent",
+      "model": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_class": "multimodal",
+      "parameter_components": {
+        "active_text_parameters": 8489553920,
+        "multimodal_projector": 25166848,
+        "vision_tower": 403305472
+      },
+      "parameter_upper_bound": 8918026240,
+      "precision": "4bit",
+      "proposal_max_new_tokens": {
+        "awardWonBy": 256,
+        "default": 112
+      },
+      "proposal_output": "bounded_reasoning",
+      "proposal_reasoning_words": 40,
+      "quant_compute_dtype": "float16",
+      "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+      "role": "synthetic_cot_recall",
+      "runtime_dtype": "float16",
+      "strip_unused_vision": true,
+      "synthetic_shots": 5,
+      "unused_text_only_parameter_count": 428472320,
+      "unused_text_only_parameter_prefixes": [
+        "model.vision_tower",
+        "model.multi_modal_projector"
+      ],
+      "verified_parameter_count": 8918026240
+    }
+  ],
+  "parameter_cap": 32000000000
+}

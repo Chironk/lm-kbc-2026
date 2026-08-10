@@ -1,0 +1,17 @@
+{
+  "capacity_contract": "highest-published-maximum-spectator-capacity-v2",
+  "capacity_rows": 343,
+  "capacity_unique_subjects": 69,
+  "displayed_answers_canonicalized": 35,
+  "legacy_pool": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/synthetic_cot_faithful.jsonl",
+  "legacy_pool_sha256": "72f9974c355dd98eab9d13e61a6b2e120a8e9fcc40e39fb8251b54ab8d01aacb",
+  "non_capacity_rows_copied": 1513,
+  "non_capacity_rows_copied_unchanged": true,
+  "official_train": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "official_train_sha256": "cb344aa3f153b30f4179f3c912ccfca19ae4e71288993292a093585d068a2c74",
+  "output": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/synthetic_cot_capacity_aligned_v2.jsonl",
+  "output_sha256": "bdab8ff32ae30241d8cd9498c580889ade56d2da378fe885c8c23519d052024b",
+  "reasoning_numbers_canonicalized": 35,
+  "rows": 1856,
+  "schema": "capacity-aligned-cot-pool-v2"
+}

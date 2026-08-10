@@ -1,0 +1,121 @@
+{
+  "best_mean_margins": {
+    "hasArea": 0.02,
+    "hasCapacity": 0.0
+  },
+  "feature_names": [
+    "intercept",
+    "is_baseline",
+    "is_raw_node",
+    "is_cluster_median",
+    "is_cluster_geomean",
+    "qwen_support_mass",
+    "gemma_support_mass",
+    "cross_model_neighborhood",
+    "qwen_selected_neighborhood",
+    "gemma_selected_neighborhood",
+    "neighborhood_node_count",
+    "neighborhood_total_mass",
+    "qwen_numeric_log_mad",
+    "gemma_numeric_log_mad",
+    "log_distance_from_baseline",
+    "candidate_count"
+  ],
+  "feature_schema": "relation-specific-numeric-features-v1",
+  "folds": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
+  "folds_sha256": "c234d3b33b2b3f6dbfe941d77edeb34f09bc8cb268a4d9442579e57262f2963e",
+  "l2": 2.0,
+  "models": {
+    "hasArea": {
+      "coefficients": [
+        -1.830137560269768,
+        0.05606589974621983,
+        -0.046513336828273695,
+        -0.23264703666887118,
+        -0.2531648746596157,
+        0.8521242032897646,
+        0.48528897001069693,
+        0.7391149592327714,
+        0.7934482212208559,
+        0.4852889700106967,
+        0.34812845741084353,
+        0.668706586650228,
+        -0.5163997003943652,
+        0.0,
+        -0.32105579819394703,
+        -0.7029241277447636
+      ],
+      "feature_names": [
+        "intercept",
+        "is_baseline",
+        "is_raw_node",
+        "is_cluster_median",
+        "is_cluster_geomean",
+        "qwen_support_mass",
+        "gemma_support_mass",
+        "cross_model_neighborhood",
+        "qwen_selected_neighborhood",
+        "gemma_selected_neighborhood",
+        "neighborhood_node_count",
+        "neighborhood_total_mass",
+        "qwen_numeric_log_mad",
+        "gemma_numeric_log_mad",
+        "log_distance_from_baseline",
+        "candidate_count"
+      ],
+      "l2": 2.0
+    },
+    "hasCapacity": {
+      "coefficients": [
+        -2.557800578561523,
+        -0.05305000580618374,
+        0.05244023436449864,
+        -0.036087827586399564,
+        -0.017266111410459375,
+        0.3267795826847197,
+        0.14423761503353286,
+        0.2018151641400105,
+        0.4015144268561782,
+        0.14423761503353283,
+        0.25267648024423234,
+        0.2355085988591318,
+        -0.25906070477031073,
+        0.0,
+        -0.1301802008761855,
+        -0.2117070239476853
+      ],
+      "feature_names": [
+        "intercept",
+        "is_baseline",
+        "is_raw_node",
+        "is_cluster_median",
+        "is_cluster_geomean",
+        "qwen_support_mass",
+        "gemma_support_mass",
+        "cross_model_neighborhood",
+        "qwen_selected_neighborhood",
+        "gemma_selected_neighborhood",
+        "neighborhood_node_count",
+        "neighborhood_total_mass",
+        "qwen_numeric_log_mad",
+        "gemma_numeric_log_mad",
+        "log_distance_from_baseline",
+        "candidate_count"
+      ],
+      "l2": 2.0
+    }
+  },
+  "one_standard_error_margins": {
+    "hasArea": 0.02,
+    "hasCapacity": 0.3
+  },
+  "schema": "relation-specific-numeric-model-v1",
+  "stable_relation_rule": "enable only when the best-mean train-OOF margin has positive mean paired gain and no negative outer-fold delta",
+  "stable_relations": {
+    "hasArea": true,
+    "hasCapacity": false
+  },
+  "training_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/graphs/train_graph.jsonl",
+  "training_graph_sha256": "b05d03f5e36dfd1da3923c5dfbfa898550414c03ae38cbac3295349fffbdcd99",
+  "validation_labels_used_for_selection": false
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "heterogeneous-final-artifacts-v1",
+  "verified_parameter_total": 30515165024,
+  "parameter_cap": 32000000000,
+  "validation_selected_lineage": true,
+  "model_portfolio": {
+    "qwen_recall": {
+      "model": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "verified_parameter_count": 9409813744
+    },
+    "gemma_independent": {
+      "model": "google/gemma-3-12b-it",
+      "revision": "7553b6f39c33dc229bfbfe3831f7bcdbb6b738c7",
+      "verified_parameter_count": 12187325040
+    },
+    "ministral_independent": {
+      "model": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+      "verified_parameter_count": 8918026240
+    }
+  },
+  "artifacts": {
+    "candidate_selector": {
+      "path": "candidate_selector.json",
+      "sha256": "e52e8b9891b86a49b6252d0accff3f2a252dac88392d93c0475f02ac4dcfc18e"
+    },
+    "cardinality_result": {
+      "path": "cardinality_result.json",
+      "sha256": "2008b7bf6eca2cbc6099181b97b3eb21c55d1cb4da9eda13466083dfb5602feb"
+    },
+    "numeric_model": {
+      "path": "numeric_model.json",
+      "sha256": "dc1123b13a8537a68536bdc4541e71e5819ba0aa365d675bfd7d2ea23da693de"
+    },
+    "route_models": {
+      "path": "route_models.json",
+      "sha256": "ea5bc99acdb89ff36f1c1dd36711a0afedbcf493aa6539af886c6397e97fa26c"
+    },
+    "component_models": {
+      "path": "component_models.json",
+      "sha256": "f026a55f22a00125ca6991df046a674fc72e951bb740859196769961d90526bd"
+    }
+  }
+}
