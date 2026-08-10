@@ -2,6 +2,49 @@
   "archive": "heterogeneous_final_strict_proof_20260803_v1_test.zip",
   "archive_sha256": "3f73d01fe5d4b3c9b9cc7e2f5dba8348d0e1fec19fc0ddb797ff2e0f460b11e4",
   "blind": true,
+  "codabench_detailed_metrics": {
+    "*** All Relations ***": {
+      "macro_f1": 0.4845,
+      "macro_precision": 0.5839,
+      "macro_recall": 0.5355
+    },
+    "awardWonBy": {
+      "macro_f1": 0.1788,
+      "macro_precision": 0.3323,
+      "macro_recall": 0.1699
+    },
+    "companyTradesAtStockExchange": {
+      "macro_f1": 0.6822,
+      "macro_precision": 0.8108,
+      "macro_recall": 0.7693
+    },
+    "countryLandBordersCountry": {
+      "macro_f1": 0.9622,
+      "macro_precision": 0.9766,
+      "macro_recall": 0.9658
+    },
+    "hasArea": {
+      "macro_f1": 0.39,
+      "macro_precision": 0.39,
+      "macro_recall": 0.39
+    },
+    "hasCapacity": {
+      "macro_f1": 0.1224,
+      "macro_precision": 0.1224,
+      "macro_recall": 0.1224
+    },
+    "personHasCityOfDeath": {
+      "macro_f1": 0.4467,
+      "macro_precision": 0.765,
+      "macro_recall": 0.6
+    },
+    "zero_object_cases_reference_only": {
+      "macro_f1": 0.7022,
+      "macro_precision": 0.6423,
+      "macro_recall": 0.7745
+    }
+  },
+  "codabench_detailed_metrics_provenance": "project-owner supplied official-test detailed-results screenshot; not recomputed locally",
   "codabench_macro_f1": 0.4845,
   "codabench_score_provenance": "project-owner supplied official-test result; not recomputed locally",
   "contains_labels": false,
