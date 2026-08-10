@@ -142,7 +142,7 @@ def test_prepare_base_row_drops_legacy_parser_only_candidate() -> None:
     assert [node["item"] for node in row["candidates"]] == ["Moscow Exchange"]
 
 
-def test_primary_manifest_binds_to_normalized_input_rows() -> None:
+def test_primary_manifest_binds_to_official_input_split() -> None:
     """The primary adapter validates the artifact it actually consumed."""
     source = [{
         "SubjectEntity": "Example Island",
@@ -165,7 +165,7 @@ def test_primary_manifest_binds_to_normalized_input_rows() -> None:
         _write_jsonl(prediction_path, prediction)
         final._write_json(primary / "MANIFEST.json", {
             "policy": final.PRIMARY_POLICY,
-            "input_sha256": final.sha256(normalized),
+            "input_sha256": final.sha256(raw_split),
             "submission_sha256": final.sha256(prediction_path),
         })
         plan = {

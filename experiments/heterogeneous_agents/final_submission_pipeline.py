@@ -139,6 +139,7 @@ DECODER_IMPLEMENTATIONS = {
     "event_graph_contract": HERE / "components/graph_event_contract.py",
     "exact_event_graph": HERE / "components/cot40_evidence_edge_ablation.py",
     "core_contracts": HERE / "core.py",
+    "primary_artifact_contract": ROOT / "artifact_contract.py",
 }
 OFFICIAL_TEST_SHA256 = (
     "67c31c8388c585634df55500612f522ad42da6735d4c89eb59a9ef5a39f043f1"
@@ -517,11 +518,11 @@ def _primary_inputs(
     prediction_path = primary_dir / f"submission_{PRIMARY_POLICY}.jsonl"
     if (
         manifest.get("policy") != PRIMARY_POLICY
-        # PrimarySubmission consumes the normalized, label-free INPUT_ROWS
-        # artifact produced by the end-to-end planner.  Its manifest must
-        # therefore bind to that artifact, not to the byte-distinct raw
-        # official split from which INPUT_ROWS was derived.
-        or manifest.get("input_sha256") != source_plan["input_rows_sha256"]
+        # PrimarySubmission is invoked on source_plan["input"] above, so its
+        # manifest must bind to that exact official split artifact.  The
+        # separately normalized INPUT_ROWS file is used by the heterogeneous
+        # route planner, not by the production Qwen runner.
+        or manifest.get("input_sha256") != source_plan["input_sha256"]
         or manifest.get("submission_sha256") != sha256(prediction_path)
     ):
         raise ContractError("primary Qwen submission manifest mismatch")

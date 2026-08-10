@@ -197,6 +197,14 @@ class CompositionSmokeTests(unittest.TestCase):
                 manifest["config_sha256"] = sha256(Path(manifest["config"]))
             paths["manifest"].write_text(json.dumps(manifest))
 
+        # Execution parallelism is host-specific and must not invalidate an
+        # otherwise identical inference artifact on another machine.
+        borders_manifest_path = sub._bundle_paths("borders")["manifest"]
+        borders_manifest = json.loads(borders_manifest_path.read_text())
+        worker_index = borders_manifest["argv"].index("--num-workers") + 1
+        borders_manifest["argv"][worker_index] = "4"
+        borders_manifest_path.write_text(json.dumps(borders_manifest))
+
         source_manifests = sub.validate_all_bundles()
         composed = sub.compose()
         sub.validate(composed)

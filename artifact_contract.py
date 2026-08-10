@@ -42,6 +42,23 @@ def _read_manifest(path: Path) -> Dict[str, Any]:
     return value
 
 
+def _portable_argv(argv: Any) -> Any:
+    """Normalize execution-only parallelism while preserving semantics.
+
+    Production inference uses every verified visible GPU, so the recorded
+    ``--num-workers`` value legitimately differs between one-, two-, and
+    four-GPU hosts.  Prompts, seeds, revisions, precision, and every other
+    argument remain part of the exact artifact contract.
+    """
+    if not isinstance(argv, list):
+        return argv
+    normalized = list(argv)
+    for index, value in enumerate(normalized[:-1]):
+        if value == "--num-workers":
+            normalized[index + 1] = "<execution-parallelism>"
+    return normalized
+
+
 def _verify_manifest(
     label: str,
     manifest_path: Path,
@@ -129,10 +146,20 @@ def validate_system1_bundle(
             break
     _fail(label, errors)
 
+    # A bundle generated on four GPUs must remain verifiable on a CPU-only or
+    # two-GPU analysis host.  Ignore only the worker count, and only when the
+    # remainder of the recorded command is byte-for-byte equivalent.
+    portable_expected = dict(expected_manifest)
+    recorded_manifest = _read_manifest(manifest_path)
+    if _portable_argv(recorded_manifest.get("argv")) == _portable_argv(
+        portable_expected.get("argv")
+    ):
+        portable_expected["argv"] = recorded_manifest.get("argv")
+
     return _verify_manifest(
         label,
         manifest_path,
-        expected_manifest,
+        portable_expected,
         {
             "input_sha256": reference_path,
             "output_sha256": predictions_path,
