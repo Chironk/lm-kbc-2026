@@ -1,0 +1,18 @@
+{
+  "archive": "heterogeneous_final_strict_proof_20260803_v1_test.zip",
+  "archive_sha256": "3f73d01fe5d4b3c9b9cc7e2f5dba8348d0e1fec19fc0ddb797ff2e0f460b11e4",
+  "blind": true,
+  "codabench_macro_f1": 0.4845,
+  "codabench_score_provenance": "project-owner supplied official-test result; not recomputed locally",
+  "contains_labels": false,
+  "member": "predictions.jsonl",
+  "member_sha256": "73621130839b572a7fdfdc2f8a58c4bf3f00beece4be86ff4a7874c96b63bb53",
+  "original_archive_path": "experiments/heterogeneous_agents/runs/final_test_submission_20260808_v2/submission/heterogeneous_final_strict_proof_20260803_v1_test.zip",
+  "parameter_cap": 32000000000,
+  "policy_id": "heterogeneous_final_strict_proof_20260803_v1",
+  "recovered_from": "experiments/heterogeneous_agents/runs/final_test_release_candidate_20260809_v2/submission/heterogeneous_final_strict_proof_20.zip",
+  "rows": 475,
+  "schema": "preserved-official-test-submission-v1",
+  "split": "test",
+  "verified_parameter_total": 30515165024
+}
