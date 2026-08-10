@@ -1,9 +1,9 @@
-from experiments.heterogeneous_agents.capacity_proposal_graph import (
+from experiments.heterogeneous_agents.components.capacity_proposal_graph import (
     ARM_ROUTES,
     ROUTE,
     augment_capacity_row,
 )
-from experiments.heterogeneous_agents.capacity_proposal_selector import (
+from experiments.heterogeneous_agents.components.capacity_proposal_selector import (
     proposal_action,
 )
 

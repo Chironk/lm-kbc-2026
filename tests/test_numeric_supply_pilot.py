@@ -1,7 +1,7 @@
 import unittest
 
-from experiments.heterogeneous_agents.dual_model_validation import GEMMA, QWEN
-from experiments.heterogeneous_agents.numeric_supply_pilot import (
+from experiments.heterogeneous_agents.components.dual_model_validation import GEMMA, QWEN
+from experiments.heterogeneous_agents.components.numeric_supply_pilot import (
     ARMS,
     N_SAMPLES,
     _gold_value,

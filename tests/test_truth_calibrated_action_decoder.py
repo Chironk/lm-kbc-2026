@@ -1,6 +1,6 @@
 import unittest
 
-from experiments.heterogeneous_agents.truth_calibrated_action_decoder import (
+from experiments.heterogeneous_agents.components.truth_calibrated_action_decoder import (
     ACTION_FEATURE_NAMES,
     CALIBRATOR_FEATURE_NAMES,
     GATE_FEATURE_NAMES,
@@ -22,7 +22,7 @@ from experiments.heterogeneous_agents.truth_calibrated_action_decoder import (
     pairwise_action_features,
     rank_gate_features,
 )
-from experiments.heterogeneous_agents.unified_memory_action_graph import (
+from experiments.heterogeneous_agents.components.unified_memory_action_graph import (
     build_hierarchical_row,
 )
 from tests.test_unified_memory_action_graph import graph

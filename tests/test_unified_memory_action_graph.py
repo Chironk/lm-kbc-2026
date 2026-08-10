@@ -1,6 +1,6 @@
 import unittest
 
-from experiments.heterogeneous_agents.unified_memory_action_graph import (
+from experiments.heterogeneous_agents.components.unified_memory_action_graph import (
     ACTION_TYPES,
     FEATURE_NAMES,
     WeightedRidge,

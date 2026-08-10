@@ -1,13 +1,13 @@
 import numpy as np
 
-from experiments.heterogeneous_agents.capacity_baseline_aware_selector import (
+from experiments.heterogeneous_agents.components.capacity_baseline_aware_selector import (
     FEATURE_NAMES,
     RidgeActionModel,
     _actions,
     _decode,
     action_features,
 )
-from experiments.heterogeneous_agents.capacity_proposal_graph import (
+from experiments.heterogeneous_agents.components.capacity_proposal_graph import (
     ARM_ROUTES,
     augment_capacity_row,
 )

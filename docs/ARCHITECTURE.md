@@ -50,10 +50,10 @@ Exact revisions and parameter counts are in `configs/final/` and
 - `run_submission.py`: retained production Qwen route.
 - `run_agent.py`: isolated Gemma/Ministral route execution.
 
-Other modules under `experiments/heterogeneous_agents/` are retained because
-the final decoder imports their tested graph transforms, feature definitions,
-or artifact deserializers. They are implementation dependencies, not separate
-recommended pipelines.
+The tested graph transforms, feature definitions, and decoder stages imported
+by the final pipeline live under `experiments/heterogeneous_agents/components/`.
+They are implementation dependencies, not separate recommended pipelines.
+Optional post-hoc visualization code is isolated under `analysis/`.
 
 ## Frozen decoder artifacts
 

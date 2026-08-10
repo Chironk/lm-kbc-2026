@@ -1,14 +1,14 @@
 import unittest
 
-from experiments.heterogeneous_agents.component_aware_decoder import (
+from experiments.heterogeneous_agents.components.component_aware_decoder import (
     _action_tokens,
     _component_summary,
     actions_for,
 )
-from experiments.heterogeneous_agents.relational_candidate_graph import (
+from experiments.heterogeneous_agents.components.relational_candidate_graph import (
     augment_relational_graph,
 )
-from experiments.heterogeneous_agents.route_aware_candidate_graph import (
+from experiments.heterogeneous_agents.components.route_aware_candidate_graph import (
     ROUTE_GEMMA,
     ROUTE_QWEN_SC,
 )

@@ -1,14 +1,14 @@
 import unittest
 
-from experiments.heterogeneous_agents.ministral_consistency_admission import ROUTE
-from experiments.heterogeneous_agents.relational_candidate_graph import (
+from experiments.heterogeneous_agents.components.ministral_consistency_admission import ROUTE
+from experiments.heterogeneous_agents.components.relational_candidate_graph import (
     augment_relational_graph,
 )
-from experiments.heterogeneous_agents.route_aware_candidate_graph import (
+from experiments.heterogeneous_agents.components.route_aware_candidate_graph import (
     ROUTE_GEMMA,
     ROUTE_QWEN_SC,
 )
-from experiments.heterogeneous_agents.three_model_component_decoder import (
+from experiments.heterogeneous_agents.components.three_model_component_decoder import (
     action_features,
     assert_route_flag_population_parity,
     assert_route_selection_provenance,

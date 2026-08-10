@@ -1,6 +1,6 @@
 import unittest
 
-from experiments.heterogeneous_agents.candidate_source_umap import (
+from experiments.heterogeneous_agents.analysis.candidate_source_umap import (
     build_candidate_records,
     candidate_matches_gold,
     component_families,

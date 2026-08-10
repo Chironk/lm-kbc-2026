@@ -1,0 +1,113 @@
+{
+  "baseline_scores": {
+    "*** All Relations ***": 0.4811275134605913,
+    "awardWonBy": 0.3618891741769866,
+    "companyTradesAtStockExchange": 0.6236666666666666,
+    "countryLandBordersCountry": 0.977795007645754,
+    "hasArea": 0.36,
+    "hasCapacity": 0.15,
+    "personHasCityOfDeath": 0.47
+  },
+  "contains_labels": true,
+  "deployment_guard": 0.1,
+  "inventory_audit": {
+    "relation_challengers": {
+      "companyTradesAtStockExchange": 9,
+      "countryLandBordersCountry": 3,
+      "hasArea": 2,
+      "hasCapacity": 7,
+      "personHasCityOfDeath": 20
+    },
+    "rows": 477,
+    "rows_with_challenger": 41,
+    "unique_challengers": 41
+  },
+  "model": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/full_inventory_proof_action_decoder_20260808_v1/model/FROZEN_MODEL.json",
+  "model_sha256": "850ab3c89c9d0ba505cc12b92b94d86da45db955ba48dc2af5aedd22af6f075a",
+  "nested_oof_action_audit": {
+    "changed": 11,
+    "harmed": 5,
+    "helped": 1,
+    "neutral": 5,
+    "relation_changes": {
+      "companyTradesAtStockExchange": 4,
+      "countryLandBordersCountry": 2,
+      "hasArea": 1,
+      "hasCapacity": 4
+    }
+  },
+  "nested_oof_delta": -0.004911650194669104,
+  "nested_oof_scores": {
+    "*** All Relations ***": 0.4762158632659222,
+    "awardWonBy": 0.3618891741769866,
+    "companyTradesAtStockExchange": 0.6136666666666666,
+    "countryLandBordersCountry": 0.9726777368568412,
+    "hasArea": 0.35,
+    "hasCapacity": 0.15,
+    "personHasCityOfDeath": 0.47
+  },
+  "next_stage": "retain_0.520729_pipeline",
+  "outer_fold_deltas": [
+    {
+      "baseline": 0.5269369596239403,
+      "delta": 0.0,
+      "fold": 0,
+      "rows": 95,
+      "selected": 0.5269369596239403
+    },
+    {
+      "baseline": 0.4498074732285259,
+      "delta": 0.0,
+      "fold": 1,
+      "rows": 95,
+      "selected": 0.4498074732285259
+    },
+    {
+      "baseline": 0.49673835420786644,
+      "delta": -0.02440476190476193,
+      "fold": 2,
+      "rows": 96,
+      "selected": 0.4723335923031045
+    },
+    {
+      "baseline": 0.5008384932920537,
+      "delta": 0.0,
+      "fold": 3,
+      "rows": 96,
+      "selected": 0.5008384932920537
+    },
+    {
+      "baseline": 0.43094447831289934,
+      "delta": 0.0,
+      "fold": 4,
+      "rows": 95,
+      "selected": 0.43094447831289934
+    }
+  ],
+  "outer_selected_guards": [
+    0.2,
+    0.2,
+    0.05,
+    0.02,
+    0.1
+  ],
+  "promotion_checks": {
+    "helped_exceeds_harmed": false,
+    "outer_fold_floor": false,
+    "positive_oof_delta": false,
+    "positive_outer_folds": false,
+    "relation_floor": true
+  },
+  "promotion_gate_passed": false,
+  "relation_deltas": {
+    "awardWonBy": 0.0,
+    "companyTradesAtStockExchange": -0.010000000000000009,
+    "countryLandBordersCountry": -0.0051172707889127755,
+    "hasArea": -0.010000000000000009,
+    "hasCapacity": 0.0,
+    "personHasCityOfDeath": 0.0
+  },
+  "schema": "full-inventory-proof-action-decoder-result-v1",
+  "training_labels_used": true,
+  "validation_labels_used": false
+}

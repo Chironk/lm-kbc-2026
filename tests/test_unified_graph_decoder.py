@@ -3,7 +3,7 @@ from __future__ import annotations
 import copy
 import unittest
 
-from experiments.heterogeneous_agents.unified_graph_decoder import (
+from experiments.heterogeneous_agents.components.unified_graph_decoder import (
     AREA_ADMISSION_REASON,
     CHAIN_ROUTES,
     COT40_SAMPLES,

@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 
-from experiments.heterogeneous_agents.dual_model_validation import GEMMA, QWEN
-from experiments.heterogeneous_agents.wide_candidate_discrimination import (
+from experiments.heterogeneous_agents.components.dual_model_validation import GEMMA, QWEN
+from experiments.heterogeneous_agents.components.wide_candidate_discrimination import (
     WIDE_FEATURE_NAMES,
     WideEvidence,
     _binary_auroc,

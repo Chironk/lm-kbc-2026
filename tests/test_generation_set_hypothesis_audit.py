@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from experiments.heterogeneous_agents.generation_set_hypothesis_audit import (
+from experiments.heterogeneous_agents.components.generation_set_hypothesis_audit import (
     artifact_contract_matches,
     hypothesis_stats,
     select_hypothesis,

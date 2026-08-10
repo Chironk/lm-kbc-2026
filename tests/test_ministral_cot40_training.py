@@ -3,7 +3,7 @@ import copy
 import pytest
 
 from experiments.heterogeneous_agents.core import ContractError
-from experiments.heterogeneous_agents.ministral_cot40_training import (
+from experiments.heterogeneous_agents.components.ministral_cot40_training import (
     MINISTRAL,
     N_MAX,
     REASONING_WORDS,

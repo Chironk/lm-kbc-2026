@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from experiments.heterogeneous_agents.cot40_evidence_edge_ablation import (
+from experiments.heterogeneous_agents.components.cot40_evidence_edge_ablation import (
     ARMS,
     LOCAL_NAMES,
     TYPED_NAMES,
@@ -12,11 +12,11 @@ from experiments.heterogeneous_agents.cot40_evidence_edge_ablation import (
     reasoning_claims,
     typed_features,
 )
-from experiments.heterogeneous_agents.cot40_graph_native_decoder import (
+from experiments.heterogeneous_agents.components.cot40_graph_native_decoder import (
     enrich_row,
     legal_actions,
 )
-from experiments.heterogeneous_agents.cot40_minimal_evidence_graph import (
+from experiments.heterogeneous_agents.components.cot40_minimal_evidence_graph import (
     minimalize_row,
 )
 

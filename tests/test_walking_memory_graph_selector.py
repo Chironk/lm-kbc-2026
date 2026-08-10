@@ -1,12 +1,12 @@
 import unittest
 
-from experiments.heterogeneous_agents.walking_memory_graph_selector import (
+from experiments.heterogeneous_agents.components.walking_memory_graph_selector import (
     expand_states,
     state_key,
     state_training_arrays,
     walk_with_chooser,
 )
-from experiments.heterogeneous_agents.unified_memory_action_graph import (
+from experiments.heterogeneous_agents.components.unified_memory_action_graph import (
     build_hierarchical_row,
 )
 from tests.test_unified_memory_action_graph import graph

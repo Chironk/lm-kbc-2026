@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-from experiments.heterogeneous_agents.coherent_row_selector import (
+from experiments.heterogeneous_agents.components.coherent_row_selector import (
     GATE_FEATURE_NAMES,
     HIERARCHICAL_FEATURE_NAMES,
     INTERACTION_SIGNAL_NAMES,
@@ -11,10 +11,10 @@ from experiments.heterogeneous_agents.coherent_row_selector import (
     _pair_masses,
     _ranking_pairs,
 )
-from experiments.heterogeneous_agents.crossfit_action_utility_selector import (
+from experiments.heterogeneous_agents.components.crossfit_action_utility_selector import (
     TRUTH_FEATURE_NAMES,
 )
-from experiments.heterogeneous_agents.unified_memory_action_graph import (
+from experiments.heterogeneous_agents.components.unified_memory_action_graph import (
     RELATIONS,
 )
 

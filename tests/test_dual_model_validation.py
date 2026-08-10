@@ -1,6 +1,6 @@
 import unittest
 
-from experiments.heterogeneous_agents.dual_model_validation import (
+from experiments.heterogeneous_agents.components.dual_model_validation import (
     PROMPT_POLICY,
     apply_prompt_policy,
     candidate_oracle,

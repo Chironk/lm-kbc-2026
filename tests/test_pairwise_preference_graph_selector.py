@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 
-from experiments.heterogeneous_agents.pairwise_preference_graph_selector import (
+from experiments.heterogeneous_agents.components.pairwise_preference_graph_selector import (
     _cascade_outputs,
     solve_preference_scores,
 )

@@ -2,14 +2,14 @@ import unittest
 
 import numpy as np
 
-from experiments.heterogeneous_agents.baseline_relative_route_decoder import (
+from experiments.heterogeneous_agents.components.baseline_relative_route_decoder import (
     ResidualRidge,
     _eligible_nodes,
     _route_values,
     actions_for,
 )
-from experiments.heterogeneous_agents.dual_model_validation import GEMMA, QWEN
-from experiments.heterogeneous_agents.route_aware_candidate_graph import (
+from experiments.heterogeneous_agents.components.dual_model_validation import GEMMA, QWEN
+from experiments.heterogeneous_agents.components.route_aware_candidate_graph import (
     ROUTE_GEMMA,
     ROUTE_QWEN_SC,
     ROUTE_QWEN_SYSTEM2,

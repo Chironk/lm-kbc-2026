@@ -1,4 +1,4 @@
-from experiments.heterogeneous_agents.crossfit_action_utility_selector import (
+from experiments.heterogeneous_agents.components.crossfit_action_utility_selector import (
     _percentile_ranks,
 )
 

@@ -1,4 +1,4 @@
-from experiments.heterogeneous_agents.ministral_typed_component_admission import (
+from experiments.heterogeneous_agents.components.ministral_typed_component_admission import (
     _complete_link_numeric_clusters,
     _distance,
     _merge_typed_row,

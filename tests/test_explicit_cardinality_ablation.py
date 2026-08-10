@@ -2,13 +2,13 @@ import unittest
 
 import numpy as np
 
-from experiments.heterogeneous_agents.explicit_cardinality_ablation import (
+from experiments.heterogeneous_agents.components.explicit_cardinality_ablation import (
     ExplicitCardinalityModel,
     cardinality_feature_names,
     cardinality_features,
     cardinality_label,
 )
-from experiments.heterogeneous_agents.heterogeneous_memory_selector import (
+from experiments.heterogeneous_agents.components.heterogeneous_memory_selector import (
     GEMMA,
     QWEN,
     _make_graph,

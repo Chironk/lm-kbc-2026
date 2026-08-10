@@ -1,13 +1,13 @@
 import unittest
 
-from experiments.heterogeneous_agents.baseline_conditioned_action_review import (
+from experiments.heterogeneous_agents.components.baseline_conditioned_action_review import (
     ALL_FEATURE_NAMES,
     CHOICES,
     _review_features,
     _task,
     comparison_prompt,
 )
-from experiments.heterogeneous_agents.unified_memory_action_graph import (
+from experiments.heterogeneous_agents.components.unified_memory_action_graph import (
     FEATURE_NAMES,
 )
 

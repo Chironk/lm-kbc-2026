@@ -1,6 +1,6 @@
 import unittest
 
-from experiments.heterogeneous_agents.candidate_truth_evidence import (
+from experiments.heterogeneous_agents.components.candidate_truth_evidence import (
     CHOICES,
     _raw_action_audit,
     _truth_scores,
@@ -8,7 +8,7 @@ from experiments.heterogeneous_agents.candidate_truth_evidence import (
     truth_prompt,
     truth_task,
 )
-from experiments.heterogeneous_agents.dual_model_validation import QWEN
+from experiments.heterogeneous_agents.components.dual_model_validation import QWEN
 
 
 def graph():

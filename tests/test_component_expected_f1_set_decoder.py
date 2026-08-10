@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 
-from experiments.heterogeneous_agents.component_expected_f1_set_decoder import (
+from experiments.heterogeneous_agents.components.component_expected_f1_set_decoder import (
     _component_label,
     expected_f1_utility,
     nested_set_actions,

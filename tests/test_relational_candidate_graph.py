@@ -1,12 +1,12 @@
 import unittest
 
-from experiments.heterogeneous_agents.relational_candidate_graph import (
+from experiments.heterogeneous_agents.components.relational_candidate_graph import (
     augment_relational_graph,
     collapse_prediction,
     component_actions,
     equivalence_rule,
 )
-from experiments.heterogeneous_agents.route_aware_candidate_graph import (
+from experiments.heterogeneous_agents.components.route_aware_candidate_graph import (
     ROUTE_GEMMA,
     ROUTE_QWEN_SC,
     ROUTE_QWEN_SYSTEM2,

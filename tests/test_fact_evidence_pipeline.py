@@ -1,7 +1,7 @@
 import unittest
 
-from experiments.heterogeneous_agents.dual_model_validation import GEMMA, QWEN
-from experiments.heterogeneous_agents.fact_evidence_pipeline import (
+from experiments.heterogeneous_agents.components.dual_model_validation import GEMMA, QWEN
+from experiments.heterogeneous_agents.components.fact_evidence_pipeline import (
     PROPOSAL_ARMS,
     REVIEW_CHOICES,
     _action_inventory,
@@ -13,7 +13,7 @@ from experiments.heterogeneous_agents.fact_evidence_pipeline import (
     proposal_prompt,
     verification_task,
 )
-from experiments.heterogeneous_agents.relational_candidate_graph import (
+from experiments.heterogeneous_agents.components.relational_candidate_graph import (
     augment_relational_graph,
 )
 

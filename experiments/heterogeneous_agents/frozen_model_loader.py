@@ -5,11 +5,11 @@ from typing import Any, Mapping
 
 import numpy as np
 
-from experiments.heterogeneous_agents.baseline_relative_route_decoder import ResidualRidge
+from experiments.heterogeneous_agents.components.baseline_relative_route_decoder import ResidualRidge
 from experiments.heterogeneous_agents.core import ContractError
-from experiments.heterogeneous_agents.explicit_cardinality_ablation import ExplicitCardinalityModel
-from experiments.heterogeneous_agents.heterogeneous_memory_selector import LogisticCalibrator
-from experiments.heterogeneous_agents.relation_specific_numeric_decoder import RelationSpecificNumericModel
+from experiments.heterogeneous_agents.components.explicit_cardinality_ablation import ExplicitCardinalityModel
+from experiments.heterogeneous_agents.components.heterogeneous_memory_selector import LogisticCalibrator
+from experiments.heterogeneous_agents.components.relation_specific_numeric_decoder import RelationSpecificNumericModel
 
 
 def calibrator(value: Mapping[str, Any]) -> LogisticCalibrator:

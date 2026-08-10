@@ -1,10 +1,10 @@
 import unittest
 
-from experiments.heterogeneous_agents.cot40_graph_native_decoder import (
+from experiments.heterogeneous_agents.components.cot40_graph_native_decoder import (
     enrich_row,
     legal_actions,
 )
-from experiments.heterogeneous_agents.cot40_minimal_evidence_graph import (
+from experiments.heterogeneous_agents.components.cot40_minimal_evidence_graph import (
     EVENT_NAMES,
     _prepare_event_cache,
     event_features,

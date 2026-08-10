@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from experiments.heterogeneous_agents.strict_numeric_proof import (
+from experiments.heterogeneous_agents.components.strict_numeric_proof import (
     strict_numeric_eligible,
 )
 

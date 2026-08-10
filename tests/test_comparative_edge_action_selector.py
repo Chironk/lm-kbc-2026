@@ -1,4 +1,4 @@
-from experiments.heterogeneous_agents.comparative_edge_action_selector import (
+from experiments.heterogeneous_agents.components.comparative_edge_action_selector import (
     EDGE_FEATURE_NAMES,
     _identity_action_indices,
     edge_action_features,

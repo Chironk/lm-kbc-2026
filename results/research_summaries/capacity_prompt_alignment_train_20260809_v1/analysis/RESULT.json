@@ -1,0 +1,33 @@
+{
+  "contains_labels": true,
+  "gold_aware": true,
+  "out_of_scope_layers": [
+    {
+      "deployed_rows": 1,
+      "layer": "route_residual_company_arm",
+      "reason": "its train gate selects a pass-through arm under current gold"
+    },
+    {
+      "deployed_rows": 11,
+      "layer": "capacity_qwen_precision_veto",
+      "reason": "requires a review-generation pass with no end-to-end runner"
+    }
+  ],
+  "per_relation": {
+    "*** All Relations ***": {
+      "macro-f1": 0.05,
+      "macro-p": 0.05,
+      "macro-r": 0.05
+    },
+    "hasCapacity": {
+      "macro-f1": 0.05,
+      "macro-p": 0.05,
+      "macro-r": 0.05
+    }
+  },
+  "pooled_macro_f1": 0.05,
+  "rows": 100,
+  "schema": "end-to-end-result-v1",
+  "split": "train",
+  "verified_parameter_total": 30515165024
+}

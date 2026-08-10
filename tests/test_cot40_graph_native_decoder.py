@@ -1,6 +1,6 @@
 import unittest
 
-from experiments.heterogeneous_agents.cot40_graph_native_decoder import (
+from experiments.heterogeneous_agents.components.cot40_graph_native_decoder import (
     EDGE_NAMES,
     LOCAL_NAMES,
     ROUTE,

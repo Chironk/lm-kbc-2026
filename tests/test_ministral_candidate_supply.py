@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from experiments.heterogeneous_agents.core import load_agent_config
-from experiments.heterogeneous_agents.ministral_candidate_supply import (
+from experiments.heterogeneous_agents.components.ministral_candidate_supply import (
     EXPECTED_MODEL,
     EXPECTED_REVISION,
     GEMMA,

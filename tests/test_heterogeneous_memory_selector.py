@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 
 from experiments.heterogeneous_agents.core import ContractError
-from experiments.heterogeneous_agents.heterogeneous_memory_selector import (
+from experiments.heterogeneous_agents.components.heterogeneous_memory_selector import (
     GEMMA,
     QWEN,
     LogisticCalibrator,

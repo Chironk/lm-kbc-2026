@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from experiments.heterogeneous_agents.capacity_graph_decoder import (
+from experiments.heterogeneous_agents.components.capacity_graph_decoder import (
     _complete_link_groups,
     _event_support,
     _merge,

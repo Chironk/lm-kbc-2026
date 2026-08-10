@@ -1,6 +1,6 @@
 import unittest
 
-from experiments.heterogeneous_agents.full_candidate_tournament import (
+from experiments.heterogeneous_agents.components.full_candidate_tournament import (
     decode_row,
     partition_groups,
     row_nodes,

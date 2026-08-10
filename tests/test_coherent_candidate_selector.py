@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-from experiments.heterogeneous_agents.coherent_candidate_selector import (
+from experiments.heterogeneous_agents.components.coherent_candidate_selector import (
     PAIRED_FEATURE_NAMES,
     PAIRED_HIERARCHICAL_FEATURE_NAMES,
     PAIRED_INTERACTION_SIGNAL_NAMES,

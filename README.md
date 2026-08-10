@@ -21,10 +21,13 @@ repository; see [the official task documentation](docs/OFFICIAL_TASK.md).
 |---|---|
 | `experiments/heterogeneous_agents/final_submission_pipeline.py` | frozen graph construction, decoder, scoring, and packaging |
 | `experiments/heterogeneous_agents/run_final_submission_pipeline.sh` | supported end-to-end launcher |
+| `experiments/heterogeneous_agents/components/` | graph builders and retained decoder components |
+| `experiments/heterogeneous_agents/analysis/` | optional post-hoc analysis and visualization |
 | `configs/final/` | pinned three-model portfolio configurations |
 | `artifacts/frozen/` | compact trained decoder artifacts and integrity manifest |
 | `data/` | official splits and reviewed SyntheticCoT pools |
 | `tests/` | unit and contract tests for the retained runtime closure |
+| `results/research_summaries/` | compact outcomes from superseded experiments; never runtime inputs |
 | `docs/ARCHITECTURE.md` | readable architecture and code map |
 | `docs/REPRODUCIBILITY.md` | environment, validation, test, and resume instructions |
 

@@ -58,11 +58,11 @@ from experiments.heterogeneous_agents.core import (
     validate_inputs,
     write_jsonl_atomic,
 )
-from experiments.heterogeneous_agents.heterogeneous_memory_selector import _key
-from experiments.heterogeneous_agents.relational_candidate_graph import (
+from experiments.heterogeneous_agents.components.heterogeneous_memory_selector import _key
+from experiments.heterogeneous_agents.components.relational_candidate_graph import (
     augment_relational_graph,
 )
-from experiments.heterogeneous_agents.unified_graph_decoder import (
+from experiments.heterogeneous_agents.components.unified_graph_decoder import (
     MINISTRAL_COT40,
     MINISTRAL_N3,
     apply_area_unanimity,
@@ -492,7 +492,7 @@ def graph(args: argparse.Namespace) -> int:
         heterogeneous_prediction,
         prediction_for_agent,
     )
-    from experiments.heterogeneous_agents.route_aware_candidate_graph import (
+    from experiments.heterogeneous_agents.components.route_aware_candidate_graph import (
         augment_graph,
     )
 

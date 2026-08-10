@@ -1,4 +1,4 @@
-from experiments.heterogeneous_agents.sampling_reasoning_ablation import (
+from experiments.heterogeneous_agents.components.sampling_reasoning_ablation import (
     CAP_N,
     GEMMA,
     MINISTRAL,

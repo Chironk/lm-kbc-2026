@@ -43,7 +43,7 @@ from experiments.heterogeneous_agents.assemble_and_audit import (
     assemble_graphs,
     prediction_for_agent,
 )
-from experiments.heterogeneous_agents.baseline_relative_route_decoder import (
+from experiments.heterogeneous_agents.components.baseline_relative_route_decoder import (
     _prediction_rows as route_prediction_rows,
     decode as decode_route,
 )
@@ -57,33 +57,33 @@ from experiments.heterogeneous_agents.core import (
     write_jsonl_atomic,
 )
 from run_submission import Submission as PrimarySubmission
-from experiments.heterogeneous_agents.cot40_evidence_edge_ablation import (
+from experiments.heterogeneous_agents.components.cot40_evidence_edge_ablation import (
     _generic_record,
     _qwen_records,
     _replace_route_events,
     _state_and_relation_edges,
 )
-from experiments.heterogeneous_agents.explicit_cardinality_ablation import (
+from experiments.heterogeneous_agents.components.explicit_cardinality_ablation import (
     _prediction_rows as cardinality_prediction_rows,
 )
-from experiments.heterogeneous_agents.heterogeneous_memory_selector import (
+from experiments.heterogeneous_agents.components.heterogeneous_memory_selector import (
     _key,
 )
-from experiments.heterogeneous_agents.proof_carrying_graph_decoder import (
+from experiments.heterogeneous_agents.components.proof_carrying_graph_decoder import (
     IDENTITY_RELATIONS,
     PRIMARY_ARM,
     _decode as proof_decode,
 )
-from experiments.heterogeneous_agents.strict_numeric_proof import (
+from experiments.heterogeneous_agents.components.strict_numeric_proof import (
     decode_row as strict_numeric_decode,
 )
-from experiments.heterogeneous_agents.relation_specific_numeric_decoder import (
+from experiments.heterogeneous_agents.components.relation_specific_numeric_decoder import (
     _merge_numeric,
 )
-from experiments.heterogeneous_agents.relational_candidate_graph import (
+from experiments.heterogeneous_agents.components.relational_candidate_graph import (
     augment_relational_graph,
 )
-from experiments.heterogeneous_agents.route_aware_candidate_graph import (
+from experiments.heterogeneous_agents.components.route_aware_candidate_graph import (
     augment_graph,
 )
 from experiments.heterogeneous_agents.frozen_model_loader import (
@@ -92,7 +92,7 @@ from experiments.heterogeneous_agents.frozen_model_loader import (
     numeric_model as _numeric_model,
     residual_model as _residual_model,
 )
-from experiments.heterogeneous_agents.unified_graph_decoder import (
+from experiments.heterogeneous_agents.components.unified_graph_decoder import (
     apply_area_unanimity,
     apply_component_residual,
     apply_cot40_support,
@@ -126,18 +126,18 @@ STRICT_NUMERIC_RELATIONS = frozenset({"hasCapacity"})
 DECODER_IMPLEMENTATIONS = {
     "final_submission": Path(__file__).resolve(),
     "base_graph_assembler": HERE / "assemble_and_audit.py",
-    "route_graph": HERE / "route_aware_candidate_graph.py",
-    "relational_graph": HERE / "relational_candidate_graph.py",
-    "cardinality_decoder": HERE / "explicit_cardinality_ablation.py",
-    "numeric_decoder": HERE / "relation_specific_numeric_decoder.py",
-    "route_decoder": HERE / "baseline_relative_route_decoder.py",
-    "staged_decoder": HERE / "unified_graph_decoder.py",
+    "route_graph": HERE / "components/route_aware_candidate_graph.py",
+    "relational_graph": HERE / "components/relational_candidate_graph.py",
+    "cardinality_decoder": HERE / "components/explicit_cardinality_ablation.py",
+    "numeric_decoder": HERE / "components/relation_specific_numeric_decoder.py",
+    "route_decoder": HERE / "components/baseline_relative_route_decoder.py",
+    "staged_decoder": HERE / "components/unified_graph_decoder.py",
     "model_deserializer": HERE / "frozen_model_loader.py",
-    "set_proof": HERE / "proof_carrying_graph_decoder.py",
-    "singleton_numeric_proof": HERE / "strict_numeric_proof.py",
-    "singleton_numeric_features": HERE / "capacity_graph_decoder.py",
-    "event_graph_contract": HERE / "graph_event_contract.py",
-    "exact_event_graph": HERE / "cot40_evidence_edge_ablation.py",
+    "set_proof": HERE / "components/proof_carrying_graph_decoder.py",
+    "singleton_numeric_proof": HERE / "components/strict_numeric_proof.py",
+    "singleton_numeric_features": HERE / "components/capacity_graph_decoder.py",
+    "event_graph_contract": HERE / "components/graph_event_contract.py",
+    "exact_event_graph": HERE / "components/cot40_evidence_edge_ablation.py",
     "core_contracts": HERE / "core.py",
 }
 OFFICIAL_TEST_SHA256 = (

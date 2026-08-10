@@ -2,8 +2,8 @@ import unittest
 
 import numpy as np
 
-from experiments.heterogeneous_agents.dual_model_validation import GEMMA, QWEN
-from experiments.heterogeneous_agents.relation_specific_structured_decoder import (
+from experiments.heterogeneous_agents.components.dual_model_validation import GEMMA, QWEN
+from experiments.heterogeneous_agents.components.relation_specific_structured_decoder import (
     CITY,
     COMPANY,
     CityConditionalDecoder,

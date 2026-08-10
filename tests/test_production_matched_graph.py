@@ -1,7 +1,7 @@
 import unittest
 
-from experiments.heterogeneous_agents.dual_model_validation import GEMMA, QWEN
-from experiments.heterogeneous_agents.production_matched_graph import (
+from experiments.heterogeneous_agents.components.dual_model_validation import GEMMA, QWEN
+from experiments.heterogeneous_agents.components.production_matched_graph import (
     _rebase_qwen,
 )
 

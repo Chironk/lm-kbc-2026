@@ -1,5 +1,5 @@
-from experiments.heterogeneous_agents.ministral_consistency_admission import ROUTE
-from experiments.heterogeneous_agents.ministral_typed_validation_confirmation import (
+from experiments.heterogeneous_agents.components.ministral_consistency_admission import ROUTE
+from experiments.heterogeneous_agents.components.ministral_typed_validation_confirmation import (
     _unanimous_new_area,
     apply_frozen_policy,
 )

@@ -1,7 +1,7 @@
 import unittest
 
-from experiments.heterogeneous_agents.dual_model_validation import GEMMA, QWEN
-from experiments.heterogeneous_agents.route_aware_candidate_graph import (
+from experiments.heterogeneous_agents.components.dual_model_validation import GEMMA, QWEN
+from experiments.heterogeneous_agents.components.route_aware_candidate_graph import (
     ROUTE_GEMMA,
     ROUTE_QWEN_SC,
     ROUTE_QWEN_SYSTEM2,

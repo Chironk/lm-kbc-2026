@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from experiments.heterogeneous_agents.core import canonical_key
-from experiments.heterogeneous_agents.multi_challenger_graph_decoder import (
+from experiments.heterogeneous_agents.components.multi_challenger_graph_decoder import (
     _aggregate,
     _task,
     action_shortlist_score,

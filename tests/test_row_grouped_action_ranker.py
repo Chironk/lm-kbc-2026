@@ -2,13 +2,13 @@ import unittest
 
 import numpy as np
 
-from experiments.heterogeneous_agents.row_grouped_action_ranker import (
+from experiments.heterogeneous_agents.components.row_grouped_action_ranker import (
     COMPACT_FEATURE_NAMES,
     PairwiseRanker,
     compact_action_features,
     oriented_pair_examples,
 )
-from experiments.heterogeneous_agents.unified_memory_action_graph import (
+from experiments.heterogeneous_agents.components.unified_memory_action_graph import (
     FEATURE_NAMES,
 )
 

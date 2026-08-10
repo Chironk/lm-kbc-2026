@@ -1,6 +1,6 @@
 import copy
 
-from experiments.heterogeneous_agents.ministral_consistency_admission import (
+from experiments.heterogeneous_agents.components.ministral_consistency_admission import (
     ADMISSION_SUPPORT,
     MINISTRAL,
     N_PROPOSALS,
