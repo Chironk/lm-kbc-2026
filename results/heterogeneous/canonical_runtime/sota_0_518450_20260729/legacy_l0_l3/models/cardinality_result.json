@@ -1,0 +1,762 @@
+{
+  "attribution_note": "The matched-margin delta isolates the decoder/cardinality change. The larger end-to-end delta also includes the effect of selecting a different guard margin from training OOF predictions.",
+  "cardinality_model": {
+    "feature_names": [
+      "intercept",
+      "qwen_card_zero",
+      "qwen_card_one",
+      "qwen_card_many",
+      "gemma_card_zero",
+      "gemma_card_one",
+      "gemma_card_many",
+      "qwen_exist_yes",
+      "qwen_exist_no",
+      "gemma_exist_yes",
+      "gemma_exist_no",
+      "qwen_none_rate",
+      "gemma_none_rate",
+      "candidate_count",
+      "qwen_candidate_count",
+      "gemma_candidate_count",
+      "max_qwen_support",
+      "max_gemma_support",
+      "shared_candidate_rate",
+      "commitment_agreement"
+    ],
+    "l2": 2.0,
+    "many_mean": {
+      "awardWonBy": 69.8,
+      "companyTradesAtStockExchange": 2.2222222222222223,
+      "countryLandBordersCountry": 4,
+      "personHasCityOfDeath": 2.0
+    },
+    "models": {
+      "companyTradesAtStockExchange": {
+        "MANY": {
+          "coefficients": [
+            -3.182453986153748,
+            -0.196754441020877,
+            0.02461044782823767,
+            0.17646785999880707,
+            -0.0002999972411544122,
+            -0.24589373348279486,
+            0.2681019030676955,
+            0.2856223006603804,
+            -0.20184341471043646,
+            0.38058038226202984,
+            -0.38077454816309764,
+            -0.3922544006887733,
+            -0.06708737468778131,
+            0.020902429930112935,
+            0.05179765152320586,
+            0.05748909911568257,
+            0.7107074739579542,
+            0.06708737468778324,
+            -0.010605423683126081,
+            0.6919086625202053
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        },
+        "ONE": {
+          "coefficients": [
+            0.9047745005907342,
+            -0.4329504997905916,
+            0.24390779646961314,
+            0.0023649451227371623,
+            -0.0007374947254384708,
+            0.5823408611441134,
+            -0.30006088400359265,
+            -0.03922223631426347,
+            -0.19305157422080033,
+            0.23442691751318215,
+            -0.2352620269304524,
+            -0.6788667201281238,
+            -0.7126570311408035,
+            0.10526090910384642,
+            0.03739168642392242,
+            -0.014977644712565845,
+            -0.07508473473863206,
+            0.7126570311408063,
+            0.006480312650624025,
+            -0.5715385380062717
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        },
+        "ZERO": {
+          "coefficients": [
+            -1.2834702156170155,
+            0.5069850100021686,
+            -0.2263805025135001,
+            -0.12318194544389137,
+            0.0008189362491842781,
+            -0.393050343768398,
+            0.15920042270304813,
+            -0.24572599333722328,
+            0.3422146953288856,
+            -0.6409300651540373,
+            0.6416757734967493,
+            0.9064465390524241,
+            0.7139723338474095,
+            -0.08023459512573988,
+            -0.04355675016726462,
+            -0.04235997146118277,
+            -0.5668831717171978,
+            -0.7139723338474149,
+            0.00020110296023842037,
+            -0.11383788860432327
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        }
+      },
+      "countryLandBordersCountry": {
+        "MANY": {
+          "coefficients": [
+            -0.6828870073593164,
+            -0.8845188532436183,
+            0.13635922337327266,
+            0.6904603064817232,
+            -0.3088006994778028,
+            -0.3017916443740523,
+            0.610622259545642,
+            0.7167821082765052,
+            -0.7055597527635773,
+            0.6366939639926722,
+            -0.6366690612967277,
+            -0.43259926070699367,
+            -0.2700610660256157,
+            0.25372687531568716,
+            0.25400876083946267,
+            0.21220701641098733,
+            0.27209360354302586,
+            0.2700610660256163,
+            0.21786657595573633,
+            0.6133839424277842
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        },
+        "ONE": {
+          "coefficients": [
+            -1.4152750862405465,
+            0.6412070581903456,
+            -0.05138530957509264,
+            -0.5580359600242173,
+            -0.37891757014544997,
+            0.4292150634502065,
+            -0.050351860071826154,
+            -0.44183605787416125,
+            0.40794928196563535,
+            -0.2987507847144558,
+            0.29870774259714705,
+            0.2090623974155706,
+            -0.2752599670616838,
+            -0.17602794473244143,
+            -0.1732417250122248,
+            -0.16089323822365775,
+            0.05647401177338908,
+            0.2752599670616846,
+            0.22887517418141246,
+            -1.113298317423124
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        },
+        "ZERO": {
+          "coefficients": [
+            -1.4350686798792172,
+            0.40798562878927586,
+            -0.11334828692579689,
+            -0.25931382164728,
+            0.6743548082850902,
+            -0.03865720426597357,
+            -0.6356772505771476,
+            -0.40822284284819876,
+            0.42878673348989194,
+            -0.5299504692349337,
+            0.5299602408811606,
+            0.27003015467308766,
+            0.4957518940820569,
+            -0.10884847805828898,
+            -0.12084830382630742,
+            -0.07966716387515506,
+            -0.40342365163813143,
+            -0.4957518940820569,
+            -0.5131210358140398,
+            0.3422897362154186
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        }
+      },
+      "personHasCityOfDeath": {
+        "MANY": {
+          "coefficients": [
+            -17.735391153028367,
+            3.717257986078038e-19,
+            2.4736477280927766e-19,
+            0.0,
+            3.78863932287487e-19,
+            5.099985960500765e-19,
+            0.0,
+            4.1226487517751086e-19,
+            4.587282699578758e-19,
+            2.9698220840517614e-20,
+            1.0355537675908636e-18,
+            4.0872542264117863e-19,
+            2.1431184222502744e-19,
+            2.7516019789785226e-19,
+            2.652052874047598e-19,
+            6.000986127804598e-20,
+            4.1453913275393735e-19,
+            -7.192930326107649e-20,
+            2.67691975590205e-19,
+            4.9280057478511365e-19
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        },
+        "ONE": {
+          "coefficients": [
+            0.08077381313097842,
+            -0.16223342368780683,
+            -0.06707865791507941,
+            0.0,
+            0.10263151303395664,
+            0.14428571626033723,
+            0.0,
+            -0.3632141569214015,
+            0.06706161338618319,
+            0.24137384218872643,
+            -0.2415860963558185,
+            -0.688365121082277,
+            -0.4885379913602719,
+            0.5821886668388089,
+            0.5528869859203723,
+            0.03480485426535267,
+            -0.010237434848593302,
+            0.4885379913602727,
+            -0.18611557901794595,
+            0.14432142082120936
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        },
+        "ZERO": {
+          "coefficients": [
+            -0.0807738131309782,
+            0.16223342368780705,
+            0.06707865791507975,
+            0.0,
+            -0.10263151303395691,
+            -0.14428571626033698,
+            0.0,
+            0.3632141569214011,
+            -0.06706161338618333,
+            -0.24137384218872648,
+            0.2415860963558185,
+            0.6883651210822767,
+            0.4885379913602719,
+            -0.5821886668388085,
+            -0.5528869859203726,
+            -0.034804854265352694,
+            0.01023743484859325,
+            -0.48853799136027265,
+            0.18611557901794595,
+            -0.14432142082120938
+          ],
+          "feature_names": [
+            "intercept",
+            "qwen_card_zero",
+            "qwen_card_one",
+            "qwen_card_many",
+            "gemma_card_zero",
+            "gemma_card_one",
+            "gemma_card_many",
+            "qwen_exist_yes",
+            "qwen_exist_no",
+            "gemma_exist_yes",
+            "gemma_exist_no",
+            "qwen_none_rate",
+            "gemma_none_rate",
+            "candidate_count",
+            "qwen_candidate_count",
+            "gemma_candidate_count",
+            "max_qwen_support",
+            "max_gemma_support",
+            "shared_candidate_rate",
+            "commitment_agreement"
+          ],
+          "l2": 2.0
+        }
+      }
+    },
+    "schema": "explicit-cardinality-ovr-v1"
+  },
+  "development_only": true,
+  "direct_cardinality_delta_at_matched_margin": 0.0006973500697350365,
+  "end_to_end_delta_vs_source_selected_system": 0.005927475592747644,
+  "guard_margin": 0.2,
+  "guard_selection": {
+    "best_margin_standard_error": 0.005427969404317507,
+    "best_mean_margin": 0.0,
+    "best_mean_paired_delta": 0.02443750174752083,
+    "eligibility_threshold": 0.019009532343203323,
+    "margins": {
+      "0.0": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.49125852826510724,
+          "1": 0.43229162431645496,
+          "2": 0.3986631628175746,
+          "3": 0.44500039818599374,
+          "4": 0.42705030828344204
+        },
+        "mean_paired_delta": 0.02443750174752083,
+        "paired_fold_deltas": {
+          "0": 0.032737419743998686,
+          "1": 0.032359454797117215,
+          "2": 0.01616134107964179,
+          "3": 0.033835305968269946,
+          "4": 0.007093987148576508
+        },
+        "standard_error_paired_delta": 0.005427969404317507,
+        "within_one_se_of_best": true
+      },
+      "0.02": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4918544418544419,
+          "1": 0.43221287127372376,
+          "2": 0.39777959951571057,
+          "3": 0.44500039818599374,
+          "4": 0.4255691861232027
+        },
+        "mean_paired_delta": 0.02406799676442085,
+        "paired_fold_deltas": {
+          "0": 0.033333333333333326,
+          "1": 0.03228070175438602,
+          "2": 0.015277777777777779,
+          "3": 0.033835305968269946,
+          "4": 0.005612864988337185
+        },
+        "standard_error_paired_delta": 0.005773019802394472,
+        "within_one_se_of_best": true
+      },
+      "0.05": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4918544418544419,
+          "1": 0.43221287127372376,
+          "2": 0.39777959951571057,
+          "3": 0.44385207282714206,
+          "4": 0.4277925784448071
+        },
+        "mean_paired_delta": 0.024283010156971395,
+        "paired_fold_deltas": {
+          "0": 0.033333333333333326,
+          "1": 0.03228070175438602,
+          "2": 0.015277777777777779,
+          "3": 0.03268698060941827,
+          "4": 0.007836257309941586
+        },
+        "standard_error_paired_delta": 0.005329577981717271,
+        "within_one_se_of_best": true
+      },
+      "0.1": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4918544418544419,
+          "1": 0.43221287127372376,
+          "2": 0.39777959951571057,
+          "3": 0.4444984255510572,
+          "4": 0.4196054439418831
+        },
+        "mean_paired_delta": 0.022774853801169614,
+        "paired_fold_deltas": {
+          "0": 0.033333333333333326,
+          "1": 0.03228070175438602,
+          "2": 0.015277777777777779,
+          "3": 0.03333333333333338,
+          "4": -0.000350877192982435
+        },
+        "standard_error_paired_delta": 0.006724320442566338,
+        "within_one_se_of_best": true
+      },
+      "0.15": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4883822196322196,
+          "1": 0.43151111688775884,
+          "2": 0.395349043960155,
+          "3": 0.4444984255510572,
+          "4": 0.4231142158717076
+        },
+        "mean_paired_delta": 0.02215570175438597,
+        "paired_fold_deltas": {
+          "0": 0.02986111111111106,
+          "1": 0.031578947368421095,
+          "2": 0.012847222222222232,
+          "3": 0.03333333333333338,
+          "4": 0.0031578947368420818
+        },
+        "standard_error_paired_delta": 0.006002811015051083,
+        "within_one_se_of_best": true
+      },
+      "0.2": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4758822196322196,
+          "1": 0.43151111688775884,
+          "2": 0.3929184884045995,
+          "3": 0.4480071974808817,
+          "4": 0.43048263692433925
+        },
+        "mean_paired_delta": 0.02134502923976609,
+        "paired_fold_deltas": {
+          "0": 0.01736111111111105,
+          "1": 0.031578947368421095,
+          "2": 0.010416666666666685,
+          "3": 0.0368421052631579,
+          "4": 0.010526315789473717
+        },
+        "standard_error_paired_delta": 0.005464602997671844,
+        "within_one_se_of_best": true
+      },
+      "0.25": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.46893777518777524,
+          "1": 0.4209848010982851,
+          "2": 0.3929184884045995,
+          "3": 0.43221772379667117,
+          "4": 0.43048263692433925
+        },
+        "mean_paired_delta": 0.014692982456140369,
+        "paired_fold_deltas": {
+          "0": 0.010416666666666685,
+          "1": 0.02105263157894738,
+          "2": 0.010416666666666685,
+          "3": 0.02105263157894738,
+          "4": 0.010526315789473717
+        },
+        "standard_error_paired_delta": 0.0025963930606146173,
+        "within_one_se_of_best": false
+      },
+      "0.3": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4793544418544419,
+          "1": 0.4174760291684606,
+          "2": 0.3929184884045995,
+          "3": 0.42169140800719745,
+          "4": 0.4410089527138129
+        },
+        "mean_paired_delta": 0.01607456140350879,
+        "paired_fold_deltas": {
+          "0": 0.02083333333333337,
+          "1": 0.01754385964912286,
+          "2": 0.010416666666666685,
+          "3": 0.010526315789473661,
+          "4": 0.02105263157894738
+        },
+        "standard_error_paired_delta": 0.002370450722258193,
+        "within_one_se_of_best": false
+      }
+    },
+    "rule": "largest predeclared margin whose mean paired OOF improvement over the same-fold Qwen baseline is within one standard error of the best mean paired improvement",
+    "selected_margin": 0.2
+  },
+  "matched_margin_original_decoder_scores": {
+    "*** All Relations ***": 0.5119157791411537,
+    "awardWonBy": 0.10332434905019461,
+    "companyTradesAtStockExchange": 0.7350000000000001,
+    "countryLandBordersCountry": 0.95827204322014,
+    "hasArea": 0.39,
+    "hasCapacity": 0.17,
+    "personHasCityOfDeath": 0.49
+  },
+  "oof_cardinality": {
+    "by_relation": {
+      "awardWonBy": {
+        "accuracy": 1.0,
+        "multiclass_brier": 0.0,
+        "rows": 10
+      },
+      "companyTradesAtStockExchange": {
+        "accuracy": 0.74,
+        "multiclass_brier": 0.3674981251596522,
+        "rows": 100
+      },
+      "countryLandBordersCountry": {
+        "accuracy": 0.9104477611940298,
+        "multiclass_brier": 0.14400451884982268,
+        "rows": 67
+      },
+      "hasArea": {
+        "accuracy": 1.0,
+        "multiclass_brier": 0.0,
+        "rows": 100
+      },
+      "hasCapacity": {
+        "accuracy": 1.0,
+        "multiclass_brier": 0.0,
+        "rows": 100
+      },
+      "personHasCityOfDeath": {
+        "accuracy": 0.54,
+        "multiclass_brier": 0.4889326564353213,
+        "rows": 100
+      }
+    },
+    "overall": {
+      "accuracy": 0.8364779874213837,
+      "multiclass_brier": 0.199772287049131,
+      "rows": 477
+    }
+  },
+  "predictions": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/explicit_cardinality_ablation/validation_predictions.jsonl",
+  "predictions_sha256": "56b80325c6b6a7e6554de7e5832eed9725f9ea76c9783247aa3d3bf05f9cfac4",
+  "schema": "explicit-cardinality-ablation-v1",
+  "scores": {
+    "*** All Relations ***": 0.5126131292108888,
+    "awardWonBy": 0.10332434905019461,
+    "companyTradesAtStockExchange": 0.7383333333333334,
+    "countryLandBordersCountry": 0.95827204322014,
+    "hasArea": 0.39,
+    "hasCapacity": 0.17,
+    "personHasCityOfDeath": 0.49
+  },
+  "source_selected_system_scores": {
+    "*** All Relations ***": 0.5066856536181411,
+    "awardWonBy": 0.10332434905019461,
+    "companyTradesAtStockExchange": 0.72,
+    "countryLandBordersCountry": 0.95827204322014,
+    "hasArea": 0.39,
+    "hasCapacity": 0.16,
+    "personHasCityOfDeath": 0.49
+  },
+  "source_train_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/graphs/train_graph.jsonl",
+  "source_train_graph_sha256": "b05d03f5e36dfd1da3923c5dfbfa898550414c03ae38cbac3295349fffbdcd99",
+  "train_rows": 477,
+  "validation_labels_used_for_selection": false,
+  "validation_rows": 478
+}

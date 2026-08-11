@@ -1,0 +1,1861 @@
+{
+  "candidate_model": {
+    "coefficients": [
+      -3.2935212499965894,
+      0.649415882947729,
+      0.12601668443842867,
+      0.7754325673861147,
+      0.9927324115539273,
+      0.12601668443842975,
+      0.5073013442310988,
+      0.42530893641863704,
+      0.4532882574261911,
+      0.13156867602618658,
+      -0.7845499316184614,
+      0.06758671987105494,
+      0.42010250843779157,
+      0.0,
+      0.0,
+      -0.12516042583074516,
+      0.3296511318030129,
+      0.34547371375087566,
+      0.295657663689002,
+      1.129677482933739,
+      -0.8392170979375315,
+      -0.45905595061004245,
+      0.2585794584757358,
+      -0.1954854373493944,
+      0.462193897712174,
+      0.10122243166737126,
+      -0.2807722006732514,
+      -0.34573814983260054,
+      0.07905269952343864,
+      -0.07579867285638611,
+      0.5936249995247028,
+      0.3340557090437838,
+      -0.18059063815397142,
+      -0.10092821413384295,
+      0.1579756172525301,
+      0.14828713296370966,
+      0.5818318671172121,
+      -0.12263516185125055,
+      -0.5365481126732196,
+      -0.1028946583705551,
+      0.1900527448412616,
+      0.23604078921603552,
+      0.5878028410561674,
+      0.09207889821494582,
+      -0.5149326782459664,
+      -0.08374125085135026,
+      0.10122243166737144,
+      -0.1643164527936876,
+      0.06309402112633779
+    ],
+    "feature_names": [
+      "intercept",
+      "qwen_source",
+      "gemma_source",
+      "cross_model",
+      "qwen_support",
+      "gemma_support",
+      "max_support",
+      "mean_support",
+      "qwen_selected",
+      "gemma_selected",
+      "candidate_count",
+      "qwen_exist_yes",
+      "gemma_exist_yes",
+      "qwen_exist_missing",
+      "gemma_exist_missing",
+      "qwen_card_one",
+      "gemma_card_one",
+      "qwen_card_many",
+      "gemma_card_many",
+      "numeric_cross_tolerance",
+      "numeric_qwen_distance",
+      "numeric_gemma_distance",
+      "relation=awardWonBy",
+      "relation=companyTradesAtStockExchange",
+      "relation=countryLandBordersCountry",
+      "relation=hasArea",
+      "relation=hasCapacity",
+      "relation=personHasCityOfDeath",
+      "qwen_source*awardWonBy",
+      "qwen_source*companyTradesAtStockExchange",
+      "qwen_source*countryLandBordersCountry",
+      "qwen_source*hasArea",
+      "qwen_source*hasCapacity",
+      "qwen_source*personHasCityOfDeath",
+      "gemma_source*awardWonBy",
+      "gemma_source*companyTradesAtStockExchange",
+      "gemma_source*countryLandBordersCountry",
+      "gemma_source*hasArea",
+      "gemma_source*hasCapacity",
+      "gemma_source*personHasCityOfDeath",
+      "support*awardWonBy",
+      "support*companyTradesAtStockExchange",
+      "support*countryLandBordersCountry",
+      "support*hasArea",
+      "support*hasCapacity",
+      "support*personHasCityOfDeath",
+      "prompt=direct",
+      "prompt=shared_cot5",
+      "prompt=disjoint_cot5"
+    ],
+    "l2": 2.0
+  },
+  "candidate_weighting": "row-agent-balanced",
+  "chosen_oof_predictions": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/selector/selector.oof_predictions.jsonl",
+  "chosen_oof_predictions_sha256": "2fa8007baab15869296aaea16c9efb63e4f1665b93d639ccb9fd0e8cae62e65c",
+  "decoder_utility_schema": "symmetric-output-utility-v2",
+  "fold_manifest": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
+  "fold_manifest_sha256": "c234d3b33b2b3f6dbfe941d77edeb34f09bc8cb268a4d9442579e57262f2963e",
+  "folds": 5,
+  "guard_margin": 0.3,
+  "guard_margin_selection": "largest predeclared margin whose mean paired OOF improvement over the same-fold Qwen baseline is within one standard error of the best mean paired improvement",
+  "guard_margin_selection_diagnostics": {
+    "best_margin_standard_error": 0.007003491937641863,
+    "best_mean_margin": 0.0,
+    "best_mean_paired_delta": 0.023342601475058178,
+    "eligibility_threshold": 0.016339109537416314,
+    "margins": {
+      "0.0": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.49125852826510724,
+          "1": 0.41867371778729123,
+          "2": 0.3997048294842413,
+          "3": 0.4555882713777451,
+          "4": 0.4235641735918744
+        },
+        "mean_paired_delta": 0.023342601475058178,
+        "paired_fold_deltas": {
+          "0": 0.032737419743998686,
+          "1": 0.01874154826795349,
+          "2": 0.017203007746308507,
+          "3": 0.04442317916002131,
+          "4": 0.0036078524570088977
+        },
+        "standard_error_paired_delta": 0.007003491937641863,
+        "within_one_se_of_best": true
+      },
+      "0.02": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4918544418544419,
+          "1": 0.4204281037522036,
+          "2": 0.39882126618237734,
+          "3": 0.4555882713777451,
+          "4": 0.42173533006068886
+        },
+        "mean_paired_delta": 0.02327018001929767,
+        "paired_fold_deltas": {
+          "0": 0.033333333333333326,
+          "1": 0.02049593423286583,
+          "2": 0.016319444444444553,
+          "3": 0.04442317916002131,
+          "4": 0.0017790089258233333
+        },
+        "standard_error_paired_delta": 0.007302725610870547,
+        "within_one_se_of_best": true
+      },
+      "0.05": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4814377751877752,
+          "1": 0.4204281037522036,
+          "2": 0.39882126618237734,
+          "3": 0.4439136302294197,
+          "4": 0.4242838065149825
+        },
+        "mean_paired_delta": 0.01936161374715798,
+        "paired_fold_deltas": {
+          "0": 0.02291666666666664,
+          "1": 0.02049593423286583,
+          "2": 0.016319444444444553,
+          "3": 0.032748538011695916,
+          "4": 0.004327485380116958
+        },
+        "standard_error_paired_delta": 0.0046282536410201065,
+        "within_one_se_of_best": true
+      },
+      "0.1": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4814377751877752,
+          "1": 0.43221287127372376,
+          "2": 0.39882126618237734,
+          "3": 0.4439136302294197,
+          "4": 0.4160966720120586
+        },
+        "mean_paired_delta": 0.020081140350877234,
+        "paired_fold_deltas": {
+          "0": 0.02291666666666664,
+          "1": 0.03228070175438602,
+          "2": 0.016319444444444553,
+          "3": 0.032748538011695916,
+          "4": -0.003859649122806952
+        },
+        "standard_error_paired_delta": 0.006725489677854579,
+        "within_one_se_of_best": true
+      },
+      "0.15": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.47796555296555293,
+          "1": 0.43151111688775884,
+          "2": 0.3963907106268218,
+          "3": 0.4444984255510572,
+          "4": 0.40907912815240943
+        },
+        "mean_paired_delta": 0.017473684210526353,
+        "paired_fold_deltas": {
+          "0": 0.019444444444444375,
+          "1": 0.031578947368421095,
+          "2": 0.013888888888889006,
+          "3": 0.03333333333333338,
+          "4": -0.010877192982456096
+        },
+        "standard_error_paired_delta": 0.007971805975000943,
+        "within_one_se_of_best": true
+      },
+      "0.2": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4758822196322196,
+          "1": 0.43151111688775884,
+          "2": 0.3911823772934884,
+          "3": 0.45853351327035535,
+          "4": 0.41995632113486553
+        },
+        "mean_paired_delta": 0.02099780701754387,
+        "paired_fold_deltas": {
+          "0": 0.01736111111111105,
+          "1": 0.031578947368421095,
+          "2": 0.008680555555555636,
+          "3": 0.04736842105263156,
+          "4": 0.0
+        },
+        "standard_error_paired_delta": 0.00840600367580296,
+        "within_one_se_of_best": true
+      },
+      "0.25": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.46893777518777524,
+          "1": 0.43151111688775884,
+          "2": 0.3929184884045995,
+          "3": 0.43221772379667117,
+          "4": 0.43048263692433925
+        },
+        "mean_paired_delta": 0.01679824561403511,
+        "paired_fold_deltas": {
+          "0": 0.010416666666666685,
+          "1": 0.031578947368421095,
+          "2": 0.010416666666666685,
+          "3": 0.02105263157894738,
+          "4": 0.010526315789473717
+        },
+        "standard_error_paired_delta": 0.004227027015159508,
+        "within_one_se_of_best": true
+      },
+      "0.3": {
+        "baseline_fold_scores": {
+          "0": 0.45852110852110856,
+          "1": 0.39993216951933774,
+          "2": 0.3825018217379328,
+          "3": 0.4111650922177238,
+          "4": 0.41995632113486553
+        },
+        "fold_scores": {
+          "0": 0.4793544418544419,
+          "1": 0.4280023449579343,
+          "2": 0.3929184884045995,
+          "3": 0.42169140800719745,
+          "4": 0.4375001807839884
+        },
+        "mean_paired_delta": 0.01747807017543863,
+        "paired_fold_deltas": {
+          "0": 0.02083333333333337,
+          "1": 0.02807017543859658,
+          "2": 0.010416666666666685,
+          "3": 0.010526315789473661,
+          "4": 0.01754385964912286
+        },
+        "standard_error_paired_delta": 0.003329002264762459,
+        "within_one_se_of_best": true
+      }
+    },
+    "rule": "largest predeclared margin whose mean paired OOF improvement over the same-fold Qwen baseline is within one standard error of the best mean paired improvement",
+    "selected_margin": 0.3
+  },
+  "known_domain_shift": "train Qwen proposals use five OOF N=10 legacy-fold caches; validation Qwen proposals use the frozen v0495 mixed-source raw artifacts. Support is normalized, but train System-2 corroboration is unavailable",
+  "l2": 2.0,
+  "nested_oof_prompt_routes": {
+    "0": {
+      "routes": {
+        "awardWonBy": "disjoint_cot5",
+        "companyTradesAtStockExchange": "disjoint_cot5",
+        "countryLandBordersCountry": "shared_cot5",
+        "hasArea": "direct",
+        "hasCapacity": "shared_cot5",
+        "personHasCityOfDeath": "shared_cot5"
+      },
+      "selection": "pre-frozen relation routes"
+    },
+    "1": {
+      "routes": {
+        "awardWonBy": "disjoint_cot5",
+        "companyTradesAtStockExchange": "disjoint_cot5",
+        "countryLandBordersCountry": "shared_cot5",
+        "hasArea": "direct",
+        "hasCapacity": "shared_cot5",
+        "personHasCityOfDeath": "shared_cot5"
+      },
+      "selection": "pre-frozen relation routes"
+    },
+    "2": {
+      "routes": {
+        "awardWonBy": "disjoint_cot5",
+        "companyTradesAtStockExchange": "disjoint_cot5",
+        "countryLandBordersCountry": "shared_cot5",
+        "hasArea": "direct",
+        "hasCapacity": "shared_cot5",
+        "personHasCityOfDeath": "shared_cot5"
+      },
+      "selection": "pre-frozen relation routes"
+    },
+    "3": {
+      "routes": {
+        "awardWonBy": "disjoint_cot5",
+        "companyTradesAtStockExchange": "disjoint_cot5",
+        "countryLandBordersCountry": "shared_cot5",
+        "hasArea": "direct",
+        "hasCapacity": "shared_cot5",
+        "personHasCityOfDeath": "shared_cot5"
+      },
+      "selection": "pre-frozen relation routes"
+    },
+    "4": {
+      "routes": {
+        "awardWonBy": "disjoint_cot5",
+        "companyTradesAtStockExchange": "disjoint_cot5",
+        "countryLandBordersCountry": "shared_cot5",
+        "hasArea": "direct",
+        "hasCapacity": "shared_cot5",
+        "personHasCityOfDeath": "shared_cot5"
+      },
+      "selection": "pre-frozen relation routes"
+    }
+  },
+  "null_model": {
+    "coefficients": [
+      -3.30598947950428,
+      1.120135723415655,
+      0.6853544752724686,
+      -0.6172364740532892,
+      -0.25751645040931137,
+      -0.6853544752724544,
+      0.07121405101352717,
+      0.5541433244209574,
+      1.6994790619790818,
+      0.0,
+      0.0,
+      0.8315948005310124,
+      0.4493347989962969,
+      -0.06489393508821674,
+      0.2087446727966601,
+      -0.16773850161339193,
+      -0.453100329360061,
+      -0.45487882056014334,
+      0.931866913825169,
+      -0.0005461872092360847,
+      0.5741414312701828,
+      0.12148253816337927,
+      0.0,
+      0.0,
+      0.425057941191333,
+      -0.02037662859299153,
+      0.2957870340717981,
+      0.32626794026164796,
+      0.0,
+      0.0,
+      0.08367612953202094
+    ],
+    "feature_names": [
+      "intercept",
+      "qwen_none_rate",
+      "gemma_none_rate",
+      "candidate_count",
+      "max_qwen_support",
+      "max_gemma_support",
+      "cross_model_candidate",
+      "qwen_exist_no",
+      "gemma_exist_no",
+      "qwen_exist_missing",
+      "gemma_exist_missing",
+      "qwen_card_zero",
+      "gemma_card_zero",
+      "relation=awardWonBy",
+      "relation=companyTradesAtStockExchange",
+      "relation=countryLandBordersCountry",
+      "relation=hasArea",
+      "relation=hasCapacity",
+      "relation=personHasCityOfDeath",
+      "qwen_none*awardWonBy",
+      "qwen_none*companyTradesAtStockExchange",
+      "qwen_none*countryLandBordersCountry",
+      "qwen_none*hasArea",
+      "qwen_none*hasCapacity",
+      "qwen_none*personHasCityOfDeath",
+      "gemma_none*awardWonBy",
+      "gemma_none*companyTradesAtStockExchange",
+      "gemma_none*countryLandBordersCountry",
+      "gemma_none*hasArea",
+      "gemma_none*hasCapacity",
+      "gemma_none*personHasCityOfDeath"
+    ],
+    "l2": 2.0
+  },
+  "oof_candidate_calibration": {
+    "by_relation": {
+      "awardWonBy": {
+        "brier": 0.23461270987711086,
+        "count": 208,
+        "effective_weight": 9.999999999999993,
+        "expected_calibration_error_10bin": 0.19795034879343898,
+        "log_loss": 0.6820863929254819,
+        "mean_probability": 0.30773553359204686,
+        "positive_rate": 0.3561854875729557,
+        "reliability_bins": [
+          {
+            "count": 111,
+            "effective_weight": 4.609680416202151,
+            "lower": 0.1,
+            "mean_probability": 0.17121649823457072,
+            "positive_rate": 0.3930563514962729,
+            "upper": 0.2
+          },
+          {
+            "count": 72,
+            "effective_weight": 2.3679765886287623,
+            "lower": 0.2,
+            "mean_probability": 0.2565186718278894,
+            "positive_rate": 0.16932468643213325,
+            "upper": 0.3
+          },
+          {
+            "count": 17,
+            "effective_weight": 1.248792270531401,
+            "lower": 0.3,
+            "mean_probability": 0.34993935407443383,
+            "positive_rate": 0.10009671179883943,
+            "upper": 0.4
+          },
+          {
+            "count": 4,
+            "effective_weight": 0.9679951690821256,
+            "lower": 0.6,
+            "mean_probability": 0.6320954602174463,
+            "positive_rate": 0.8484092326887087,
+            "upper": 0.7
+          },
+          {
+            "count": 4,
+            "effective_weight": 0.8055555555555554,
+            "lower": 0.7,
+            "mean_probability": 0.7843095002869248,
+            "positive_rate": 0.5,
+            "upper": 0.8
+          }
+        ]
+      },
+      "companyTradesAtStockExchange": {
+        "brier": 0.141830859879845,
+        "count": 336,
+        "effective_weight": 90.99999999999999,
+        "expected_calibration_error_10bin": 0.04592064824105173,
+        "log_loss": 0.44937166353635866,
+        "mean_probability": 0.34604687733039097,
+        "positive_rate": 0.34278519099947685,
+        "reliability_bins": [
+          {
+            "count": 108,
+            "effective_weight": 20.649404761904748,
+            "lower": 0.0,
+            "mean_probability": 0.08111844580374424,
+            "positive_rate": 0.10815485284367711,
+            "upper": 0.1
+          },
+          {
+            "count": 127,
+            "effective_weight": 23.541233766233784,
+            "lower": 0.1,
+            "mean_probability": 0.1229625473516237,
+            "positive_rate": 0.10230276616970309,
+            "upper": 0.2
+          },
+          {
+            "count": 25,
+            "effective_weight": 7.749999999999999,
+            "lower": 0.2,
+            "mean_probability": 0.243088357754612,
+            "positive_rate": 0.06451612903225809,
+            "upper": 0.3
+          },
+          {
+            "count": 12,
+            "effective_weight": 3.7833333333333337,
+            "lower": 0.3,
+            "mean_probability": 0.34998607124946984,
+            "positive_rate": 0.4295154185022026,
+            "upper": 0.4
+          },
+          {
+            "count": 10,
+            "effective_weight": 5.108928571428572,
+            "lower": 0.4,
+            "mean_probability": 0.4630128435682726,
+            "positive_rate": 0.5073983455668182,
+            "upper": 0.5
+          },
+          {
+            "count": 15,
+            "effective_weight": 7.021049783549784,
+            "lower": 0.5,
+            "mean_probability": 0.5594417007459507,
+            "positive_rate": 0.5846364904546469,
+            "upper": 0.6
+          },
+          {
+            "count": 8,
+            "effective_weight": 3.775,
+            "lower": 0.6,
+            "mean_probability": 0.6557466090278453,
+            "positive_rate": 0.8123620309050772,
+            "upper": 0.7
+          },
+          {
+            "count": 21,
+            "effective_weight": 13.921049783549782,
+            "lower": 0.7,
+            "mean_probability": 0.7480709749201438,
+            "positive_rate": 0.7216717652500769,
+            "upper": 0.8
+          },
+          {
+            "count": 10,
+            "effective_weight": 5.449999999999999,
+            "lower": 0.8,
+            "mean_probability": 0.8311440536156037,
+            "positive_rate": 0.8470948012232418,
+            "upper": 0.9
+          }
+        ]
+      },
+      "countryLandBordersCountry": {
+        "brier": 0.043180524203676594,
+        "count": 251,
+        "effective_weight": 58.000000000000036,
+        "expected_calibration_error_10bin": 0.06403690563656676,
+        "log_loss": 0.1618332451088803,
+        "mean_probability": 0.8611534114521681,
+        "positive_rate": 0.8815833830920031,
+        "reliability_bins": [
+          {
+            "count": 5,
+            "effective_weight": 2.0,
+            "lower": 0.1,
+            "mean_probability": 0.1747244697695778,
+            "positive_rate": 0.0,
+            "upper": 0.2
+          },
+          {
+            "count": 9,
+            "effective_weight": 1.2234848484848486,
+            "lower": 0.2,
+            "mean_probability": 0.27861365971181784,
+            "positive_rate": 0.6501547987616098,
+            "upper": 0.3
+          },
+          {
+            "count": 22,
+            "effective_weight": 3.0663419913419916,
+            "lower": 0.3,
+            "mean_probability": 0.3565266008389488,
+            "positive_rate": 0.28270920834362756,
+            "upper": 0.4
+          },
+          {
+            "count": 15,
+            "effective_weight": 1.1520021645021645,
+            "lower": 0.4,
+            "mean_probability": 0.4688866577690575,
+            "positive_rate": 0.43783174409319364,
+            "upper": 0.5
+          },
+          {
+            "count": 8,
+            "effective_weight": 0.9263888888888892,
+            "lower": 0.5,
+            "mean_probability": 0.5492540298441984,
+            "positive_rate": 0.3148425787106447,
+            "upper": 0.6
+          },
+          {
+            "count": 2,
+            "effective_weight": 0.32142857142857145,
+            "lower": 0.6,
+            "mean_probability": 0.6259225163608952,
+            "positive_rate": 0.22222222222222224,
+            "upper": 0.7
+          },
+          {
+            "count": 2,
+            "effective_weight": 0.21212121212121215,
+            "lower": 0.7,
+            "mean_probability": 0.7578137258598278,
+            "positive_rate": 1.0,
+            "upper": 0.8
+          },
+          {
+            "count": 3,
+            "effective_weight": 0.95,
+            "lower": 0.8,
+            "mean_probability": 0.8836250621451078,
+            "positive_rate": 0.5614035087719298,
+            "upper": 0.9
+          },
+          {
+            "count": 185,
+            "effective_weight": 48.1482323232323,
+            "lower": 0.9,
+            "mean_probability": 0.9535754855457521,
+            "positive_rate": 0.9939423182826602,
+            "upper": 1.0
+          }
+        ]
+      },
+      "hasArea": {
+        "brier": 0.13058297662171547,
+        "count": 650,
+        "effective_weight": 99.99999999999947,
+        "expected_calibration_error_10bin": 0.10139438415928832,
+        "log_loss": 0.4220182551750103,
+        "mean_probability": 0.2902805557248353,
+        "positive_rate": 0.29565873015873195,
+        "reliability_bins": [
+          {
+            "count": 30,
+            "effective_weight": 2.1771825396825393,
+            "lower": 0.0,
+            "mean_probability": 0.08577961468687813,
+            "positive_rate": 0.0,
+            "upper": 0.1
+          },
+          {
+            "count": 440,
+            "effective_weight": 55.667261904762064,
+            "lower": 0.1,
+            "mean_probability": 0.15297308243276306,
+            "positive_rate": 0.11551059833263791,
+            "upper": 0.2
+          },
+          {
+            "count": 83,
+            "effective_weight": 11.53452380952381,
+            "lower": 0.2,
+            "mean_probability": 0.2315657271673402,
+            "positive_rate": 0.04427701517184437,
+            "upper": 0.3
+          },
+          {
+            "count": 38,
+            "effective_weight": 9.007341269841268,
+            "lower": 0.3,
+            "mean_probability": 0.37122904768385523,
+            "positive_rate": 0.7641914663964581,
+            "upper": 0.4
+          },
+          {
+            "count": 26,
+            "effective_weight": 7.201190476190476,
+            "lower": 0.4,
+            "mean_probability": 0.4423023400071559,
+            "positive_rate": 0.44205653827078856,
+            "upper": 0.5
+          },
+          {
+            "count": 11,
+            "effective_weight": 2.729166666666667,
+            "lower": 0.5,
+            "mean_probability": 0.5243716346443908,
+            "positive_rate": 0.7480916030534351,
+            "upper": 0.6
+          },
+          {
+            "count": 2,
+            "effective_weight": 0.2916666666666667,
+            "lower": 0.6,
+            "mean_probability": 0.634357321185403,
+            "positive_rate": 1.0,
+            "upper": 0.7
+          },
+          {
+            "count": 10,
+            "effective_weight": 4.891666666666667,
+            "lower": 0.7,
+            "mean_probability": 0.762740561448639,
+            "positive_rate": 0.8977853492333902,
+            "upper": 0.8
+          },
+          {
+            "count": 5,
+            "effective_weight": 2.666666666666667,
+            "lower": 0.8,
+            "mean_probability": 0.842022861471932,
+            "positive_rate": 1.0,
+            "upper": 0.9
+          },
+          {
+            "count": 5,
+            "effective_weight": 3.833333333333334,
+            "lower": 0.9,
+            "mean_probability": 0.9217119617438015,
+            "positive_rate": 0.8260869565217391,
+            "upper": 1.0
+          }
+        ]
+      },
+      "hasCapacity": {
+        "brier": 0.07706671766718994,
+        "count": 716,
+        "effective_weight": 99.99999999999983,
+        "expected_calibration_error_10bin": 0.0314732771276408,
+        "log_loss": 0.2838678591628919,
+        "mean_probability": 0.09243017741915635,
+        "positive_rate": 0.08494642857142871,
+        "reliability_bins": [
+          {
+            "count": 640,
+            "effective_weight": 79.0623015873015,
+            "lower": 0.0,
+            "mean_probability": 0.050436065528396086,
+            "positive_rate": 0.0611558094129103,
+            "upper": 0.1
+          },
+          {
+            "count": 57,
+            "effective_weight": 10.274404761904757,
+            "lower": 0.1,
+            "mean_probability": 0.13089662855187847,
+            "positive_rate": 0.10833671282081,
+            "upper": 0.2
+          },
+          {
+            "count": 4,
+            "effective_weight": 1.8422619047619047,
+            "lower": 0.2,
+            "mean_probability": 0.2438001803149254,
+            "positive_rate": 0.35541195476575127,
+            "upper": 0.3
+          },
+          {
+            "count": 10,
+            "effective_weight": 5.774603174603174,
+            "lower": 0.3,
+            "mean_probability": 0.3480876832844494,
+            "positive_rate": 0.10823254535459045,
+            "upper": 0.4
+          },
+          {
+            "count": 4,
+            "effective_weight": 2.4214285714285717,
+            "lower": 0.4,
+            "mean_probability": 0.4626756328970591,
+            "positive_rate": 0.5231071779744346,
+            "upper": 0.5
+          },
+          {
+            "count": 1,
+            "effective_weight": 0.625,
+            "lower": 0.5,
+            "mean_probability": 0.5295893635492966,
+            "positive_rate": 0.0,
+            "upper": 0.6
+          }
+        ]
+      },
+      "personHasCityOfDeath": {
+        "brier": 0.08975102556347941,
+        "count": 373,
+        "effective_weight": 95.99999999999989,
+        "expected_calibration_error_10bin": 0.028747735702903003,
+        "log_loss": 0.30374959099316645,
+        "mean_probability": 0.11896614355353811,
+        "positive_rate": 0.11250000000000013,
+        "reliability_bins": [
+          {
+            "count": 332,
+            "effective_weight": 64.5750000000001,
+            "lower": 0.0,
+            "mean_probability": 0.054008058719279765,
+            "positive_rate": 0.039230868499161124,
+            "upper": 0.1
+          },
+          {
+            "count": 15,
+            "effective_weight": 10.183333333333332,
+            "lower": 0.1,
+            "mean_probability": 0.16911459019612024,
+            "positive_rate": 0.2741407528641572,
+            "upper": 0.2
+          },
+          {
+            "count": 20,
+            "effective_weight": 15.891666666666666,
+            "lower": 0.2,
+            "mean_probability": 0.23987479013597116,
+            "positive_rate": 0.21866806502359729,
+            "upper": 0.3
+          },
+          {
+            "count": 6,
+            "effective_weight": 5.35,
+            "lower": 0.4,
+            "mean_probability": 0.4484147550032782,
+            "positive_rate": 0.3738317757009346,
+            "upper": 0.5
+          }
+        ]
+      }
+    },
+    "by_source_group": {
+      "gemma_only": {
+        "brier": 0.10165091048184292,
+        "count": 273,
+        "effective_weight": 121.76388888888887,
+        "expected_calibration_error_10bin": 0.04063687197396827,
+        "log_loss": 0.3473147137960143,
+        "mean_probability": 0.14664792066431198,
+        "positive_rate": 0.13468689403444736,
+        "reliability_bins": [
+          {
+            "count": 112,
+            "effective_weight": 57.0,
+            "lower": 0.0,
+            "mean_probability": 0.053201539456076107,
+            "positive_rate": 0.05263157894736842,
+            "upper": 0.1
+          },
+          {
+            "count": 84,
+            "effective_weight": 37.25000000000001,
+            "lower": 0.1,
+            "mean_probability": 0.15029827193200582,
+            "positive_rate": 0.14496644295302008,
+            "upper": 0.2
+          },
+          {
+            "count": 34,
+            "effective_weight": 12.125,
+            "lower": 0.2,
+            "mean_probability": 0.23320695685134302,
+            "positive_rate": 0.05154639175257734,
+            "upper": 0.3
+          },
+          {
+            "count": 25,
+            "effective_weight": 8.138888888888888,
+            "lower": 0.3,
+            "mean_probability": 0.37300413868940363,
+            "positive_rate": 0.5682593856655291,
+            "upper": 0.4
+          },
+          {
+            "count": 11,
+            "effective_weight": 5.125,
+            "lower": 0.4,
+            "mean_probability": 0.43629938319358685,
+            "positive_rate": 0.3170731707317073,
+            "upper": 0.5
+          },
+          {
+            "count": 6,
+            "effective_weight": 1.875,
+            "lower": 0.5,
+            "mean_probability": 0.5164370863861597,
+            "positive_rate": 0.6,
+            "upper": 0.6
+          },
+          {
+            "count": 1,
+            "effective_weight": 0.25,
+            "lower": 0.6,
+            "mean_probability": 0.6299810861594303,
+            "positive_rate": 0.0,
+            "upper": 0.7
+          }
+        ]
+      },
+      "qwen_only": {
+        "brier": 0.08650650716128136,
+        "count": 1933,
+        "effective_weight": 198.24524436915655,
+        "expected_calibration_error_10bin": 0.03554606804728538,
+        "log_loss": 0.3039446086103776,
+        "mean_probability": 0.1324268756765017,
+        "positive_rate": 0.13193633186745524,
+        "reliability_bins": [
+          {
+            "count": 998,
+            "effective_weight": 109.46388888888846,
+            "lower": 0.0,
+            "mean_probability": 0.057594149366450846,
+            "positive_rate": 0.06031016969428949,
+            "upper": 0.1
+          },
+          {
+            "count": 657,
+            "effective_weight": 59.52115227767428,
+            "lower": 0.1,
+            "mean_probability": 0.13997118983691462,
+            "positive_rate": 0.09731032875664758,
+            "upper": 0.2
+          },
+          {
+            "count": 156,
+            "effective_weight": 10.83431857997075,
+            "lower": 0.2,
+            "mean_probability": 0.249049249486796,
+            "positive_rate": 0.15372070200421026,
+            "upper": 0.3
+          },
+          {
+            "count": 64,
+            "effective_weight": 8.966919976159103,
+            "lower": 0.3,
+            "mean_probability": 0.3526623977410288,
+            "positive_rate": 0.5436890775403914,
+            "upper": 0.4
+          },
+          {
+            "count": 31,
+            "effective_weight": 3.3531926406926416,
+            "lower": 0.4,
+            "mean_probability": 0.4601959963149667,
+            "positive_rate": 0.6524279051753352,
+            "upper": 0.5
+          },
+          {
+            "count": 13,
+            "effective_weight": 1.7805555555555557,
+            "lower": 0.5,
+            "mean_probability": 0.5456728809368121,
+            "positive_rate": 0.6786271450858035,
+            "upper": 0.6
+          },
+          {
+            "count": 3,
+            "effective_weight": 0.36309523809523814,
+            "lower": 0.6,
+            "mean_probability": 0.6299035902110988,
+            "positive_rate": 1.0,
+            "upper": 0.7
+          },
+          {
+            "count": 9,
+            "effective_weight": 3.2121212121212124,
+            "lower": 0.7,
+            "mean_probability": 0.7469108314655002,
+            "positive_rate": 0.8443396226415094,
+            "upper": 0.8
+          },
+          {
+            "count": 2,
+            "effective_weight": 0.75,
+            "lower": 0.8,
+            "mean_probability": 0.8187840273465702,
+            "positive_rate": 1.0,
+            "upper": 0.9
+          }
+        ]
+      },
+      "shared": {
+        "brier": 0.13046334347363225,
+        "count": 328,
+        "effective_weight": 134.99086674195345,
+        "expected_calibration_error_10bin": 0.04553291082960737,
+        "log_loss": 0.4022688614299388,
+        "mean_probability": 0.6674297666218455,
+        "positive_rate": 0.6829492336917354,
+        "reliability_bins": [
+          {
+            "count": 14,
+            "effective_weight": 9.504761904761905,
+            "lower": 0.1,
+            "mean_probability": 0.17740192380483882,
+            "positive_rate": 0.3538326653306613,
+            "upper": 0.2
+          },
+          {
+            "count": 23,
+            "effective_weight": 17.65059523809524,
+            "lower": 0.2,
+            "mean_probability": 0.2401327342142698,
+            "positive_rate": 0.22925167773918323,
+            "upper": 0.3
+          },
+          {
+            "count": 10,
+            "effective_weight": 5.774603174603174,
+            "lower": 0.3,
+            "mean_probability": 0.3480876832844494,
+            "positive_rate": 0.10823254535459045,
+            "upper": 0.4
+          },
+          {
+            "count": 19,
+            "effective_weight": 12.755357142857141,
+            "lower": 0.4,
+            "mean_probability": 0.4571378200024463,
+            "positive_rate": 0.4495310093798125,
+            "upper": 0.5
+          },
+          {
+            "count": 16,
+            "effective_weight": 7.646049783549784,
+            "lower": 0.5,
+            "mean_probability": 0.5570015242788747,
+            "positive_rate": 0.5368473945321622,
+            "upper": 0.6
+          },
+          {
+            "count": 12,
+            "effective_weight": 4.742995169082125,
+            "lower": 0.6,
+            "mean_probability": 0.6509196596054746,
+            "positive_rate": 0.8197188836830313,
+            "upper": 0.7
+          },
+          {
+            "count": 28,
+            "effective_weight": 16.618272005772003,
+            "lower": 0.7,
+            "mean_probability": 0.7544942684112472,
+            "positive_rate": 0.7426086786632614,
+            "upper": 0.8
+          },
+          {
+            "count": 16,
+            "effective_weight": 8.316666666666666,
+            "lower": 0.8,
+            "mean_probability": 0.8417417047685108,
+            "positive_rate": 0.8496993987975953,
+            "upper": 0.9
+          },
+          {
+            "count": 190,
+            "effective_weight": 51.98156565656566,
+            "lower": 0.9,
+            "mean_probability": 0.9512257389314531,
+            "positive_rate": 0.9815639771286441,
+            "upper": 1.0
+          }
+        ]
+      }
+    },
+    "overall": {
+      "brier": 0.10360060139480166,
+      "count": 2534,
+      "effective_weight": 454.99999999999886,
+      "expected_calibration_error_10bin": 0.02119799247024231,
+      "log_loss": 0.34472216636596303,
+      "mean_probability": 0.29495899369835304,
+      "positive_rate": 0.2961487018660085,
+      "reliability_bins": [
+        {
+          "count": 1110,
+          "effective_weight": 166.46388888888836,
+          "lower": 0.0,
+          "mean_probability": 0.05609004678562935,
+          "positive_rate": 0.05768089270517241,
+          "upper": 0.1
+        },
+        {
+          "count": 755,
+          "effective_weight": 106.27591418243547,
+          "lower": 0.1,
+          "mean_probability": 0.14693846956369033,
+          "positive_rate": 0.13695594383902054,
+          "upper": 0.2
+        },
+        {
+          "count": 213,
+          "effective_weight": 40.60991381806599,
+          "lower": 0.2,
+          "mean_probability": 0.24044372518600166,
+          "positive_rate": 0.15604287311882606,
+          "upper": 0.3
+        },
+        {
+          "count": 99,
+          "effective_weight": 22.880412039651198,
+          "lower": 0.3,
+          "mean_probability": 0.3587436697268816,
+          "positive_rate": 0.44252771465258994,
+          "upper": 0.4
+        },
+        {
+          "count": 61,
+          "effective_weight": 21.23354978354979,
+          "lower": 0.4,
+          "mean_probability": 0.45259113160957487,
+          "positive_rate": 0.44960193274141413,
+          "upper": 0.5
+        },
+        {
+          "count": 35,
+          "effective_weight": 11.30160533910534,
+          "lower": 0.5,
+          "mean_probability": 0.5484868401255104,
+          "positive_rate": 0.569662012158433,
+          "upper": 0.6
+        },
+        {
+          "count": 16,
+          "effective_weight": 5.356090407177363,
+          "lower": 0.6,
+          "mean_probability": 0.6485176318008565,
+          "positive_rate": 0.7936792735448834,
+          "upper": 0.7
+        },
+        {
+          "count": 37,
+          "effective_weight": 19.830393217893214,
+          "lower": 0.7,
+          "mean_probability": 0.7532659055438766,
+          "positive_rate": 0.7590870267974171,
+          "upper": 0.8
+        },
+        {
+          "count": 18,
+          "effective_weight": 9.066666666666666,
+          "lower": 0.8,
+          "mean_probability": 0.8398426321876519,
+          "positive_rate": 0.8621323529411765,
+          "upper": 0.9
+        },
+        {
+          "count": 190,
+          "effective_weight": 51.98156565656566,
+          "lower": 0.9,
+          "mean_probability": 0.9512257389314531,
+          "positive_rate": 0.9815639771286441,
+          "upper": 1.0
+        }
+      ]
+    }
+  },
+  "oof_null_calibration": {
+    "by_relation": {
+      "awardWonBy": {
+        "brier": 0.0003115660631749941,
+        "count": 10,
+        "effective_weight": 10.0,
+        "expected_calibration_error_10bin": 0.014984257154723245,
+        "log_loss": 0.015143213606040018,
+        "mean_probability": 0.014984257154723245,
+        "positive_rate": 0.0,
+        "reliability_bins": [
+          {
+            "count": 10,
+            "effective_weight": 10.0,
+            "lower": 0.0,
+            "mean_probability": 0.014984257154723245,
+            "positive_rate": 0.0,
+            "upper": 0.1
+          }
+        ]
+      },
+      "companyTradesAtStockExchange": {
+        "brier": 0.1109403134334147,
+        "count": 100,
+        "effective_weight": 100.0,
+        "expected_calibration_error_10bin": 0.06901971572598564,
+        "log_loss": 0.341309924032752,
+        "mean_probability": 0.3135365682687311,
+        "positive_rate": 0.32,
+        "reliability_bins": [
+          {
+            "count": 46,
+            "effective_weight": 46.0,
+            "lower": 0.0,
+            "mean_probability": 0.03681456544397748,
+            "positive_rate": 0.021739130434782608,
+            "upper": 0.1
+          },
+          {
+            "count": 8,
+            "effective_weight": 8.0,
+            "lower": 0.1,
+            "mean_probability": 0.1523823173371963,
+            "positive_rate": 0.25,
+            "upper": 0.2
+          },
+          {
+            "count": 6,
+            "effective_weight": 6.0,
+            "lower": 0.2,
+            "mean_probability": 0.2441704340942558,
+            "positive_rate": 0.16666666666666666,
+            "upper": 0.3
+          },
+          {
+            "count": 3,
+            "effective_weight": 3.0,
+            "lower": 0.3,
+            "mean_probability": 0.3363209977329223,
+            "positive_rate": 0.6666666666666666,
+            "upper": 0.4
+          },
+          {
+            "count": 6,
+            "effective_weight": 6.0,
+            "lower": 0.4,
+            "mean_probability": 0.4480237985671398,
+            "positive_rate": 0.3333333333333333,
+            "upper": 0.5
+          },
+          {
+            "count": 5,
+            "effective_weight": 5.0,
+            "lower": 0.5,
+            "mean_probability": 0.5585662497423913,
+            "positive_rate": 0.6,
+            "upper": 0.6
+          },
+          {
+            "count": 3,
+            "effective_weight": 3.0,
+            "lower": 0.6,
+            "mean_probability": 0.6761147717421149,
+            "positive_rate": 1.0,
+            "upper": 0.7
+          },
+          {
+            "count": 11,
+            "effective_weight": 11.0,
+            "lower": 0.7,
+            "mean_probability": 0.7528344357585909,
+            "positive_rate": 0.6363636363636364,
+            "upper": 0.8
+          },
+          {
+            "count": 12,
+            "effective_weight": 12.0,
+            "lower": 0.8,
+            "mean_probability": 0.8480537942752195,
+            "positive_rate": 0.9166666666666666,
+            "upper": 0.9
+          }
+        ]
+      },
+      "countryLandBordersCountry": {
+        "brier": 0.023902984487741256,
+        "count": 67,
+        "effective_weight": 67.0,
+        "expected_calibration_error_10bin": 0.06882794419122064,
+        "log_loss": 0.10439185451760896,
+        "mean_probability": 0.1713505644308604,
+        "positive_rate": 0.16417910447761194,
+        "reliability_bins": [
+          {
+            "count": 52,
+            "effective_weight": 52.0,
+            "lower": 0.0,
+            "mean_probability": 0.01977551198432021,
+            "positive_rate": 0.0,
+            "upper": 0.1
+          },
+          {
+            "count": 1,
+            "effective_weight": 1.0,
+            "lower": 0.1,
+            "mean_probability": 0.13357907148325793,
+            "positive_rate": 0.0,
+            "upper": 0.2
+          },
+          {
+            "count": 1,
+            "effective_weight": 1.0,
+            "lower": 0.2,
+            "mean_probability": 0.2088664966271392,
+            "positive_rate": 0.0,
+            "upper": 0.3
+          },
+          {
+            "count": 1,
+            "effective_weight": 1.0,
+            "lower": 0.3,
+            "mean_probability": 0.3008434543594448,
+            "positive_rate": 0.0,
+            "upper": 0.4
+          },
+          {
+            "count": 1,
+            "effective_weight": 1.0,
+            "lower": 0.4,
+            "mean_probability": 0.4814853614337076,
+            "positive_rate": 1.0,
+            "upper": 0.5
+          },
+          {
+            "count": 2,
+            "effective_weight": 2.0,
+            "lower": 0.7,
+            "mean_probability": 0.7744046807667526,
+            "positive_rate": 1.0,
+            "upper": 0.8
+          },
+          {
+            "count": 7,
+            "effective_weight": 7.0,
+            "lower": 0.8,
+            "mean_probability": 0.8434590078658175,
+            "positive_rate": 1.0,
+            "upper": 0.9
+          },
+          {
+            "count": 2,
+            "effective_weight": 2.0,
+            "lower": 0.9,
+            "mean_probability": 0.9371821965926127,
+            "positive_rate": 0.5,
+            "upper": 1.0
+          }
+        ]
+      },
+      "hasArea": {
+        "brier": 0.00011755091549899046,
+        "count": 100,
+        "effective_weight": 100.0,
+        "expected_calibration_error_10bin": 0.010800755326465334,
+        "log_loss": 0.010859964227556852,
+        "mean_probability": 0.010800755326465334,
+        "positive_rate": 0.0,
+        "reliability_bins": [
+          {
+            "count": 100,
+            "effective_weight": 100.0,
+            "lower": 0.0,
+            "mean_probability": 0.010800755326465334,
+            "positive_rate": 0.0,
+            "upper": 0.1
+          }
+        ]
+      },
+      "hasCapacity": {
+        "brier": 0.00012067860934765584,
+        "count": 100,
+        "effective_weight": 100.0,
+        "expected_calibration_error_10bin": 0.010932367390638626,
+        "log_loss": 0.010993158892458858,
+        "mean_probability": 0.010932367390638626,
+        "positive_rate": 0.0,
+        "reliability_bins": [
+          {
+            "count": 100,
+            "effective_weight": 100.0,
+            "lower": 0.0,
+            "mean_probability": 0.010932367390638626,
+            "positive_rate": 0.0,
+            "upper": 0.1
+          }
+        ]
+      },
+      "personHasCityOfDeath": {
+        "brier": 0.23855529356663477,
+        "count": 100,
+        "effective_weight": 100.0,
+        "expected_calibration_error_10bin": 0.08658889955161057,
+        "log_loss": 0.6722739463218097,
+        "mean_probability": 0.45892657025641737,
+        "positive_rate": 0.48,
+        "reliability_bins": [
+          {
+            "count": 2,
+            "effective_weight": 2.0,
+            "lower": 0.1,
+            "mean_probability": 0.17500021633634671,
+            "positive_rate": 0.0,
+            "upper": 0.2
+          },
+          {
+            "count": 18,
+            "effective_weight": 18.0,
+            "lower": 0.2,
+            "mean_probability": 0.25365514307118003,
+            "positive_rate": 0.3888888888888889,
+            "upper": 0.3
+          },
+          {
+            "count": 20,
+            "effective_weight": 20.0,
+            "lower": 0.3,
+            "mean_probability": 0.35747283167617405,
+            "positive_rate": 0.4,
+            "upper": 0.4
+          },
+          {
+            "count": 26,
+            "effective_weight": 26.0,
+            "lower": 0.4,
+            "mean_probability": 0.4511682151080415,
+            "positive_rate": 0.5,
+            "upper": 0.5
+          },
+          {
+            "count": 18,
+            "effective_weight": 18.0,
+            "lower": 0.5,
+            "mean_probability": 0.5411986063693597,
+            "positive_rate": 0.5,
+            "upper": 0.6
+          },
+          {
+            "count": 5,
+            "effective_weight": 5.0,
+            "lower": 0.6,
+            "mean_probability": 0.6669175071393004,
+            "positive_rate": 0.6,
+            "upper": 0.7
+          },
+          {
+            "count": 4,
+            "effective_weight": 4.0,
+            "lower": 0.7,
+            "mean_probability": 0.7596835663093402,
+            "positive_rate": 0.5,
+            "upper": 0.8
+          },
+          {
+            "count": 5,
+            "effective_weight": 5.0,
+            "lower": 0.8,
+            "mean_probability": 0.8342521467253089,
+            "positive_rate": 1.0,
+            "upper": 0.9
+          },
+          {
+            "count": 2,
+            "effective_weight": 2.0,
+            "lower": 0.9,
+            "mean_probability": 0.9054381710731849,
+            "positive_rate": 0.5,
+            "upper": 1.0
+          }
+        ]
+      }
+    },
+    "overall": {
+      "brier": 0.07668343663270445,
+      "count": 477,
+      "effective_weight": 477.0,
+      "expected_calibration_error_10bin": 0.03399724335158307,
+      "log_loss": 0.23205321957274194,
+      "mean_probability": 0.19088041197618472,
+      "positive_rate": 0.19077568134171907,
+      "reliability_bins": [
+        {
+          "count": 308,
+          "effective_weight": 308.0,
+          "lower": 0.0,
+          "mean_probability": 0.01637971258722481,
+          "positive_rate": 0.003246753246753247,
+          "upper": 0.1
+        },
+        {
+          "count": 11,
+          "effective_weight": 11.0,
+          "lower": 0.1,
+          "mean_probability": 0.15478527662304742,
+          "positive_rate": 0.18181818181818182,
+          "upper": 0.2
+        },
+        {
+          "count": 25,
+          "effective_weight": 25.0,
+          "lower": 0.2,
+          "mean_probability": 0.24958726705895656,
+          "positive_rate": 0.32,
+          "upper": 0.3
+        },
+        {
+          "count": 24,
+          "effective_weight": 24.0,
+          "lower": 0.3,
+          "mean_probability": 0.3524692950450706,
+          "positive_rate": 0.4166666666666667,
+          "upper": 0.4
+        },
+        {
+          "count": 33,
+          "effective_weight": 33.0,
+          "lower": 0.4,
+          "mean_probability": 0.45151520441350385,
+          "positive_rate": 0.48484848484848486,
+          "upper": 0.5
+        },
+        {
+          "count": 23,
+          "effective_weight": 23.0,
+          "lower": 0.5,
+          "mean_probability": 0.544974181015671,
+          "positive_rate": 0.5217391304347826,
+          "upper": 0.6
+        },
+        {
+          "count": 8,
+          "effective_weight": 8.0,
+          "lower": 0.6,
+          "mean_probability": 0.6703664813653559,
+          "positive_rate": 0.75,
+          "upper": 0.7
+        },
+        {
+          "count": 17,
+          "effective_weight": 17.0,
+          "lower": 0.7,
+          "mean_probability": 0.7569836717714921,
+          "positive_rate": 0.6470588235294118,
+          "upper": 0.8
+        },
+        {
+          "count": 24,
+          "effective_weight": 24.0,
+          "lower": 0.8,
+          "mean_probability": 0.8438383049995793,
+          "positive_rate": 0.9583333333333334,
+          "upper": 0.9
+        },
+        {
+          "count": 4,
+          "effective_weight": 4.0,
+          "lower": 0.9,
+          "mean_probability": 0.9213101838328988,
+          "positive_rate": 0.5,
+          "upper": 1.0
+        }
+      ]
+    }
+  },
+  "oof_scores": {
+    "0.0": {
+      "*** All Relations ***": 0.43779028890114036,
+      "awardWonBy": 0.08786770848690353,
+      "companyTradesAtStockExchange": 0.6226666666666666,
+      "countryLandBordersCountry": 0.9206063291687799,
+      "hasArea": 0.29,
+      "hasCapacity": 0.08,
+      "personHasCityOfDeath": 0.47
+    },
+    "0.02": {
+      "*** All Relations ***": 0.4377175680600528,
+      "awardWonBy": 0.0730436130117151,
+      "companyTradesAtStockExchange": 0.6243333333333332,
+      "countryLandBordersCountry": 0.9198135895700701,
+      "hasArea": 0.29,
+      "hasCapacity": 0.08,
+      "personHasCityOfDeath": 0.47
+    },
+    "0.05": {
+      "*** All Relations ***": 0.4338035520308431,
+      "awardWonBy": 0.0730436130117151,
+      "companyTradesAtStockExchange": 0.6276666666666666,
+      "countryLandBordersCountry": 0.9168237540586321,
+      "hasArea": 0.29,
+      "hasCapacity": 0.08,
+      "personHasCityOfDeath": 0.45
+    },
+    "0.1": {
+      "*** All Relations ***": 0.43452006175152796,
+      "awardWonBy": 0.08499890446615763,
+      "companyTradesAtStockExchange": 0.621,
+      "countryLandBordersCountry": 0.9300907524002574,
+      "hasArea": 0.29,
+      "hasCapacity": 0.08,
+      "personHasCityOfDeath": 0.45
+    },
+    "0.15": {
+      "*** All Relations ***": 0.4319111635451454,
+      "awardWonBy": 0.09055446002171319,
+      "companyTradesAtStockExchange": 0.6046666666666667,
+      "countryLandBordersCountry": 0.9350658767783668,
+      "hasArea": 0.29,
+      "hasCapacity": 0.08,
+      "personHasCityOfDeath": 0.45
+    },
+    "0.2": {
+      "*** All Relations ***": 0.4354052236429791,
+      "awardWonBy": 0.09055446002171319,
+      "companyTradesAtStockExchange": 0.5983333333333333,
+      "countryLandBordersCountry": 0.9395434887186653,
+      "hasArea": 0.31,
+      "hasCapacity": 0.08,
+      "personHasCityOfDeath": 0.45
+    },
+    "0.25": {
+      "*** All Relations ***": 0.4312123515255787,
+      "awardWonBy": 0.09055446002171319,
+      "companyTradesAtStockExchange": 0.5866666666666666,
+      "countryLandBordersCountry": 0.9420310509077201,
+      "hasArea": 0.31,
+      "hasCapacity": 0.07,
+      "personHasCityOfDeath": 0.45
+    },
+    "0.3": {
+      "*** All Relations ***": 0.43191116354514547,
+      "awardWonBy": 0.09055446002171319,
+      "companyTradesAtStockExchange": 0.5833333333333333,
+      "countryLandBordersCountry": 0.9370559265296107,
+      "hasArea": 0.31,
+      "hasCapacity": 0.08,
+      "personHasCityOfDeath": 0.45
+    }
+  },
+  "prompt_route": {
+    "awardWonBy": "disjoint_cot5",
+    "companyTradesAtStockExchange": "disjoint_cot5",
+    "countryLandBordersCountry": "shared_cot5",
+    "hasArea": "direct",
+    "hasCapacity": "shared_cot5",
+    "personHasCityOfDeath": "shared_cot5"
+  },
+  "prompt_route_full_train_diagnostics": {
+    "awardWonBy": {
+      "selected": "disjoint_cot5",
+      "selection": "pre-frozen"
+    },
+    "companyTradesAtStockExchange": {
+      "selected": "disjoint_cot5",
+      "selection": "pre-frozen"
+    },
+    "countryLandBordersCountry": {
+      "selected": "shared_cot5",
+      "selection": "pre-frozen"
+    },
+    "hasArea": {
+      "selected": "direct",
+      "selection": "pre-frozen"
+    },
+    "hasCapacity": {
+      "selected": "shared_cot5",
+      "selection": "pre-frozen"
+    },
+    "personHasCityOfDeath": {
+      "selected": "shared_cot5",
+      "selection": "pre-frozen"
+    }
+  },
+  "prompt_route_selection": "relation prompt routes were frozen before this fit and were not selected from calibrator-fold labels",
+  "rows": 477,
+  "schema": "heterogeneous-memory-selector-v1",
+  "source_scores_on_same_train_pilot": {
+    "gemma_independent": {
+      "*** All Relations ***": 0.3980476792411363,
+      "awardWonBy": 0.041292006278734084,
+      "companyTradesAtStockExchange": 0.6193333333333332,
+      "countryLandBordersCountry": 0.9331714865955425,
+      "hasArea": 0.3,
+      "hasCapacity": 0.09,
+      "personHasCityOfDeath": 0.26
+    },
+    "qwen_recall": {
+      "*** All Relations ***": 0.41444086305597705,
+      "awardWonBy": 0.09055446002171319,
+      "companyTradesAtStockExchange": 0.5199999999999999,
+      "countryLandBordersCountry": 0.9370559265296107,
+      "hasArea": 0.3,
+      "hasCapacity": 0.07,
+      "personHasCityOfDeath": 0.45
+    }
+  },
+  "training_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "training_gold_sha256": "71266f91f36940a27786f345bec33d7974b7d2a95e496a7802f859474780e088",
+  "training_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/graphs/train_graph.jsonl",
+  "training_graph_sha256": "b05d03f5e36dfd1da3923c5dfbfa898550414c03ae38cbac3295349fffbdcd99",
+  "training_source_diagnostics": {
+    "by_relation": {
+      "awardWonBy": {
+        "candidate_nodes": 208,
+        "effective_weight": 10.000000000000012,
+        "positive_nodes": 56,
+        "weighted_precision": 0.35618548757295515
+      },
+      "companyTradesAtStockExchange": {
+        "candidate_nodes": 336,
+        "effective_weight": 91.00000000000001,
+        "positive_nodes": 60,
+        "weighted_precision": 0.34278519099947674
+      },
+      "countryLandBordersCountry": {
+        "candidate_nodes": 251,
+        "effective_weight": 58.000000000000064,
+        "positive_nodes": 205,
+        "weighted_precision": 0.8815833830920037
+      },
+      "hasArea": {
+        "candidate_nodes": 650,
+        "effective_weight": 99.99999999999979,
+        "positive_nodes": 116,
+        "weighted_precision": 0.2956587301587307
+      },
+      "hasCapacity": {
+        "candidate_nodes": 716,
+        "effective_weight": 99.99999999999962,
+        "positive_nodes": 52,
+        "weighted_precision": 0.08494642857142888
+      },
+      "personHasCityOfDeath": {
+        "candidate_nodes": 373,
+        "effective_weight": 96.0,
+        "positive_nodes": 23,
+        "weighted_precision": 0.11249999999999999
+      }
+    },
+    "by_source_group": {
+      "gemma_only": {
+        "candidate_nodes": 273,
+        "effective_weight": 121.76388888888889,
+        "positive_nodes": 42,
+        "weighted_precision": 0.13468689403444736
+      },
+      "qwen_only": {
+        "candidate_nodes": 1933,
+        "effective_weight": 198.24524436915607,
+        "positive_nodes": 213,
+        "weighted_precision": 0.13193633186745543
+      },
+      "shared": {
+        "candidate_nodes": 328,
+        "effective_weight": 134.99086674195365,
+        "positive_nodes": 257,
+        "weighted_precision": 0.682949233691734
+      }
+    },
+    "candidate_nodes": 2534,
+    "candidate_weighting": "row-agent-balanced",
+    "gold_coverage_by_agent_relation": {
+      "gemma_independent": {
+        "awardWonBy": {
+          "gold_objects": 698.0,
+          "matched_gold": 15.0,
+          "micro_gold_coverage": 0.02148997134670487
+        },
+        "companyTradesAtStockExchange": {
+          "gold_objects": 79.0,
+          "matched_gold": 43.0,
+          "micro_gold_coverage": 0.5443037974683544
+        },
+        "countryLandBordersCountry": {
+          "gold_objects": 200.0,
+          "matched_gold": 189.0,
+          "micro_gold_coverage": 0.945
+        },
+        "hasArea": {
+          "gold_objects": 100.0,
+          "matched_gold": 30.0,
+          "micro_gold_coverage": 0.3
+        },
+        "hasCapacity": {
+          "gold_objects": 100.0,
+          "matched_gold": 9.0,
+          "micro_gold_coverage": 0.09
+        },
+        "personHasCityOfDeath": {
+          "gold_objects": 52.0,
+          "matched_gold": 13.0,
+          "micro_gold_coverage": 0.25
+        }
+      },
+      "qwen_recall": {
+        "awardWonBy": {
+          "gold_objects": 698.0,
+          "matched_gold": 44.0,
+          "micro_gold_coverage": 0.06303724928366762
+        },
+        "companyTradesAtStockExchange": {
+          "gold_objects": 79.0,
+          "matched_gold": 53.0,
+          "micro_gold_coverage": 0.6708860759493671
+        },
+        "countryLandBordersCountry": {
+          "gold_objects": 200.0,
+          "matched_gold": 195.0,
+          "micro_gold_coverage": 0.975
+        },
+        "hasArea": {
+          "gold_objects": 100.0,
+          "matched_gold": 47.0,
+          "micro_gold_coverage": 0.47
+        },
+        "hasCapacity": {
+          "gold_objects": 100.0,
+          "matched_gold": 38.0,
+          "micro_gold_coverage": 0.38
+        },
+        "personHasCityOfDeath": {
+          "gold_objects": 52.0,
+          "matched_gold": 20.0,
+          "micro_gold_coverage": 0.38461538461538464
+        }
+      }
+    },
+    "rows": 477
+  },
+  "training_split": "train",
+  "validation_labels_used": false
+}

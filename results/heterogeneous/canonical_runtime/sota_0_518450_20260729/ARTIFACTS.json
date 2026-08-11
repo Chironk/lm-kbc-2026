@@ -1,0 +1,140 @@
+{
+  "schema": "heterogeneous-sota-reproduction-artifacts-v1",
+  "pipeline_id": "development_sota_0_518450_20260729",
+  "split": "validation",
+  "rows": 478,
+  "reported_pooled_macro_f1": 0.5184496147269507,
+  "verified_parameter_total": 30515165024,
+  "parameter_cap": 32000000000,
+  "validation_selected_lineage": true,
+  "blind_safe": false,
+  "contains_labels": false,
+  "gold_aware": false,
+  "model_portfolio": {
+    "qwen_recall": {
+      "model": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "verified_parameter_count": 9409813744
+    },
+    "gemma_independent": {
+      "model": "google/gemma-3-12b-it",
+      "revision": "7553b6f39c33dc229bfbfe3831f7bcdbb6b738c7",
+      "verified_parameter_count": 12187325040
+    },
+    "ministral_independent": {
+      "model": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+      "verified_parameter_count": 8918026240
+    }
+  },
+  "evidence_routes": {
+    "qwen:self_consistency": {"samples": 10},
+    "qwen:system2": {"samples": 1},
+    "gemma:independent": {"samples": "1-3"},
+    "ministral:self_consistency": {"samples": 3},
+    "ministral:cot5_cap40_n10": {
+      "samples": 10,
+      "synthetic_shots": 5,
+      "requested_reasoning_words": 40,
+      "temperature": 0.8
+    }
+  },
+  "artifacts": {
+    "base_validation_graph": {
+      "path": "legacy_l0_l3/inputs/base_validation_graph.jsonl",
+      "sha256": "90e858684097113f8f407b094e8e43d2ac270152d24de6ef8fa19e4092f02ba1",
+      "rows": 478,
+      "role": "frozen L0 two-model validation graph with baseline objects"
+    },
+    "route_validation_graph": {
+      "path": "legacy_l0_l3/inputs/route_validation_graph.jsonl",
+      "sha256": "3b99fb6d87387636623d54462609cfc57341606a73b66ac0623742719db5a9b3",
+      "rows": 478,
+      "role": "frozen route-aware validation graph used by L3"
+    },
+    "candidate_selector": {
+      "path": "legacy_l0_l3/models/candidate_selector.json",
+      "sha256": "e52e8b9891b86a49b6252d0accff3f2a252dac88392d93c0475f02ac4dcfc18e",
+      "role": "frozen candidate calibrator used by L1"
+    },
+    "cardinality_result": {
+      "path": "legacy_l0_l3/models/cardinality_result.json",
+      "sha256": "2008b7bf6eca2cbc6099181b97b3eb21c55d1cb4da9eda13466083dfb5602feb",
+      "role": "frozen L1 explicit-cardinality model and selected margin"
+    },
+    "numeric_model": {
+      "path": "legacy_l0_l3/models/numeric_model.json",
+      "sha256": "dc1123b13a8537a68536bdc4541e71e5819ba0aa365d675bfd7d2ea23da693de",
+      "role": "frozen L2 relation-specific numeric model and policy"
+    },
+    "route_models": {
+      "path": "legacy_l0_l3/models/route_models.json",
+      "sha256": "ea5bc99acdb89ff36f1c1dd36711a0afedbcf493aa6539af886c6397e97fa26c",
+      "role": "frozen L3 route-residual models, arms, gates, and margins"
+    },
+    "l1_cardinality_target": {
+      "path": "legacy_l0_l3/parity/l1_cardinality.jsonl",
+      "sha256": "56b80325c6b6a7e6554de7e5832eed9725f9ea76c9783247aa3d3bf05f9cfac4",
+      "rows": 478,
+      "role": "byte-level L1 reconstruction target"
+    },
+    "l2_numeric_target": {
+      "path": "legacy_l0_l3/parity/l2_numeric.jsonl",
+      "sha256": "a8dbbf1142a11bd57e5f4b1b7ea3cb950a3ad8b4c101b4fa9bf06ae8ce0a3759",
+      "rows": 478,
+      "role": "byte-level L2 reconstruction target"
+    },
+    "typed_graph": {
+      "path": "inputs/typed_validation_graph.jsonl",
+      "sha256": "29d598a08e346f7947b1a656753b3e053d5f35255c9849aadd59aca8ee30aa65",
+      "rows": 478,
+      "role": "Qwen, System-2, Gemma, and Ministral-N3 typed evidence"
+    },
+    "cot40_responses": {
+      "path": "inputs/ministral_cot40_responses.jsonl",
+      "sha256": "fd5d4fef4083a64b85b601739d91a293d6e811ff4d6b5dd4e72e42a63cbd2da7",
+      "rows": 478,
+      "role": "Ministral CoT5, requested-40-word, N=10 generations"
+    },
+    "chain_incumbent": {
+      "path": "inputs/chain_incumbent.jsonl",
+      "sha256": "672d08038494c276a729f7f94d482c95adef11dd6935b62cdaad2122097a516a",
+      "rows": 478,
+      "role": "byte-level L3 reconstruction target"
+    },
+    "component_models": {
+      "path": "models/component_models.json",
+      "sha256": "f026a55f22a00125ca6991df046a674fc72e951bb740859196769961d90526bd",
+      "role": "frozen L4 component/surface residual models"
+    },
+    "capacity_ledger": {
+      "path": "inputs/capacity_ledger.jsonl",
+      "sha256": "cb1183f78031694ff97173ceb84d67e81054c075b49ba94846edb44a95f4cbb4",
+      "rows": 100,
+      "role": "frozen L5 capacity decisions"
+    },
+    "deployed_predictions": {
+      "path": "inputs/deployed_predictions.jsonl",
+      "sha256": "6c4d4bb1ed60054cb1b2d9a6aa728a1a5f0422c714bdd8486963cc986ca348ae",
+      "rows": 478,
+      "role": "byte-level parity target"
+    },
+    "deployed_decisions": {
+      "path": "inputs/deployed_decisions.jsonl",
+      "sha256": "f8dc5d1cbf95e80b3bba074073b9306345e8524a907c7cce27429eeddb7356e5",
+      "rows": 478,
+      "role": "historical CoT40 decision and support audit"
+    }
+  },
+  "external_tracked_inputs": {
+    "validation_gold": {
+      "path": "data/archive/validation_478_20260729.jsonl",
+      "sha256": "90e4f2475e7e69caf9316ffd3b2e0bc4fe2cd428a99027f2abf08c9f88c18d02",
+      "used_only_by": "official-score reporting and parity verification"
+    },
+    "official_evaluator": {
+      "path": "evaluate.py",
+      "sha256": "2d592ae177c7b230922bb959da7a8ee1c4c662bf72a99d4dbd0cf62170ff9e22"
+    }
+  }
+}
