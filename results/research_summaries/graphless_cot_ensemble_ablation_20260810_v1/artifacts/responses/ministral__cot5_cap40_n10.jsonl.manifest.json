@@ -1,0 +1,11 @@
+{
+  "schema": "heterogeneous-agent-responses-v1",
+  "portable_copy": true,
+  "agent_id": "ministral_independent",
+  "model": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+  "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+  "seed": 20260730,
+  "tasks": 475,
+  "task_sha256": "8aa3894f21ae854e5ca4b1e41db72281a544e0ecc10882acaa7bbfb5d130bb18",
+  "output_sha256": "995546728535f378e64fee6abb30f3e4cffec6e0e927122c7ef53ea8acb88862"
+}

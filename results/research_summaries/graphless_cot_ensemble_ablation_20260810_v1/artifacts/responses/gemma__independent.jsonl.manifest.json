@@ -1,0 +1,11 @@
+{
+  "schema": "heterogeneous-agent-responses-v1",
+  "portable_copy": true,
+  "agent_id": "gemma_independent",
+  "model": "google/gemma-3-12b-it",
+  "revision": "7553b6f39c33dc229bfbfe3831f7bcdbb6b738c7",
+  "seed": 20260730,
+  "tasks": 1425,
+  "task_sha256": "9065cb33fc939f5cd608c647fdbe6e3248699002f60dea07cf0bf457fac417fc",
+  "output_sha256": "291cec2044cb8e61932a49dc71a3effccff4087d9a52f5c5b8cd67709e7d106c"
+}

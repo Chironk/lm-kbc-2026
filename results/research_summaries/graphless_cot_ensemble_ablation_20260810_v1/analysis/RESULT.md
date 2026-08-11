@@ -57,10 +57,10 @@ already exist, reproduce only the decoding and scores with:
 bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh score
 ```
 
-The full response caches and prediction JSONL files remain under the ignored
-`experiments/heterogeneous_agents/runs/` tree. The compact JSON summary records
-the pinned model revisions, input and response hashes, prediction hashes, seed,
-prompt contract, and synthetic-demonstration hash.
+The exact response caches and all eight graded prediction JSONL files are
+published under `../artifacts/`. Its portable manifest records byte sizes, row
+counts, hashes, model revisions, seed, prompt contract, and demonstration pool.
+The larger local run tree remains ignored.
 
 The checkpoints, prompts, task order, dependencies, and task-derived random
 seeds are pinned. The response hashes identify the exact reported run. Fresh

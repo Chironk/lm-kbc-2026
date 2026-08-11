@@ -1,0 +1,87 @@
+{
+  "schema": "graphless-cot-ensemble-published-artifacts-v1",
+  "split": "validation",
+  "rows": 475,
+  "contains_gold_labels": false,
+  "validation_sha256": "ba86b53ac38eb4b23b80391b291e5987ff4bbfe79827596fc09751b1bb0ce2be",
+  "source_code_commit": "9a6686b",
+  "responses": {
+    "qwen": {
+      "path": "responses/qwen__self_consistency.jsonl",
+      "bytes": 2909931,
+      "rows": 1425,
+      "proposal_rows": 475,
+      "samples_per_proposal": 10,
+      "synthetic_shots": 5,
+      "sha256": "28843465667c460b7d08942e008536be6a2d1a4e99d299bd541e407f09f81d0a"
+    },
+    "gemma": {
+      "path": "responses/gemma__independent.jsonl",
+      "bytes": 1170401,
+      "rows": 1425,
+      "proposal_rows": 475,
+      "samples_per_proposal": 1,
+      "synthetic_shots": 5,
+      "sha256": "291cec2044cb8e61932a49dc71a3effccff4087d9a52f5c5b8cd67709e7d106c"
+    },
+    "ministral": {
+      "path": "responses/ministral__cot5_cap40_n10.jsonl",
+      "bytes": 1351458,
+      "rows": 475,
+      "proposal_rows": 475,
+      "samples_per_proposal": 10,
+      "synthetic_shots": 5,
+      "sha256": "995546728535f378e64fee6abb30f3e4cffec6e0e927122c7ef53ea8acb88862"
+    }
+  },
+  "predictions": {
+    "source_qwen": {
+      "path": "predictions/source_qwen.jsonl",
+      "bytes": 50619,
+      "rows": 475,
+      "sha256": "6851c88726bacde57276e5b5c8c8b397914671fb189af4a9b0e422771f58ff93"
+    },
+    "source_gemma": {
+      "path": "predictions/source_gemma.jsonl",
+      "bytes": 51854,
+      "rows": 475,
+      "sha256": "08bea063919a04ccaec109d04a7606b99791d5b6b229e050f63aab86660f4254"
+    },
+    "source_ministral": {
+      "path": "predictions/source_ministral.jsonl",
+      "bytes": 50888,
+      "rows": 475,
+      "sha256": "5f393b407d768da49ce334a576f47b5d47169174c7cc0ff5cd0a19ae6d637565"
+    },
+    "qwen_gemma_union": {
+      "path": "predictions/qwen_gemma_union.jsonl",
+      "bytes": 52974,
+      "rows": 475,
+      "sha256": "685de7ebeb928ef77cff73d9e9ea97f3fe9b2dc146ce1ed3877044d868e42c0e"
+    },
+    "qwen_gemma_agreement": {
+      "path": "predictions/qwen_gemma_agreement.jsonl",
+      "bytes": 49856,
+      "rows": 475,
+      "sha256": "3add7e5e24347b7940d328955b63350781e6ec450a6f9c2e7e66bc2aa2ba6ded"
+    },
+    "qwen_gemma_ministral_union": {
+      "path": "predictions/qwen_gemma_ministral_union.jsonl",
+      "bytes": 53781,
+      "rows": 475,
+      "sha256": "281041325085110947f4ca4f5a910d573a5324db00fc84f91559569566b128c7"
+    },
+    "qwen_gemma_ministral_majority": {
+      "path": "predictions/qwen_gemma_ministral_majority.jsonl",
+      "bytes": 50423,
+      "rows": 475,
+      "sha256": "8cbe537ecb42186a59c6b2646860a152fe568fea3d8e7a5671eb360e6273be53"
+    },
+    "qwen_gemma_ministral_unanimous": {
+      "path": "predictions/qwen_gemma_ministral_unanimous.jsonl",
+      "bytes": 49349,
+      "rows": 475,
+      "sha256": "1e665301250ce8b847a5ea6295fd64146c667f48cac4eb65e35a2990d9fb7bec"
+    }
+  }
+}
