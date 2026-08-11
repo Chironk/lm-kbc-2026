@@ -1,0 +1,170 @@
+{
+  "schema": "graphless-cot-ensemble-ablation-summary-v1",
+  "development_only": true,
+  "contains_labels": true,
+  "split": "validation",
+  "rows": 475,
+  "input_sha256": "ba86b53ac38eb4b23b80391b291e5987ff4bbfe79827596fc09751b1bb0ce2be",
+  "seed": 20260730,
+  "question_contract": "official-v1",
+  "synthetic_shots_per_model": 5,
+  "synthetic_cot_sha256": "bdab8ff32ae30241d8cd9498c580889ade56d2da378fe885c8c23519d052024b",
+  "plan_sha256": "6c94c32eaa7090b8248f79eac4094b3e6b3834a9f8852768b28f98a03a81220f",
+  "source_result_sha256": "2fb8bed2010ef3876e09e5c68e7d129612c92d7a930208c4621cd856bd3115b9",
+  "implementation_sha256": "f22ada19741ed39407f08dfe81c8531f43364f432816b6d0de2995001e881135",
+  "runner_sha256": "b91da49958344198fda21bc4eed09e2137de16a7f78f3c0f042c8290f9c37e66",
+  "proposal_decoder_implementation_sha256": "0cb072fbe6dc948b9fce48fd360e471951a9743220ffc4e5e87fc28d002da0c3",
+  "requirements_lock_sha256": "3a427c8e6b2f834fcf438f4aed4f4a4b9a8765b600963a454514407ec9b726fb",
+  "response_sha256": {
+    "qwen": "28843465667c460b7d08942e008536be6a2d1a4e99d299bd541e407f09f81d0a",
+    "gemma": "291cec2044cb8e61932a49dc71a3effccff4087d9a52f5c5b8cd67709e7d106c",
+    "ministral": "995546728535f378e64fee6abb30f3e4cffec6e0e927122c7ef53ea8acb88862"
+  },
+  "method": {
+    "graph_constructed": false,
+    "commitments_used": false,
+    "router_used": false,
+    "gold_used_in_decoding": false,
+    "string_fusion": "canonical candidate must occur in the required number of distinct model outputs",
+    "numeric_fusion": "plain median when the required number of models emit one valid scalar; no clustering or tolerance-agreement requirement",
+    "selection_warning": "All predeclared policies are reported; do not select the best validation policy and present it as test-independent."
+  },
+  "paper_interpretation": {
+    "qwen_gemma_agreement_minus_qwen": -0.011442739673710067,
+    "three_model_majority_minus_qwen": 0.04124485023273444,
+    "three_model_majority_minus_qwen_gemma_agreement": 0.05268758990644451,
+    "claim_boundary": "These are mutually comparable graph-free controls on the current 475-row validation split. No full-system or graph-effect delta is claimed until the full architecture and a matched graph control are scored on the same rows with explicitly matched evidence routes."
+  },
+  "models": {
+    "qwen": {
+      "model": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "samples": 10,
+      "reasoning_words": null
+    },
+    "gemma": {
+      "model": "google/gemma-3-12b-it",
+      "revision": "7553b6f39c33dc229bfbfe3831f7bcdbb6b738c7",
+      "samples": 1,
+      "reasoning_words": 20
+    },
+    "ministral": {
+      "model": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+      "samples": 10,
+      "reasoning_words": 40
+    }
+  },
+  "reproduce": {
+    "fresh_generation_and_score": "CUDA_VISIBLE_DEVICES=0,1 bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh generate",
+    "score_completed_caches": "bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh score",
+    "generated_caches_tracked": false,
+    "scope": "The run pins checkpoints, prompts, task order, dependencies, and task-derived seeds. Response hashes identify the reported run; fresh stochastic generation can still vary across hardware or numerical kernels."
+  },
+  "policies": {
+    "source_qwen": {
+      "minimum_sources": 1,
+      "predictions_sha256": "6851c88726bacde57276e5b5c8c8b397914671fb189af4a9b0e422771f58ff93",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.4628664270973975,
+        "awardWonBy": 0.0037657322368289414,
+        "companyTradesAtStockExchange": 0.6619047619047618,
+        "countryLandBordersCountry": 0.979903225859108,
+        "hasArea": 0.34,
+        "hasCapacity": 0.1134020618556701,
+        "personHasCityOfDeath": 0.42
+      }
+    },
+    "source_gemma": {
+      "minimum_sources": 1,
+      "predictions_sha256": "08bea063919a04ccaec109d04a7606b99791d5b6b229e050f63aab86660f4254",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.4245551796447207,
+        "awardWonBy": 0.0433562701094722,
+        "companyTradesAtStockExchange": 0.6452380952380952,
+        "countryLandBordersCountry": 0.9221520309755602,
+        "hasArea": 0.31,
+        "hasCapacity": 0.1134020618556701,
+        "personHasCityOfDeath": 0.32
+      }
+    },
+    "source_ministral": {
+      "minimum_sources": 1,
+      "predictions_sha256": "5f393b407d768da49ce334a576f47b5d47169174c7cc0ff5cd0a19ae6d637565",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.4423454635339494,
+        "awardWonBy": 0.023430829883909668,
+        "companyTradesAtStockExchange": 0.5646666666666667,
+        "countryLandBordersCountry": 0.9619576501929442,
+        "hasArea": 0.42,
+        "hasCapacity": 0.10309278350515463,
+        "personHasCityOfDeath": 0.36
+      }
+    },
+    "qwen_gemma_union": {
+      "minimum_sources": 1,
+      "predictions_sha256": "685de7ebeb928ef77cff73d9e9ea97f3fe9b2dc146ce1ed3877044d868e42c0e",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.4151067874981289,
+        "awardWonBy": 0.04699011263765564,
+        "companyTradesAtStockExchange": 0.6448333333333331,
+        "countryLandBordersCountry": 0.9248405333612945,
+        "hasArea": 0.27,
+        "hasCapacity": 0.1134020618556701,
+        "personHasCityOfDeath": 0.31333333333333335
+      }
+    },
+    "qwen_gemma_agreement": {
+      "minimum_sources": 2,
+      "predictions_sha256": "3add7e5e24347b7940d328955b63350781e6ec450a6f9c2e7e66bc2aa2ba6ded",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.45142368742368744,
+        "awardWonBy": 0.0,
+        "companyTradesAtStockExchange": 0.6566666666666667,
+        "countryLandBordersCountry": 0.9670527185233065,
+        "hasArea": 0.27,
+        "hasCapacity": 0.1134020618556701,
+        "personHasCityOfDeath": 0.45
+      }
+    },
+    "qwen_gemma_ministral_union": {
+      "minimum_sources": 1,
+      "predictions_sha256": "281041325085110947f4ca4f5a910d573a5324db00fc84f91559569566b128c7",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.44618058518605963,
+        "awardWonBy": 0.05894788376675057,
+        "companyTradesAtStockExchange": 0.582222222222222,
+        "countryLandBordersCountry": 0.9135893662277742,
+        "hasArea": 0.43,
+        "hasCapacity": 0.15463917525773196,
+        "personHasCityOfDeath": 0.33
+      }
+    },
+    "qwen_gemma_ministral_majority": {
+      "minimum_sources": 2,
+      "predictions_sha256": "8cbe537ecb42186a59c6b2646860a152fe568fea3d8e7a5671eb360e6273be53",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.504111277330132,
+        "awardWonBy": 0.010396118291713724,
+        "companyTradesAtStockExchange": 0.711904761904762,
+        "countryLandBordersCountry": 0.972917931741461,
+        "hasArea": 0.43,
+        "hasCapacity": 0.15463917525773196,
+        "personHasCityOfDeath": 0.44
+      }
+    },
+    "qwen_gemma_ministral_unanimous": {
+      "minimum_sources": 3,
+      "predictions_sha256": "1e665301250ce8b847a5ea6295fd64146c667f48cac4eb65e35a2990d9fb7bec",
+      "macro_f1_by_relation": {
+        "*** All Relations ***": 0.47371094402673347,
+        "awardWonBy": 0.0,
+        "companyTradesAtStockExchange": 0.5733333333333333,
+        "countryLandBordersCountry": 0.9658730158730156,
+        "hasArea": 0.43,
+        "hasCapacity": 0.15463917525773196,
+        "personHasCityOfDeath": 0.44
+      }
+    }
+  }
+}
