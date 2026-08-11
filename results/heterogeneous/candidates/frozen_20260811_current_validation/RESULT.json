@@ -1,0 +1,105 @@
+{
+  "artifacts": {
+    "safe": {
+      "prediction": "results/heterogeneous/candidates/frozen_20260811_current_validation/safe_current_validation_475.jsonl",
+      "prediction_sha256": "a789e2412cb0779722366afddf83fc87ebba422fd4d177207f5f87a74b06e07a",
+      "rows": 475,
+      "scores": {
+        "*** All Relations ***": {
+          "macro-f1": 0.5259345596620683,
+          "macro-p": 0.6365035821208551,
+          "macro-r": 0.5527442472631936
+        },
+        "awardWonBy": {
+          "macro-f1": 0.11437184878144793,
+          "macro-p": 0.23298580730627264,
+          "macro-r": 0.10035174500169779
+        },
+        "companyTradesAtStockExchange": {
+          "macro-f1": 0.762904761904762,
+          "macro-p": 0.8666666666666666,
+          "macro-r": 0.8275
+        },
+        "countryLandBordersCountry": {
+          "macro-f1": 0.9615400170763488,
+          "macro-p": 0.9462158348187757,
+          "macro-r": 0.9970588235294118
+        },
+        "hasArea": {
+          "macro-f1": 0.42,
+          "macro-p": 0.42,
+          "macro-r": 0.42
+        },
+        "hasCapacity": {
+          "macro-f1": 0.18556701030927836,
+          "macro-p": 0.18556701030927836,
+          "macro-r": 0.18556701030927836
+        },
+        "personHasCityOfDeath": {
+          "macro-f1": 0.47,
+          "macro-p": 0.89,
+          "macro-r": 0.51
+        }
+      },
+      "source": "results/heterogeneous/candidates/frozen_20260803/safe_0_518450_validation.jsonl",
+      "source_sha256": "6c4d4bb1ed60054cb1b2d9a6aa728a1a5f0422c714bdd8486963cc986ca348ae"
+    },
+    "strict": {
+      "prediction": "results/heterogeneous/candidates/frozen_20260811_current_validation/strict_current_validation_475.jsonl",
+      "prediction_sha256": "3656c70185a42173a886b080e46df3ed3a546fbd41342e31de7b2423453b2032",
+      "rows": 475,
+      "scores": {
+        "*** All Relations ***": {
+          "macro-f1": 0.5282278686922194,
+          "macro-p": 0.6412228803664691,
+          "macro-r": 0.5506389841052989
+        },
+        "awardWonBy": {
+          "macro-f1": 0.11437184878144793,
+          "macro-p": 0.23298580730627264,
+          "macro-r": 0.10035174500169779
+        },
+        "companyTradesAtStockExchange": {
+          "macro-f1": 0.769904761904762,
+          "macro-p": 0.8816666666666666,
+          "macro-r": 0.8175
+        },
+        "countryLandBordersCountry": {
+          "macro-f1": 0.9672653375075517,
+          "macro-p": 0.9571226975638739,
+          "macro-r": 0.9970588235294118
+        },
+        "hasArea": {
+          "macro-f1": 0.42,
+          "macro-p": 0.42,
+          "macro-r": 0.42
+        },
+        "hasCapacity": {
+          "macro-f1": 0.18556701030927836,
+          "macro-p": 0.18556701030927836,
+          "macro-r": 0.18556701030927836
+        },
+        "personHasCityOfDeath": {
+          "macro-f1": 0.47,
+          "macro-p": 0.89,
+          "macro-r": 0.51
+        }
+      },
+      "source": "results/heterogeneous/candidates/frozen_20260803/strict_proof_0_520729_validation.jsonl",
+      "source_sha256": "61d062f8c10e6262666d0e581197f4db41962125db16351258270bb13a2f0bc7"
+    }
+  },
+  "current_validation_sha256": "ba86b53ac38eb4b23b80391b291e5987ff4bbfe79827596fc09751b1bb0ce2be",
+  "development_only": true,
+  "dropped_queries": 3,
+  "evaluation_split": "current_validation_475",
+  "evaluator_sha256": "2d592ae177c7b230922bb959da7a8ee1c4c662bf72a99d4dbd0cf62170ff9e22",
+  "fresh_model_inference_claimed": false,
+  "gold_used_for_mapping": false,
+  "gold_used_for_scoring": true,
+  "old_validation_sha256": "90e4f2475e7e69caf9316ffd3b2e0bc4fe2cd428a99027f2abf08c9f88c18d02",
+  "organizer_update_commit": "e079024b809568f28cded5537203dfd52f5b04ae",
+  "renamed_subjects": 20,
+  "reproduction_tier": "frozen_prediction_artifact_compatibility_replay",
+  "schema": "frozen-validation-artifact-rekey-v1"
+}
