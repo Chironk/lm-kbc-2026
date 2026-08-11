@@ -1,0 +1,26 @@
+{
+  "schema": "heterogeneous-frozen-validation-candidates-v1",
+  "frozen_at": "2026-08-03",
+  "development_only": true,
+  "validation_gold_sha256": "90e4f2475e7e69caf9316ffd3b2e0bc4fe2cd428a99027f2abf08c9f88c18d02",
+  "official_evaluator_sha256": "2d592ae177c7b230922bb959da7a8ee1c4c662bf72a99d4dbd0cf62170ff9e22",
+  "candidates": {
+    "safe_locked": {
+      "file": "safe_0_518450_validation.jsonl",
+      "rows": 478,
+      "sha256": "6c4d4bb1ed60054cb1b2d9a6aa728a1a5f0422c714bdd8486963cc986ca348ae",
+      "official_macro_f1": 0.5184496147269507,
+      "selection_status": "locked_safe_development_system",
+      "source": "experiments/heterogeneous_agents/runs/sota_reproduction_20260729_v1/VALIDATION_PREDICTIONS.jsonl"
+    },
+    "strict_proof": {
+      "file": "strict_proof_0_520729_validation.jsonl",
+      "rows": 478,
+      "sha256": "61d062f8c10e6262666d0e581197f4db41962125db16351258270bb13a2f0bc7",
+      "official_macro_f1": 0.5207285306081325,
+      "selection_status": "development_informed_graph_candidate",
+      "source": "experiments/heterogeneous_agents/runs/proof_carrying_graph_decoder_20260801_v1/VALIDATION_PREDICTIONS.jsonl",
+      "warning": "The strict family-margin rule was refined after inspecting the loose rule on validation; this is not an untouched confirmation."
+    }
+  }
+}
