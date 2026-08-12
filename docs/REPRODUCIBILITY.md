@@ -2,8 +2,10 @@
 
 ## 1. Environment and integrity check
 
-The recorded environment uses Python 3.11. Exact package versions are in
-`requirements-lock.txt`; immutable model revisions are in `configs/final/`.
+The recorded environment uses Python 3.11.15. Portable direct-dependency
+versions are in `requirements-lock.txt`; the complete dependency closure from
+the final Linux/CUDA 13.0 environment is in `requirements-repro-cu130.txt`.
+Immutable model revisions are in `configs/final/`.
 
 ```bash
 git clone https://github.com/Chironk/lm-kbc-2026.git
@@ -14,6 +16,9 @@ pip install -r requirements-lock.txt
 python scripts/verify_release.py
 pytest -q
 ```
+
+Use `pip install -r requirements-repro-cu130.txt` instead when reproducing the
+recorded CUDA 13.0 software stack on a compatible Linux host.
 
 `verify_release.py` is model-free. It verifies the official splits, parameter
 budget, frozen decoder artifacts, development replay snapshot, and exact
@@ -71,6 +76,10 @@ OUT="$OUT" bash "$RUNNER" build
 OUT="$OUT" bash "$RUNNER" package
 ```
 
+The source commit for the archived 0.4845 lineage is additionally retained by
+the Git tag `provenance/historical-final-submission-20260803`. Clone or fetch
+tags when auditing historical provenance.
+
 Or execute all stages:
 
 ```bash
@@ -92,10 +101,13 @@ That second archive is not the submission whose 0.4845 score is reported.
 
 ## 4. GPU selection
 
-If `CUDA_VISIBLE_DEVICES` is unset, the launcher enumerates visible GPUs with
-`nvidia-smi`. Qwen runs as one process sharded across those devices. Quantized
-Gemma and Ministral use one independent worker per visible device. Override
-the worker count only when memory pressure requires it:
+If `CUDA_VISIBLE_DEVICES` is unset, GPU generation stages enumerate usable
+devices with `nvidia-smi`; CPU-only stages do not require a working NVIDIA
+driver. Qwen uses relation-specific execution: the 4-bit border pass is
+data-parallel across visible devices, while its fp16 and auxiliary passes use
+one process with automatic model placement across the visible devices.
+Quantized Gemma and Ministral use one independent worker per visible device.
+Override the worker count only when memory pressure requires it:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1 NUM_WORKERS=2 \
@@ -103,13 +115,22 @@ OUT=experiments/heterogeneous_agents/runs/paper_test \
 bash experiments/heterogeneous_agents/run_paper_system.sh generate
 ```
 
-On 11-GiB GPUs, keep generation batch size at one as pinned by the launcher.
+The tested release topology is four 11-GiB RTX 2080 Ti GPUs. Two 11-GiB GPUs
+are supported by the launcher's placement logic, but they have lower
+throughput and less fp16 headroom; run `preflight` and the per-route smoke
+tasks before committing to a full run. On 11-GiB GPUs, keep generation batch
+size at one as pinned by the launcher.
 
 ## 5. What fresh inference can and cannot reproduce
 
-The fresh runner pins model revisions, prompts, demonstrations, sampling
-counts, decoder artifacts, and the historical seed scheme. The sampled model
-responses that produced the original official archive were not retained.
+The exact route inventory is machine-readable in
+`configs/final/paper_system_contract.json`. In particular, the primary Qwen
+System-1 route uses ten temperature-1.0 samples, and the production Qwen
+incumbent also uses the same checkpoint through a relation-specific auxiliary
+route. The fresh runner pins model revisions, prompts, demonstrations,
+sampling counts, decoder artifacts, and the historical seed scheme. The
+sampled model responses that produced the original official archive were not
+retained.
 Consequently, the repository makes two separate claims:
 
 - the submitted `predictions.jsonl` and its Codabench provenance are exactly

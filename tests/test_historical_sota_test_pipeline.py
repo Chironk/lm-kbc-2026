@@ -1,4 +1,7 @@
 import json
+import os
+import subprocess
+import sys
 import tempfile
 import zipfile
 from pathlib import Path
@@ -150,3 +153,35 @@ def test_cli_exposes_resumable_cpu_stages() -> None:
     for command in ("plan", "build", "package", "status"):
         args = parser.parse_args([command, "--output-dir", "/tmp/paired-sota"])
         assert callable(args.function)
+
+
+def test_shell_plan_is_cpu_safe_when_nvidia_smi_cannot_reach_driver() -> None:
+    """CPU-only release stages must work on GPU-less login/container nodes."""
+    runner = paired.ROOT / (
+        "experiments/heterogeneous_agents/run_historical_sota_test_pipeline.sh"
+    )
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        fake_bin = root / "bin"
+        fake_bin.mkdir()
+        fake_smi = fake_bin / "nvidia-smi"
+        fake_smi.write_text("#!/usr/bin/env bash\nexit 9\n")
+        fake_smi.chmod(0o755)
+        output = root / "plan"
+        environment = {
+            **os.environ,
+            "PATH": f"{fake_bin}:/usr/bin:/bin",
+            "PY": sys.executable,
+            "OUT": str(output),
+        }
+        environment.pop("CUDA_VISIBLE_DEVICES", None)
+        completed = subprocess.run(
+            ["bash", str(runner), "plan"],
+            cwd=paired.ROOT,
+            env=environment,
+            text=True,
+            capture_output=True,
+            timeout=60,
+        )
+        assert completed.returncode == 0, completed.stderr
+        assert (output / "plan/PLAN.json").is_file()

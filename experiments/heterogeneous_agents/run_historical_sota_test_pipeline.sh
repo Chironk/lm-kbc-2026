@@ -14,24 +14,39 @@ if [[ -z "$PY" || ! -x "$PY" ]]; then
 fi
 OUT="${OUT:-experiments/heterogeneous_agents/runs/historical_sota_single_ministral_test_20260810_v1}"
 INPUT="${INPUT:-data/test.jsonl}"
-if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
-  DEVICES="$CUDA_VISIBLE_DEVICES"
-elif command -v nvidia-smi >/dev/null 2>&1; then
-  DEVICES="$(nvidia-smi --query-gpu=index --format=csv,noheader | paste -sd, -)"
-else
-  DEVICES="0"
-fi
-IFS=',' read -r -a DEVICE_LIST <<< "$DEVICES"
-DETECTED_WORKERS="${#DEVICE_LIST[@]}"
-WORKERS="${NUM_WORKERS:-$DETECTED_WORKERS}"
-if [[ ! "$WORKERS" =~ ^[1-9][0-9]*$ ]] || (( WORKERS > DETECTED_WORKERS )); then
-  echo "NUM_WORKERS must be between 1 and the $DETECTED_WORKERS visible GPUs." >&2
-  exit 2
-fi
 ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-max_split_size_mb:128,garbage_collection_threshold:0.8}"
 MODULE="experiments.heterogeneous_agents.historical_sota_test_pipeline"
 STAGE="${1:-status}"
 LOG="$OUT/run.log"
+DEVICES=""
+DETECTED_WORKERS=0
+WORKERS=0
+
+# GPU discovery is intentionally lazy.  Planning, status, packaging, and the
+# unit-test entry point are CPU-only release operations and must remain usable
+# on login nodes (or containers) where an nvidia-smi executable is installed
+# but cannot communicate with a driver.
+initialize_gpu_runtime() {
+  if (( DETECTED_WORKERS > 0 )); then
+    return
+  fi
+  if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+    DEVICES="$CUDA_VISIBLE_DEVICES"
+  elif command -v nvidia-smi >/dev/null 2>&1; then
+    DEVICES="$(nvidia-smi --query-gpu=index --format=csv,noheader 2>/dev/null | paste -sd, - || true)"
+  fi
+  if [[ -z "$DEVICES" ]]; then
+    echo "No usable CUDA GPUs were detected. Set CUDA_VISIBLE_DEVICES for a generation stage." >&2
+    exit 2
+  fi
+  IFS=',' read -r -a DEVICE_LIST <<< "$DEVICES"
+  DETECTED_WORKERS="${#DEVICE_LIST[@]}"
+  WORKERS="${NUM_WORKERS:-$DETECTED_WORKERS}"
+  if [[ ! "$WORKERS" =~ ^[1-9][0-9]*$ ]] || (( WORKERS > DETECTED_WORKERS )); then
+    echo "NUM_WORKERS must be between 1 and the $DETECTED_WORKERS visible GPUs." >&2
+    exit 2
+  fi
+}
 
 require_plan() {
   if [[ ! -f "$OUT/plan/HISTORICAL_SOTA_POLICY.json" ]]; then
@@ -50,8 +65,9 @@ PY
 }
 
 generate_route() {
-  local route="$1" workers="$2" batch="$3" checkpoint="$4"
+  local route="$1" batch="$2" checkpoint="$3"
   local tasks output agents agent
+  initialize_gpu_runtime
   tasks="$(job_field "$route" task_path)"
   output="$(job_field "$route" response_path)"
   agents="$(job_field "$route" agent_config)"
@@ -65,7 +81,7 @@ generate_route() {
     --output "$output" \
     --agents "$agents" \
     --precision 4bit \
-    --num-workers "$workers" \
+    --num-workers "$WORKERS" \
     --generation-batch-size 1 \
     --task-batch-size "$batch" \
     --checkpoint-every "$checkpoint" \
@@ -88,6 +104,7 @@ case "$STAGE" in
     ;;
   generate-primary)
     require_plan
+    initialize_gpu_runtime
     CUDA_VISIBLE_DEVICES="$DEVICES" \
     PYTORCH_CUDA_ALLOC_CONF="$ALLOC_CONF" \
     "$PY" -u run_submission.py \
@@ -96,15 +113,15 @@ case "$STAGE" in
     ;;
   generate-gemma)
     require_plan
-    generate_route "gemma:independent" "$WORKERS" 2 10 2>&1 | tee -a "$LOG"
+    generate_route "gemma:independent" 2 10 2>&1 | tee -a "$LOG"
     ;;
   generate-ministral-n3)
     require_plan
-    generate_route "ministral:self_consistency" "$WORKERS" 2 10 2>&1 | tee -a "$LOG"
+    generate_route "ministral:self_consistency" 2 10 2>&1 | tee -a "$LOG"
     ;;
   generate-ministral-n10)
     require_plan
-    generate_route "ministral:cot5_cap40_n10" "$WORKERS" 1 10 2>&1 | tee -a "$LOG"
+    generate_route "ministral:cot5_cap40_n10" 1 10 2>&1 | tee -a "$LOG"
     ;;
   generate)
     "$0" generate-primary

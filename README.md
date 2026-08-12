@@ -36,6 +36,9 @@ upstream repository; see [the task documentation](docs/OFFICIAL_TASK.md).
   **0.5207285 macro-F1** and labeled as a development-informed refinement.
 - `artifacts/frozen/MANIFEST.json` binds the small trained decoder artifacts and
   the 30.515B parameter contract.
+- `configs/final/paper_system_contract.json` is the machine-checked source of
+  truth for proposal counts, temperatures, auxiliary Qwen inference, model
+  revisions, decoder order, and the exact-result versus fresh-rerun boundary.
 
 The exact official archive is intentionally tracked. Newly generated model
 responses, logs, smoke outputs, and run-specific submission archives are
@@ -67,12 +70,21 @@ imports much of this tested dependency closure.
 
 ## Setup
 
-Python 3.11 and CUDA-capable PyTorch are required for model inference.
+Python 3.11 and CUDA-capable PyTorch are required for model inference.  The
+portable direct-dependency lock is `requirements-lock.txt`; the complete
+dependency closure recorded for the final Linux/CUDA 13.0 environment is
+`requirements-repro-cu130.txt`.
 
 ```bash
 conda create -n lm-kbc-2026 python=3.11 -y
 conda activate lm-kbc-2026
 pip install -r requirements-lock.txt
+```
+
+On a compatible Linux/CUDA 13.0 host, use the fuller reproduction target:
+
+```bash
+pip install -r requirements-repro-cu130.txt
 ```
 
 Gemma is a gated Hugging Face checkpoint. Accept its model license and log in
@@ -92,8 +104,9 @@ python scripts/verify_release.py
 bash experiments/heterogeneous_agents/run_paper_system.sh test
 ```
 
-The verifier checks split identities, frozen decoder hashes, model revisions
-and parameter totals, the development replay snapshot, and both the archive
+The verifier checks split identities, the exact SyntheticCoT pool, the
+paper-system route contract, frozen decoder hashes, model revisions and
+parameter totals, both retained development candidates, and both the archive
 and inner `predictions.jsonl` hashes of the official submission.
 
 ## Fresh blind-test inference
