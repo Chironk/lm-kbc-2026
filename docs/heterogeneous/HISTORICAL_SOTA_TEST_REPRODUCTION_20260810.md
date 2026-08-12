@@ -93,8 +93,8 @@ The plan is already frozen. To execute all GPU stages and package both blind
 outputs:
 
 ```bash
-cd /home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026
-source /home/hongjing/miniconda3/bin/activate lm-kbc-2026
+cd /path/to/lm-kbc-2026
+conda activate lm-kbc-2026
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 \
 PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128,garbage_collection_threshold:0.8 \

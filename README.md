@@ -1,48 +1,82 @@
 # Heterogeneous Parametric Memory for LM-KBC 2026
 
-This is the cleaned paper-release repository for our AKBC/LM-KBC 2026
-submission. It contains one supported end-to-end path from an official split
-to a validated Codabench archive:
+This is the paper-release repository for our AKBC/LM-KBC 2026 system. The
+supported architecture independently samples Qwen, Gemma, and Ministral,
+retains complete answer sets and their model provenance in an evidence graph,
+builds a provisional answer with frozen relation-aware stages, and permits a
+final rule-based graph correction only when a competing complete set has
+stronger cross-model evidence.
 
 ```text
-official rows -> Qwen/Gemma/Ministral generations -> typed evidence graph
-              -> frozen staged decoder -> symbolic graph correction
-              -> predictions.jsonl -> submission zip
+official query rows
+    -> pinned Qwen, Gemma, and Ministral sampling routes
+    -> evidence graph of complete sampled sets and normalized answers
+    -> frozen staged set decoder
+    -> conservative rule-based graph correction
+    -> predictions.jsonl -> Codabench zip
 ```
 
 The three pinned checkpoints contain **30,515,165,024 parameters** in total,
-within the shared task's 32B limit. No external retrieval is used at inference
-time. The official task data and evaluator are preserved from the upstream
-repository; see [the official task documentation](docs/OFFICIAL_TASK.md).
+within the shared task's 32B limit. Inference is closed-book: no external
+retrieval is used. The official task data and evaluator are retained from the
+upstream repository; see [the task documentation](docs/OFFICIAL_TASK.md).
+
+## What is authoritative
+
+- `experiments/heterogeneous_agents/run_paper_system.sh` is the public launcher
+  for fresh inference with the architecture associated with the reported test
+  submission.
+- `submissions/official_test/` contains the exact 475-row archive submitted to
+  Codabench, its SHA-256 manifest, and the owner-recorded official score of
+  **0.4845 macro-F1**.
+- `experiments/heterogeneous_agents/run_sota_reproduction.sh all`
+  deterministically replays the frozen 478-row development evidence and
+  reproduces the staged prediction artifact at **0.5184496 macro-F1**. The
+  tracked final graph-corrected development prediction is separately pinned at
+  **0.5207285 macro-F1** and labeled as a development-informed refinement.
+- `artifacts/frozen/MANIFEST.json` binds the small trained decoder artifacts and
+  the 30.515B parameter contract.
+
+The exact official archive is intentionally tracked. Newly generated model
+responses, logs, smoke outputs, and run-specific submission archives are
+ignored and belong under `experiments/heterogeneous_agents/runs/`.
 
 ## Repository map
 
 | Path | Purpose |
 |---|---|
-| `experiments/heterogeneous_agents/final_submission_pipeline.py` | frozen graph construction, decoder, scoring, and packaging |
-| `experiments/heterogeneous_agents/run_final_submission_pipeline.sh` | supported end-to-end launcher |
-| `experiments/heterogeneous_agents/components/` | graph builders and retained decoder components |
-| `experiments/heterogeneous_agents/analysis/` | optional post-hoc analysis and visualization |
-| `configs/final/` | pinned three-model portfolio configurations |
-| `artifacts/frozen/` | compact trained decoder artifacts and integrity manifest |
-| `data/` | official splits and reviewed SyntheticCoT pools |
-| `tests/` | unit and contract tests for the retained runtime closure |
-| `results/research_summaries/` | compact outcomes from superseded experiments; never runtime inputs |
-| `docs/ARCHITECTURE.md` | readable architecture and code map |
-| `docs/REPRODUCIBILITY.md` | environment, validation, test, and resume instructions |
+| `experiments/heterogeneous_agents/run_paper_system.sh` | stable release launcher |
+| `experiments/heterogeneous_agents/historical_sota_test_pipeline.py` | hash-pinned paper-system planner, graph builder, decoder, and packager |
+| `experiments/heterogeneous_agents/run_sota_reproduction.sh` | deterministic development-evidence replay |
+| `experiments/heterogeneous_agents/components/` | retained graph and decoder dependency closure |
+| `experiments/heterogeneous_agents/analysis/` | optional post-hoc analyses; not runtime stages |
+| `configs/final/` | pinned model portfolio configurations |
+| `artifacts/frozen/` | compact decoder artifacts and integrity manifest |
+| `submissions/official_test/` | immutable submitted archive and score provenance |
+| `results/heterogeneous/canonical_runtime/` | portable development replay inputs |
+| `results/research_summaries/` | reviewed experiment outcomes; never runtime inputs |
+| `tests/` | unit and artifact-contract tests |
+| `docs/ARCHITECTURE.md` | architecture and code map |
+| `docs/REPRODUCIBILITY.md` | exact replay, fresh inference, and resume instructions |
+| `docs/RELEASE_SCOPE.md` | what is supported, retained, generated, and ignored |
 
-Generated model responses, logs, smoke outputs, and submission archives are
-intentionally ignored. They can be regenerated and should not be committed.
+Later research runners remain in the repository for auditability, but are not
+the public paper-system entry point. No retained component should be deleted
+merely because its filename reflects an earlier experiment: the final runtime
+imports much of this tested dependency closure.
 
 ## Setup
 
-Python 3.11 and CUDA-capable PyTorch are required for inference.
+Python 3.11 and CUDA-capable PyTorch are required for model inference.
 
 ```bash
 conda create -n lm-kbc-2026 python=3.11 -y
 conda activate lm-kbc-2026
 pip install -r requirements-lock.txt
 ```
+
+Gemma is a gated Hugging Face checkpoint. Accept its model license and log in
+with a read token before preflight; never store that token in the repository.
 
 For tests only:
 
@@ -51,54 +85,46 @@ pip install -r requirements-dev.txt
 pytest -q
 ```
 
-## Verify the release without loading a model
+## Verify the release without loading model weights
 
 ```bash
 python scripts/verify_release.py
-bash experiments/heterogeneous_agents/run_final_submission_pipeline.sh test
+bash experiments/heterogeneous_agents/run_paper_system.sh test
 ```
 
-The verifier checks the official split sizes and test hash, every frozen
-artifact hash, the parameter total, configuration paths, and importability of
-the final pipeline.
+The verifier checks split identities, frozen decoder hashes, model revisions
+and parameter totals, the development replay snapshot, and both the archive
+and inner `predictions.jsonl` hashes of the official submission.
 
-## Run validation
+## Fresh blind-test inference
 
 ```bash
-SPLIT=validation \
-INPUT=data/val.jsonl \
-OUT=experiments/heterogeneous_agents/runs/final_validation \
-bash experiments/heterogeneous_agents/run_final_submission_pipeline.sh all
+CUDA_VISIBLE_DEVICES=0,1,2,3 \
+OUT=experiments/heterogeneous_agents/runs/paper_test \
+bash experiments/heterogeneous_agents/run_paper_system.sh all
 ```
 
-The launcher detects all visible GPUs unless `CUDA_VISIBLE_DEVICES` is set.
-Every generation stage is resumable: rerunning the same command validates and
-reuses complete artifacts rather than loading the model again.
+The launcher detects the number of visible GPUs and uses one quantized
+Gemma/Ministral worker per device. Each stage is resumable. The historical
+control package is written to:
 
-## Run the blind test and package a submission
-
-```bash
-SPLIT=test \
-INPUT=data/test.jsonl \
-OUT=experiments/heterogeneous_agents/runs/final_test \
-bash experiments/heterogeneous_agents/run_final_submission_pipeline.sh all
+```text
+OUT/submission/historical_sota_replication_control_test.zip
 ```
 
-The final archive is written below `OUT/submission/`. It contains exactly one
-root-level file named `predictions.jsonl`. The test path refuses any input
-whose SHA-256 does not match the official August 2026 release.
-
-See [reproducibility instructions](docs/REPRODUCIBILITY.md) for staged runs,
-two-GPU hosts, artifact transfer, and failure recovery.
+Fresh sampling reproduces the pinned architecture, prompts, revisions, and
+seed policy. It is not claimed to reproduce the old sampled text byte for
+byte across CUDA, PyTorch, Transformers, and quantization environments. Exact
+result reproduction uses the immutable submitted archive instead.
 
 ## Development policy
 
-- Tune and ablate on train/development data only.
+- Tune and ablate on training/validation data only.
 - Never score the blind test locally.
 - Do not commit generated `runs/` directories or credentials.
-- Add a unit or contract test for any decoder or graph-schema change.
-- Update `artifacts/frozen/MANIFEST.json` only when deliberately replacing a
-  trained artifact, and record its new hash.
+- Add a unit or contract test for decoder or graph-schema changes.
+- Do not replace a frozen artifact without updating its manifest and
+  provenance.
 
 ## Upstream and license
 

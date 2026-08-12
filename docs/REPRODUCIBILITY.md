@@ -1,13 +1,13 @@
 # Reproducibility
 
-## Environment
+## 1. Environment and integrity check
 
-The recorded environment uses Python 3.11. `requirements-lock.txt` contains
-the exact package versions used for the final implementation;
-`requirements.txt` is the portable specification. Model weights are resolved
-from immutable Hugging Face revisions recorded in `configs/final/`.
+The recorded environment uses Python 3.11. Exact package versions are in
+`requirements-lock.txt`; immutable model revisions are in `configs/final/`.
 
 ```bash
+git clone https://github.com/Chironk/lm-kbc-2026.git
+cd lm-kbc-2026
 conda create -n lm-kbc-2026 python=3.11 -y
 conda activate lm-kbc-2026
 pip install -r requirements-lock.txt
@@ -15,98 +15,123 @@ python scripts/verify_release.py
 pytest -q
 ```
 
-## GPU selection
+`verify_release.py` is model-free. It verifies the official splits, parameter
+budget, frozen decoder artifacts, development replay snapshot, and exact
+official-test archive. It works both in a Git clone and in an unpacked source
+archive.
 
-With no override, the launcher detects and uses every visible CUDA GPU up to
-each route's verified replica limit. To constrain a run:
+## 2. Exact result artifacts
 
-```bash
-CUDA_VISIBLE_DEVICES=0,1 \
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev \
-bash experiments/heterogeneous_agents/run_final_submission_pipeline.sh all
+### Official test
+
+The exact submitted archive is:
+
+```text
+submissions/official_test/heterogeneous_final_strict_proof_20260803_v1_test.zip
 ```
 
-The Qwen fp16 route is one sharded process. Four-bit Gemma and Ministral use
-one independent worker per visible GPU. On 11-GiB cards, keep generation batch
-size at one; the checked-in launcher already does this.
+It contains only `predictions.jsonl`. Its archive SHA-256 is
+`3f73d01fe5d4b3c9b9cc7e2f5dba8348d0e1fec19fc0ddb797ff2e0f460b11e4`;
+the member SHA-256 is
+`73621130839b572a7fdfdc2f8a58c4bf3f00beece4be86ff4a7874c96b63bb53`.
+Codabench returned 0.4845 macro-F1. Because test labels are not distributed,
+that score is recorded from the official result and is not recomputed locally.
 
-## Staged and resumable execution
-
-Every command below can be rerun safely:
+### Development evidence replay
 
 ```bash
-RUNNER=experiments/heterogeneous_agents/run_final_submission_pipeline.sh
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" plan
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" preflight
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" smoke
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" generate-primary
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" generate-gemma
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" generate-ministral-n3
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" generate-ministral-cot40
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" decode
-SPLIT=validation INPUT=data/val.jsonl OUT=experiments/heterogeneous_agents/runs/dev bash "$RUNNER" score
+OUT=experiments/heterogeneous_agents/runs/development_replay \
+bash experiments/heterogeneous_agents/run_sota_reproduction.sh all
 ```
 
-Completed response files are checked against their manifests. An incomplete
-file resumes from pending task IDs. A conflicting complete artifact is rejected
-rather than silently reused.
+This validates every tracked input hash, reconstructs the staged decoder, and
+reproduces the 478-row prediction bytes and macro-F1 0.5184496147269507. The
+snapshot is under `results/heterogeneous/canonical_runtime/` and is explicitly
+a development-selected lineage. The final graph-corrected development
+prediction is also retained and hash-pinned at
+`results/heterogeneous/candidates/frozen_20260803/strict_proof_0_520729_validation.jsonl`.
+It scores 0.5207285306041929 with the tracked evaluator and is marked in its
+manifest as a development-informed graph refinement.
 
-## Stable-key validation experiment
+## 3. Fresh paper-system inference
 
-The archived 0.4845 test submission used the historical `legacy` primary-Qwen
-seed scheme, which binds sampling to input row positions. That archive remains
-immutable for exact historical reproduction. New controlled experiments use
-`stable-key`, which derives each primary-Qwen seed from `(base seed, relation,
-subject)` and is invariant to row order or relation subsetting.
+The public launcher delegates to the hash-pinned historical implementation:
 
-Run the complete validation experiment overnight with:
+```bash
+RUNNER=experiments/heterogeneous_agents/run_paper_system.sh
+OUT=experiments/heterogeneous_agents/runs/paper_test
+
+OUT="$OUT" bash "$RUNNER" plan
+OUT="$OUT" bash "$RUNNER" preflight
+OUT="$OUT" bash "$RUNNER" generate-primary
+OUT="$OUT" bash "$RUNNER" generate-gemma
+OUT="$OUT" bash "$RUNNER" generate-ministral-n3
+OUT="$OUT" bash "$RUNNER" generate-ministral-n10
+OUT="$OUT" bash "$RUNNER" build
+OUT="$OUT" bash "$RUNNER" package
+```
+
+Or execute all stages:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1,2,3 \
-bash experiments/heterogeneous_agents/run_stable_key_validation_overnight.sh
+OUT=experiments/heterogeneous_agents/runs/paper_test \
+bash experiments/heterogeneous_agents/run_paper_system.sh all
 ```
 
-The launcher is validation-only, resumable, freezes the selected seed scheme
-in `plan/FINAL_POLICY.json`, audits every recorded primary-Qwen generation seed,
-and writes the official local score to `analysis/FINAL_RESULT.json`. It does not
-run or package the test split. A stable-key test run must be considered only
-after this development result has been reviewed and the regime has been frozen.
-
-## Moving to another machine
-
-Commit and push source code only. On the second machine:
-
-```bash
-git clone https://github.com/j31040116-boop/lm-kbc-2026.git
-cd lm-kbc-2026
-git checkout main
-```
-
-Create the environment and plan a new `OUT` directory there. Do not copy a
-machine-local `PLAN.json` between differently located clones; planning is
-cheap and binds paths and hashes for the current checkout. If transferring a
-partially completed run, preserve its relative directory layout and place it
-under the same `OUT` path before resuming.
-
-## Split discipline
-
-- Train/development may be scored with the official evaluator.
-- `score-validation` refuses a test plan.
-- The final test launcher checks the official test SHA-256:
-  `67c31c8388c585634df55500612f522ad42da6735d4c89eb59a9ef5a39f043f1`.
-- Frozen decoder artifacts contain no prediction rows or test answers.
-
-## Expected outputs
-
-After a complete run:
+Completed response files are checked against manifests. An interrupted file
+resumes from missing task IDs; a conflicting completed artifact is rejected.
+The historical-control package is written to:
 
 ```text
-OUT/plan/PLAN.json
-OUT/plan/FINAL_POLICY.json
-OUT/graph/FINAL_EXACT_EVIDENCE_GRAPH.jsonl
-OUT/FINAL_PREDICTIONS.jsonl
-OUT/FINAL_MANIFEST.json
-OUT/submission/heterogeneous_final_relation_typed_proof_20260809_v3_test.zip
+OUT/submission/historical_sota_replication_control_test.zip
 ```
 
-All of `OUT` is generated and ignored by Git.
+The underlying audit runner also emits a paired later area-route experiment.
+That second archive is not the submission whose 0.4845 score is reported.
+
+## 4. GPU selection
+
+If `CUDA_VISIBLE_DEVICES` is unset, the launcher enumerates visible GPUs with
+`nvidia-smi`. Qwen runs as one process sharded across those devices. Quantized
+Gemma and Ministral use one independent worker per visible device. Override
+the worker count only when memory pressure requires it:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1 NUM_WORKERS=2 \
+OUT=experiments/heterogeneous_agents/runs/paper_test \
+bash experiments/heterogeneous_agents/run_paper_system.sh generate
+```
+
+On 11-GiB GPUs, keep generation batch size at one as pinned by the launcher.
+
+## 5. What fresh inference can and cannot reproduce
+
+The fresh runner pins model revisions, prompts, demonstrations, sampling
+counts, decoder artifacts, and the historical seed scheme. The sampled model
+responses that produced the original official archive were not retained.
+Consequently, the repository makes two separate claims:
+
+- the submitted `predictions.jsonl` and its Codabench provenance are exactly
+  preserved and hash-verifiable;
+- the full inference and decoding procedure can be rerun from the official
+  query split.
+
+It does not claim that fresh stochastic generation will recreate the submitted
+prediction bytes on every CUDA/software stack.
+
+## 6. Moving or resuming a run
+
+Generated runs are deliberately outside Git. On another host, clone the same
+commit, create the environment, and run `plan` in a new `OUT` directory. If a
+partial run must be transferred, copy the whole run directory without changing
+its internal layout, then invoke the same generation stage; completed task IDs
+will be reused after manifest validation.
+
+## 7. Split discipline
+
+- Training and validation may be scored with the official evaluator.
+- The blind test path checks the official 475-row SHA-256
+  `67c31c8388c585634df55500612f522ad42da6735d4c89eb59a9ef5a39f043f1`.
+- The test file contains no nonempty `ObjectEntities` values.
+- Frozen decoder artifacts contain no test labels or test-specific decisions.

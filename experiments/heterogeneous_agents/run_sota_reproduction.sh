@@ -4,7 +4,11 @@ set -Eeuo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
-PY="${PY:-/home/hongjing/miniconda3/envs/lm-kbc-2026/bin/python}"
+PY="${PY:-$(command -v python || true)}"
+if [[ -z "$PY" || ! -x "$PY" ]]; then
+  echo "Python was not found. Activate the release environment or set PY=/path/to/python." >&2
+  exit 2
+fi
 OUT="${OUT:-experiments/heterogeneous_agents/runs/sota_reproduction_20260729_v1}"
 PARSER_MODE="${PARSER_MODE:-legacy-20260729}"
 STAGE="${1:-status}"

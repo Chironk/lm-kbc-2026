@@ -7,10 +7,27 @@ set -Eeuo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
-PY="${PY:-/home/hongjing/miniconda3/envs/lm-kbc-2026/bin/python}"
+PY="${PY:-$(command -v python || true)}"
+if [[ -z "$PY" || ! -x "$PY" ]]; then
+  echo "Python was not found. Activate the release environment or set PY=/path/to/python." >&2
+  exit 2
+fi
 OUT="${OUT:-experiments/heterogeneous_agents/runs/historical_sota_single_ministral_test_20260810_v1}"
 INPUT="${INPUT:-data/test.jsonl}"
-DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
+if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+  DEVICES="$CUDA_VISIBLE_DEVICES"
+elif command -v nvidia-smi >/dev/null 2>&1; then
+  DEVICES="$(nvidia-smi --query-gpu=index --format=csv,noheader | paste -sd, -)"
+else
+  DEVICES="0"
+fi
+IFS=',' read -r -a DEVICE_LIST <<< "$DEVICES"
+DETECTED_WORKERS="${#DEVICE_LIST[@]}"
+WORKERS="${NUM_WORKERS:-$DETECTED_WORKERS}"
+if [[ ! "$WORKERS" =~ ^[1-9][0-9]*$ ]] || (( WORKERS > DETECTED_WORKERS )); then
+  echo "NUM_WORKERS must be between 1 and the $DETECTED_WORKERS visible GPUs." >&2
+  exit 2
+fi
 ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-max_split_size_mb:128,garbage_collection_threshold:0.8}"
 MODULE="experiments.heterogeneous_agents.historical_sota_test_pipeline"
 STAGE="${1:-status}"
@@ -79,15 +96,15 @@ case "$STAGE" in
     ;;
   generate-gemma)
     require_plan
-    generate_route "gemma:independent" 4 2 10 2>&1 | tee -a "$LOG"
+    generate_route "gemma:independent" "$WORKERS" 2 10 2>&1 | tee -a "$LOG"
     ;;
   generate-ministral-n3)
     require_plan
-    generate_route "ministral:self_consistency" 4 2 10 2>&1 | tee -a "$LOG"
+    generate_route "ministral:self_consistency" "$WORKERS" 2 10 2>&1 | tee -a "$LOG"
     ;;
   generate-ministral-n10)
     require_plan
-    generate_route "ministral:cot5_cap40_n10" 4 1 10 2>&1 | tee -a "$LOG"
+    generate_route "ministral:cot5_cap40_n10" "$WORKERS" 1 10 2>&1 | tee -a "$LOG"
     ;;
   generate)
     "$0" generate-primary

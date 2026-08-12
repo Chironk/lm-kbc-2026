@@ -1,6 +1,6 @@
-# Exact versions in the environment used for the 2026-07-11 robust-pipeline
-# implementation. requirements.txt remains the portable install specification;
-# use this file when reproducing an artifact environment.
+# Exact versions captured from the final paper-release environment.
+# requirements.txt remains the portable install specification; use this file
+# when reproducing the recorded artifact environment.
 pandas==3.0.3
 torch==2.13.0
 transformers==5.13.0

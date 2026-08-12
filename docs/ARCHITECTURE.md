@@ -1,62 +1,80 @@
-# Final architecture and code map
+# Paper-system architecture and code map
 
-## Supported path
+## Supported architecture
 
-The supported system is a single frozen pipeline, not a sequence of manual
-post-hoc edits. The shell launcher delegates task planning and generation to
-`end_to_end_pipeline.py`, then delegates graph construction, decoding,
-validation, and packaging to `final_submission_pipeline.py`.
+The release system has one model-generation phase and one deterministic
+decoding phase.
 
-1. **Plan.** Strip labels from the selected split, bind every task to pinned
-   model/config/prompt hashes, and create resumable route task files.
-2. **Generate.** Run Qwen, Gemma, and Ministral independently. Qwen provides
-   the retained incumbent and raw samples; Gemma adds an independent proposal;
-   Ministral contributes a three-sample route and a ten-sample SyntheticCoT
-   route.
-3. **Build the evidence graph.** Normalize answer surfaces into candidate
-   components while preserving complete generation events. Directed
-   `supports` edges connect an event to every component in that event's
-   complete answer set. Event attributes retain model family, route, and
-   sample identity.
-4. **Decode.** Apply the frozen cardinality, numeric, route, component, and
-   Ministral support stages to produce an incumbent answer set.
-5. **Symbolic correction.** For entity-valued relations, compare complete
-   challenger sets using independent-family support, cross-family set
-   compatibility, and output-structure safeguards. For `hasCapacity`, use the
-   scalar-numeric proof: valid singleton values are grouped under the official
-   5% tolerance and a replacement requires a strict family-evidence advantage.
-   Invalid graph evidence fails closed to the incumbent.
-6. **Package.** Validate key coverage and artifact contracts, then create a zip
-   with one root-level `predictions.jsonl`.
+1. **Plan label-free tasks.** The planner strips answer labels, selects
+   relation-matched SyntheticCoT demonstrations, binds model and prompt hashes,
+   and creates resumable task files.
+2. **Sample the three models independently.** Qwen supplies the initial answer
+   and ten proposal samples, Gemma supplies one independent proposal, and
+   Ministral supplies a zero-shot three-sample route plus a five-shot,
+   ten-sample route. The zero-shot route is used only by the retained area
+   stage; complete outputs from the other routes remain available to the graph.
+3. **Build the evidence graph.** Each sampled complete answer is an evidence
+   event. Each normalized answer is a candidate component. A directed
+   `supports` edge connects an event to each answer that appeared in that
+   complete sampled set. Event attributes preserve the model, route, and sample
+   identity, so repetition within one model remains distinct from agreement
+   across models.
+4. **Construct a provisional set.** Frozen stages begin with Qwen's retained
+   answer and apply learned cardinality, numeric, route-residual, surface, and
+   high-support Ministral corrections. A failed artifact contract leaves the
+   previous answer unchanged.
+5. **Apply the rule-based graph correction.** The decoder reconstructs complete
+   alternative sets from evidence events. An alternative can replace the
+   provisional answer only when at least two model families produced it,
+   every family produced a sufficiently compatible complete set, the sampled
+   answer structure supports the change, and the result does not expand the
+   provisional set. `awardWonBy` keeps the provisional answer because its
+   retained Qwen evidence is aggregated differently and is not comparable at
+   the sampled-set level.
+6. **Package.** The runner verifies row order, split identity, artifact hashes,
+   and archive contents before writing one root-level `predictions.jsonl`.
+
+This is a graph-based set decoder, not a GNN. The graph provides explicit,
+query-local relationships between sampled answer sets and normalized answers;
+the final decision is made by audited deterministic rules.
 
 ## Model portfolio
 
-| Family | Pinned checkpoint | Parameters | Main role |
+| Model | Pinned checkpoint | Parameters | Generation role |
 |---|---|---:|---|
-| Qwen | `Qwen/Qwen3.5-9B` | 9,409,813,744 | primary proposals and incumbent |
-| Gemma | `google/gemma-3-12b-it` | 12,187,325,040 | independent proposal route |
-| Ministral | `mistralai/Ministral-3-8B-Instruct-2512-BF16` | 8,918,026,240 | heterogeneous proposal and support routes |
-| **Total** | | **30,515,165,024** | under the 32B cap |
+| Qwen | `Qwen/Qwen3.5-9B` | 9,409,813,744 | initial answer and repeated proposals |
+| Gemma | `google/gemma-3-12b-it` | 12,187,325,040 | independent proposal |
+| Ministral | `mistralai/Ministral-3-8B-Instruct-2512-BF16` | 8,918,026,240 | heterogeneous repeated proposals |
+| **Total** | | **30,515,165,024** | below the 32B cap |
 
-Exact revisions and parameter counts are in `configs/final/` and
-`artifacts/frozen/MANIFEST.json`.
+Exact revisions, runtime settings, and count provenance are stored in
+`configs/final/` and `artifacts/frozen/MANIFEST.json`.
 
-## Production entrypoints
+## Authoritative entry points
 
-- `run_final_submission_pipeline.sh`: only user-facing final launcher.
-- `final_submission_pipeline.py`: final graph schema, decoder order, scoring,
-  and package contract.
-- `end_to_end_pipeline.py`: label-free task plan and route generation.
-- `run_submission.py`: retained production Qwen route.
-- `run_agent.py`: isolated Gemma/Ministral route execution.
+- `run_paper_system.sh` is the public shell interface.
+- `historical_sota_test_pipeline.py` pins the architecture associated with the
+  official 0.4845 submission and performs graph construction, decoding, and
+  packaging.
+- `end_to_end_pipeline.py` creates label-free route tasks.
+- `run_submission.py` runs the retained Qwen policy.
+- `run_agent.py` runs the pinned Gemma and Ministral routes.
+- `run_sota_reproduction.sh` replays the tracked development evidence.
 
-The tested graph transforms, feature definitions, and decoder stages imported
-by the final pipeline live under `experiments/heterogeneous_agents/components/`.
-They are implementation dependencies, not separate recommended pipelines.
-Optional post-hoc visualization code is isolated under `analysis/`.
+The name `historical_sota_test_pipeline.py` is retained deliberately: changing
+it would obscure the provenance linking the runner to the archived submission.
+`final_submission_pipeline.py` and the modules under `components/` remain
+implementation dependencies and records of later audits; they are not a
+second advertised paper-system launcher.
 
-## Frozen decoder artifacts
+## Reproducibility tiers
 
-`artifacts/frozen/MANIFEST.json` is the root of trust. It binds the five small
-decoder artifacts by SHA-256 and records the model parameter contract. It
-contains no split-specific predictions and no test labels.
+1. **Exact submitted result:** verify or extract the tracked official zip.
+2. **Exact deterministic development replay:** rebuild predictions from tracked
+   evidence and frozen small decoder artifacts.
+3. **Fresh model inference:** regenerate evidence using pinned checkpoints,
+   prompts, and seeds. This reproduces the procedure, while stochastic GPU
+   kernels and quantization can produce different sampled text.
+
+These tiers prevent an exact artifact claim from being confused with a claim
+of byte-identical generative inference.
