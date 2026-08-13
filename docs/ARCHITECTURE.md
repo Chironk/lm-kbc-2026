@@ -11,8 +11,9 @@ decoding phase.
 2. **Sample the three models independently.** Qwen supplies the initial answer
    and ten proposal samples, Gemma supplies one independent proposal, and
    Ministral supplies a zero-shot three-sample route plus a five-shot,
-   ten-sample route. The zero-shot route is used only by the retained area
-   stage; complete outputs from the other routes remain available to the graph.
+   ten-sample route. The zero-shot route's direct replacement action is used
+   only by the retained area stage; complete sampled sets from every route
+   remain available to the evidence graph.
 3. **Build the evidence graph.** Each sampled complete answer is an evidence
    event. Each normalized answer is a candidate component. A directed
    `supports` edge connects an event to each answer that appeared in that

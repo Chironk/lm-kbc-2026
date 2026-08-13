@@ -58,6 +58,18 @@ prediction is also retained and hash-pinned at
 It scores 0.5207285306041929 with the tracked evaluator and is marked in its
 manifest as a development-informed graph refinement.
 
+The organizers later revised the validation split from 478 to 475 queries.
+The label-free migration and official rescoring of the frozen strict prediction
+are reproduced with:
+
+```bash
+python -m experiments.heterogeneous_agents.rekey_frozen_validation
+```
+
+This writes the tracked 475-row compatibility artifact and reproduces the
+paper's revised-validation macro-F1 of 0.5282278686922194. It is a migration of
+already-frozen predictions, not fresh model inference on renamed subjects.
+
 ## 3. Fresh paper-system inference
 
 The public launcher delegates to the hash-pinned historical implementation:
@@ -115,11 +127,12 @@ OUT=experiments/heterogeneous_agents/runs/paper_test \
 bash experiments/heterogeneous_agents/run_paper_system.sh generate
 ```
 
-The tested release topology is four 11-GiB RTX 2080 Ti GPUs. Two 11-GiB GPUs
-are supported by the launcher's placement logic, but they have lower
-throughput and less fp16 headroom; run `preflight` and the per-route smoke
-tasks before committing to a full run. On 11-GiB GPUs, keep generation batch
-size at one as pinned by the launcher.
+The qualified release topology is four 11-GiB RTX 2080 Ti GPUs. The launcher
+can use fewer visible NVIDIA GPUs, but those layouts have lower throughput and
+less fp16 headroom and are not claimed as equivalent hardware validation.
+Run `preflight` and the per-route smoke tasks before committing to a full run.
+On 11-GiB GPUs, keep generation batch size at one as pinned by the launcher.
+CPU-only, Apple-Silicon, and AMD/ROCm model inference are not supported.
 
 ## 5. What fresh inference can and cannot reproduce
 

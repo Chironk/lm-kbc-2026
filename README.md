@@ -34,6 +34,9 @@ upstream repository; see [the task documentation](docs/OFFICIAL_TASK.md).
   reproduces the staged prediction artifact at **0.5184496 macro-F1**. The
   tracked final graph-corrected development prediction is separately pinned at
   **0.5207285 macro-F1** and labeled as a development-informed refinement.
+  Applying the organizer's published, label-free 478-to-475 query-key migration
+  gives the paper's revised-validation score of **0.5282279 macro-F1**; both the
+  migrated predictions and their official-evaluator score are hash-verified.
 - `artifacts/frozen/MANIFEST.json` binds the small trained decoder artifacts and
   the 30.515B parameter contract.
 - `configs/final/paper_system_contract.json` is the machine-checked source of
@@ -70,7 +73,7 @@ imports much of this tested dependency closure.
 
 ## Setup
 
-Python 3.11 and CUDA-capable PyTorch are required for model inference.  The
+Python 3.11 and CUDA-capable PyTorch are required for model inference. The
 portable direct-dependency lock is `requirements-lock.txt`; the complete
 dependency closure recorded for the final Linux/CUDA 13.0 environment is
 `requirements-repro-cu130.txt`.
@@ -89,6 +92,13 @@ pip install -r requirements-repro-cu130.txt
 
 Gemma is a gated Hugging Face checkpoint. Accept its model license and log in
 with a read token before preflight; never store that token in the repository.
+
+The release is qualified on Linux with four 11-GiB NVIDIA RTX 2080 Ti GPUs.
+The launcher detects fewer visible NVIDIA GPUs and can trade throughput for
+model sharding, but a successful preflight is required before a full run.
+CPU-only, Apple-Silicon, AMD/ROCm, and arbitrary low-memory CUDA inference are
+not claimed as supported configurations. Model-free verification, scoring,
+planning, and unit tests remain CPU-safe.
 
 For tests only:
 

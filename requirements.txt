@@ -9,5 +9,4 @@ PyYAML
 accelerate
 bitsandbytes
 huggingface-hub
-google-genai
 python-dotenv

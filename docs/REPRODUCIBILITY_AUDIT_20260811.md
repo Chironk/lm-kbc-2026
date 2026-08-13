@@ -1,5 +1,11 @@
 # Reproducibility audit — 2026-08-11
 
+> **Historical audit snapshot.** The paper and release documentation were
+> revised after this audit. Paper-alignment statuses below describe the draft
+> reviewed on 2026-08-11, not the current release. The current executable
+> source of truth is `configs/final/paper_system_contract.json`, enforced by
+> `scripts/verify_release.py`.
+
 ## Scope and standard
 
 This audit covers the architecture associated with the preserved official-test

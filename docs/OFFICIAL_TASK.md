@@ -4,9 +4,9 @@ This repository hosts data for the [AKBC Shared Task](https://lm-kbc.github.io/c
 
 This repository contains:
 
-- The [dataset](data/) for the shared task
-- [Evaluation script](evaluate.py)
-- [Baseline code](models/)
+- The [dataset](../data/) for the shared task
+- [Evaluation script](../evaluate.py)
+- [Baseline code](../models/)
 - Instructions for submitting your predictions
 
 ## Table of contents
@@ -138,7 +138,7 @@ We evaluate predictions using **macro precision, recall, and F1-score**.
 For **string relations**, predicted strings are normalized (case-folded, diacritics removed, apostrophe-like marks dropped, punctuation of any script treated as whitespace) and matched against the ground-truth label and its known aliases via maximum bipartite matching — each gold entity credits at most one prediction and vice versa, independent of prediction order. Predictions are deduplicated by normalized string; note that predicting several surface forms of the *same* entity (e.g. `["NYC", "New York City"]`) counts as separate predictions and lowers precision.
 For **numeric relations** (`hasCapacity`, `hasArea`), a prediction is correct if it falls within **5% relative tolerance** of the ground-truth value.
 
-See the evaluation script ([evaluate.py](evaluate.py)) for details.
+See the evaluation script ([evaluate.py](../evaluate.py)) for details.
 
 ```bash
 python evaluate.py \
@@ -184,10 +184,11 @@ Parameters: ``-g`` (the ground truth file), ``-p`` (the prediction file).
 #### Baseline: Qwen3.5-9B
 
 Config
-file: [configs/baseline-qwen-3.5-9b.yaml](configs/baseline-qwen-3.5-9b.yaml)
+file: [configs/baseline-qwen-3.5-9b.yaml](../configs/baseline-qwen-3.5-9b.yaml)
 
 ```bash
-python baseline.py -c configs/baseline-qwen-3.5-9b.yaml -i data/val.jsonl
+python run_baseline.py -c configs/baseline-qwen-3.5-9b.yaml \
+  -i data/val.jsonl -o output/baseline-qwen-3.5-9b.jsonl
 python evaluate.py -p output/baseline-qwen-3.5-9b.jsonl -g data/val.jsonl
 ```
 
