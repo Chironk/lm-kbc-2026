@@ -1,6 +1,6 @@
 {
   "arm": "exact_support_cardinality",
-  "baseline": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/ministral_cot40_validation_confirmation_20260729_v1/VALIDATION_PREDICTIONS.jsonl",
+  "baseline": "experiments/heterogeneous_agents/runs/ministral_cot40_validation_confirmation_20260729_v1/VALIDATION_PREDICTIONS.jsonl",
   "baseline_scores": {
     "*** All Relations ***": 0.5184496147269507,
     "awardWonBy": 0.11437184878144793,
@@ -45,7 +45,7 @@
     "hasCapacity": 0.16,
     "personHasCityOfDeath": 0.5
   },
-  "frozen_policy": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/cot40_cardinality_validation_confirmation_20260730_v1/plan/FROZEN_POLICY.json",
+  "frozen_policy": "experiments/heterogeneous_agents/runs/cot40_cardinality_validation_confirmation_20260730_v1/plan/FROZEN_POLICY.json",
   "frozen_policy_sha256": "8149952f3a54ce0e581e08cacf7f811645f12c000f174f19faa463e0f427ecf0",
   "gold_aware": true,
   "paired_audit": {
@@ -785,7 +785,7 @@
     "helped": 13,
     "neutral": 20
   },
-  "predictions": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/cot40_cardinality_validation_confirmation_20260730_v1/VALIDATION_PREDICTIONS.jsonl",
+  "predictions": "experiments/heterogeneous_agents/runs/cot40_cardinality_validation_confirmation_20260730_v1/VALIDATION_PREDICTIONS.jsonl",
   "predictions_sha256": "7a0d9e0dd897836065e2573d8b323ee39c27b7f990059700c7954b116168b8f6",
   "schema": "cot40-cardinality-validation-confirmation-result-v1",
   "scores": {
@@ -797,7 +797,7 @@
     "hasCapacity": 0.18,
     "personHasCityOfDeath": 0.47
   },
-  "validation_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/val.jsonl",
+  "validation_gold": "data/val.jsonl",
   "validation_gold_sha256": "90e4f2475e7e69caf9316ffd3b2e0bc4fe2cd428a99027f2abf08c9f88c18d02",
   "validation_labels_used_for_policy_selection": false,
   "validation_lineage_previously_selected": true,

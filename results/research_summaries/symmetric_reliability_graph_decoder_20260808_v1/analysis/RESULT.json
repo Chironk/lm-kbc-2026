@@ -1789,7 +1789,7 @@
       }
     }
   ],
-  "plan": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/symmetric_reliability_graph_decoder_20260808_v1/plan/PLAN.json",
+  "plan": "experiments/heterogeneous_agents/runs/symmetric_reliability_graph_decoder_20260808_v1/plan/PLAN.json",
   "plan_sha256": "5d31a3ae314560d30ee965be9aa05fc8e3cc95332064cec11e7863e8a7598226",
   "promotion_checks": {
     "beats_or_matches_staged": true,
@@ -2973,7 +2973,7 @@
     "hasCapacity": 0.15,
     "personHasCityOfDeath": 0.47
   },
-  "train_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "train_gold": "data/train.jsonl",
   "train_gold_sha256": "cb344aa3f153b30f4179f3c912ccfca19ae4e71288993292a093585d068a2c74",
   "training_labels_used": true,
   "validation_opened": false

@@ -489,7 +489,7 @@
     "personHasCityOfDeath": 0.0
   },
   "next_stage": "retain_coherent_set_target_but_reject_current_medoid_selector",
-  "plan": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/generation_set_hypothesis_audit_20260801_v1/plan/PLAN.json",
+  "plan": "experiments/heterogeneous_agents/runs/generation_set_hypothesis_audit_20260801_v1/plan/PLAN.json",
   "plan_sha256": "3705b622d217b8dece7e099f9be7e0eac94e609f3dd93ad99ab4c6df3ef18e70",
   "schema": "generation-set-hypothesis-result-v1",
   "selector_gate_checks": {
@@ -500,7 +500,7 @@
     "relation_floor": false
   },
   "selector_gate_passed": false,
-  "train_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "train_gold": "data/train.jsonl",
   "train_gold_sha256": "cb344aa3f153b30f4179f3c912ccfca19ae4e71288993292a093585d068a2c74",
   "validation_labels_used": false,
   "validation_opened": false

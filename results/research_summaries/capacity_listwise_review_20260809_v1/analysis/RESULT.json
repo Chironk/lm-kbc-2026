@@ -49,7 +49,7 @@
   "neutral": 23,
   "oof_capacity": 0.12,
   "oof_delta": -0.03,
-  "plan": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/capacity_listwise_review_20260809_v1/plan/PLAN.json",
+  "plan": "experiments/heterogeneous_agents/runs/capacity_listwise_review_20260809_v1/plan/PLAN.json",
   "plan_sha256": "ddb902a33045bdbb90f01fc0ce8e45769d0095e1f3fb0087083bdd03e6146c54",
   "promotion_checks": {
     "fold_floor": true,
@@ -59,7 +59,7 @@
     "positive_folds": false
   },
   "promotion_gate_passed": false,
-  "review_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/capacity_listwise_review_20260809_v1/analysis/TRAIN_REVIEW_GRAPH.jsonl",
+  "review_graph": "experiments/heterogeneous_agents/runs/capacity_listwise_review_20260809_v1/analysis/TRAIN_REVIEW_GRAPH.jsonl",
   "review_graph_sha256": "8c28acb467bf382f60b533a6a09207bddcdbbb5c92e92dc4571f9e2bb15bc538",
   "schema": "capacity-listwise-review-train-result-v1"
 }

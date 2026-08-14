@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import zipfile
@@ -90,6 +91,66 @@ def release_files() -> tuple[list[str], str]:
         if path.is_file() and ".git" not in path.relative_to(ROOT).parts
     ]
     return sorted(files), "filesystem"
+
+
+def verify_public_tree(paths: list[str]) -> dict:
+    """Reject credentials and machine-specific endpoints from release files."""
+    secret_patterns = {
+        "GitHub token": re.compile(
+            r"(?:github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,})"),
+        "Hugging Face token": re.compile(r"\bhf_[A-Za-z0-9]{20,}\b"),
+        "OpenAI-style key": re.compile(r"(?<![A-Za-z0-9])sk-[A-Za-z0-9_-]{20,}"),
+        "Google API key": re.compile(r"\bAIza[0-9A-Za-z_-]{30,}\b"),
+        "AWS access key": re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
+        "private key": re.compile(
+            r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----"),
+        "literal bearer token": re.compile(
+            r"Authorization:\s*Bearer\s+[A-Za-z0-9._-]{12,}", re.IGNORECASE),
+    }
+    # Assemble platform roots so this scanner does not flag its own patterns.
+    linux_home = "/" + "home/"
+    mac_home = "/" + "Users/"
+    workstation_path = re.compile(
+        rf"(?:{re.escape(linux_home)}[^/\s]+/|"
+        rf"{re.escape(mac_home)}[^/\s]+/|"
+        r"[A-Za-z]:\\Users\\[^\\\s]+\\)"
+    )
+    network_endpoint = re.compile(
+        r"(?:https?://|ssh://|\b(?:HOST|HOSTNAME|SERVER|ENDPOINT)\s*[:=]\s*)"
+        r"(?:10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|"
+        r"172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})",
+        re.IGNORECASE,
+    )
+    findings: list[str] = []
+    scanned = 0
+    binary_suffixes = {
+        ".gif", ".gz", ".jpeg", ".jpg", ".npz", ".pdf", ".png",
+        ".pyc", ".tar", ".zip",
+    }
+    for raw in paths:
+        path = ROOT / raw
+        if path.suffix.lower() in binary_suffixes:
+            continue
+        try:
+            text = path.read_text()
+        except (OSError, UnicodeDecodeError):
+            continue
+        scanned += 1
+        if workstation_path.search(text):
+            findings.append(f"machine-specific absolute path: {raw}")
+        if network_endpoint.search(text):
+            findings.append(f"private network endpoint: {raw}")
+        for label, pattern in secret_patterns.items():
+            if pattern.search(text):
+                findings.append(f"{label}: {raw}")
+    if findings:
+        fail(f"public-tree hygiene violations: {findings[:5]}")
+    return {
+        "files_scanned": scanned,
+        "machine_specific_paths": 0,
+        "private_network_endpoints": 0,
+        "credential_patterns": 0,
+    }
 
 
 def verify_official_submission() -> dict:
@@ -432,6 +493,7 @@ def main() -> int:
             bad.append(raw)
     if bad:
         fail(f"generated/private files are tracked: {bad[:5]}")
+    public_tree_audit = verify_public_tree(tracked)
 
     official_submission = verify_official_submission()
     development_candidates = verify_development_candidates()
@@ -487,6 +549,7 @@ def main() -> int:
         "official_test_submission": official_submission,
         "tracked_files": len(tracked),
         "inventory_mode": inventory_mode,
+        "public_tree_audit": public_tree_audit,
     }, indent=2, sort_keys=True))
     return 0
 

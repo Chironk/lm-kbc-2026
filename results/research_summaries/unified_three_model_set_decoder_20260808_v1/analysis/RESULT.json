@@ -38,7 +38,7 @@
     "rows": 477,
     "rows_with_alternatives": 442
   },
-  "model": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/unified_three_model_set_decoder_20260808_v1/model/FROZEN_MODEL.json",
+  "model": "experiments/heterogeneous_agents/runs/unified_three_model_set_decoder_20260808_v1/model/FROZEN_MODEL.json",
   "model_sha256": "3dcfcc736b24fb311fa36e91ce917e98ac212d639641c35895953f383ef17a60",
   "nested_oof_action_audit": {
     "changed": 43,

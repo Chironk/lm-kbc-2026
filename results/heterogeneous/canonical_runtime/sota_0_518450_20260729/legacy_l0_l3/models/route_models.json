@@ -1,5 +1,5 @@
 {
-  "base_train_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/production_matched_oof_20260723_v1/graphs/train_graph.jsonl",
+  "base_train_graph": "experiments/heterogeneous_agents/runs/production_matched_oof_20260723_v1/graphs/train_graph.jsonl",
   "base_train_graph_sha256": "7f5ec48a620bc20fa52442a48f7e1e33023c00826993eecb3bca29c7cf2fa91b",
   "chosen_arm": {
     "companyTradesAtStockExchange": "route_agreement",
@@ -20,7 +20,7 @@
       "personHasCityOfDeath": false
     }
   },
-  "folds": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
+  "folds": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
   "folds_sha256": "c234d3b33b2b3f6dbfe941d77edeb34f09bc8cb268a4d9442579e57262f2963e",
   "guard_margins": [
     0.0,
@@ -1126,7 +1126,7 @@
       }
     }
   },
-  "route_train_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/route_aware_graph_20260723_v1/graphs/train_graph.jsonl",
+  "route_train_graph": "experiments/heterogeneous_agents/runs/route_aware_graph_20260723_v1/graphs/train_graph.jsonl",
   "route_train_graph_sha256": "395f3139dd318697320cb4806784ff2d2173cecb00b792c7a84bb7d029b6771e",
   "schema": "baseline-relative-route-decoder-models-v1",
   "selected_margins": {

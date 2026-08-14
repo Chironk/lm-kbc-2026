@@ -1206,7 +1206,7 @@
       "selected_arm": "identity"
     }
   ],
-  "plan": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/all_three_first_graph_decoder_20260808_v1/plan/PLAN.json",
+  "plan": "experiments/heterogeneous_agents/runs/all_three_first_graph_decoder_20260808_v1/plan/PLAN.json",
   "plan_sha256": "ea54d84efeeebf09a138c25acfaf2c60403ff9d674db0aa2030eb3f5c341494f",
   "promotion_checks": {
     "beats_qwen_incumbent": true,
@@ -1233,7 +1233,7 @@
     "hasCapacity": 0.15,
     "personHasCityOfDeath": 0.47
   },
-  "train_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "train_gold": "data/train.jsonl",
   "train_gold_sha256": "cb344aa3f153b30f4179f3c912ccfca19ae4e71288993292a093585d068a2c74",
   "validation_opened": false
 }

@@ -3129,7 +3129,7 @@
     "component_rows_decoded": 467,
     "contains_labels": false,
     "deployable": false,
-    "folds": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
+    "folds": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
     "folds_sha256": "c234d3b33b2b3f6dbfe941d77edeb34f09bc8cb268a4d9442579e57262f2963e",
     "gold_aware": true,
     "oof_model_excludes_subject": true,
@@ -3138,17 +3138,17 @@
     "split": "train",
     "stages": [
       {
-        "artifact": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/july_component_oof_parity_20260726_v1/train_oof_selected.jsonl",
-        "model": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/july_component_oof_parity_20260726_v1/models.json",
-        "model_sha256": "f026a55f22a00125ca6991df046a674fc72e951bb740859196769961d90526bd",
+        "artifact": "experiments/heterogeneous_agents/runs/july_component_oof_parity_20260726_v1/train_oof_selected.jsonl",
+        "model": "experiments/heterogeneous_agents/runs/july_component_oof_parity_20260726_v1/models.json",
+        "model_sha256": "0d69e384abc3bea789f4ce406583c1de7be7ec3246b57fb6d5318c539c81a8a4",
         "name": "july_component_decoder",
         "sha256": "3a849305bc0f62d2866c67edc4e25ac7029a5e3544b57939e6cbff68fa0b201d",
-        "source_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/targeted_company_gemma_n3_20260724_v1/graphs/train_graph.jsonl",
+        "source_graph": "experiments/heterogeneous_agents/runs/targeted_company_gemma_n3_20260724_v1/graphs/train_graph.jsonl",
         "source_graph_sha256": "5d203e00aa128c744c5f57b6dedabe58d5f3aac75dda515f14e4921e18559855"
       },
       {
-        "artifact": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/july_legacy_capacity_veto_20260726_v1/TRAIN_OOF.jsonl",
-        "gate": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/july_legacy_capacity_veto_20260726_v1/TRAIN_GATE.json",
+        "artifact": "experiments/heterogeneous_agents/runs/july_legacy_capacity_veto_20260726_v1/TRAIN_OOF.jsonl",
+        "gate": "experiments/heterogeneous_agents/runs/july_legacy_capacity_veto_20260726_v1/TRAIN_GATE.json",
         "gate_sha256": "211ce820646500e4b7b2bcc1577a9a07fcb336a00580ffb49eb70cbe2a91e4d6",
         "name": "capacity_qwen_precision_veto",
         "sha256": "8bc86d92999cab5efb25ba828500a8e230e775ed15462b7ac3c3693e4ea265a9"
@@ -3167,7 +3167,7 @@
     "hasCapacity": 0.18,
     "personHasCityOfDeath": 0.48
   },
-  "plan": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/ministral_cot40_training_20260729_v1/plan/PLAN.json",
+  "plan": "experiments/heterogeneous_agents/runs/ministral_cot40_training_20260729_v1/plan/PLAN.json",
   "plan_sha256": "5cf0949e0849b70e81d77c930a5a8fb8620f3011256471ccc9e08c047391cd64",
   "schema": "ministral-cot40-training-result-v1",
   "selection_must_be_frozen_before_validation": true,
@@ -3181,7 +3181,7 @@
     "personHasCityOfDeath": 0.66
   },
   "split": "train",
-  "train_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "train_gold": "data/train.jsonl",
   "train_gold_sha256": "cb344aa3f153b30f4179f3c912ccfca19ae4e71288993292a093585d068a2c74",
   "validation_labels_used": false,
   "validation_opened": false

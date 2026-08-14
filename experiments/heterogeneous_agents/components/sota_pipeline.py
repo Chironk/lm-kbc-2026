@@ -73,7 +73,7 @@ EXPECTED = {
     },
     "component_model": {
         "path": COMPONENT_MODEL,
-        "sha256": "f026a55f22a00125ca6991df046a674fc72e951bb740859196769961d90526bd",
+        "sha256": "0d69e384abc3bea789f4ce406583c1de7be7ec3246b57fb6d5318c539c81a8a4",
     },
     "component_source_graph": {
         "path": COMPONENT_SOURCE_GRAPH,

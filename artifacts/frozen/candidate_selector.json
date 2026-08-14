@@ -105,10 +105,10 @@
     "l2": 2.0
   },
   "candidate_weighting": "row-agent-balanced",
-  "chosen_oof_predictions": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/selector/selector.oof_predictions.jsonl",
+  "chosen_oof_predictions": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/selector/selector.oof_predictions.jsonl",
   "chosen_oof_predictions_sha256": "2fa8007baab15869296aaea16c9efb63e4f1665b93d639ccb9fd0e8cae62e65c",
   "decoder_utility_schema": "symmetric-output-utility-v2",
-  "fold_manifest": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
+  "fold_manifest": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
   "fold_manifest_sha256": "c234d3b33b2b3f6dbfe941d77edeb34f09bc8cb268a4d9442579e57262f2963e",
   "folds": 5,
   "guard_margin": 0.3,
@@ -1723,9 +1723,9 @@
       "personHasCityOfDeath": 0.45
     }
   },
-  "training_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "training_gold": "data/train.jsonl",
   "training_gold_sha256": "71266f91f36940a27786f345bec33d7974b7d2a95e496a7802f859474780e088",
-  "training_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/graphs/train_graph.jsonl",
+  "training_graph": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/graphs/train_graph.jsonl",
   "training_graph_sha256": "b05d03f5e36dfd1da3923c5dfbfa898550414c03ae38cbac3295349fffbdcd99",
   "training_source_diagnostics": {
     "by_relation": {

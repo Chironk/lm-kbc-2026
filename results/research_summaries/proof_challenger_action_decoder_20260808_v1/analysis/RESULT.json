@@ -20,7 +20,7 @@
     "hasCapacity": 0.15,
     "personHasCityOfDeath": 0.47
   },
-  "model": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/proof_challenger_action_decoder_20260808_v1/model/FROZEN_MODEL.json",
+  "model": "experiments/heterogeneous_agents/runs/proof_challenger_action_decoder_20260808_v1/model/FROZEN_MODEL.json",
   "model_sha256": "8aaf3a185acef79db9655205ff620c77c724dae94c4486f230235640d8bdb4b7",
   "nested_oof_action_audit": {
     "changed": 3,

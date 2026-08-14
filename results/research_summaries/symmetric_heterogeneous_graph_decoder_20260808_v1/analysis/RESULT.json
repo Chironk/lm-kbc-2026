@@ -173,7 +173,7 @@
   },
   "contains_labels": true,
   "development_only": true,
-  "gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/train.jsonl",
+  "gold": "data/train.jsonl",
   "gold_aware": true,
   "gold_sha256": "cb344aa3f153b30f4179f3c912ccfca19ae4e71288993292a093585d068a2c74",
   "next_stage": "reject_symmetric_decoder_and_retain_staged_policy",

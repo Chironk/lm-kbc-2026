@@ -93,7 +93,7 @@
     "personHasCityOfDeath": 0.47
   },
   "posthoc_after_failed_train_gate": true,
-  "predictions": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/strict_numeric_proof_20260809_v1/validation/VALIDATION_PREDICTIONS.jsonl",
+  "predictions": "experiments/heterogeneous_agents/runs/strict_numeric_proof_20260809_v1/validation/VALIDATION_PREDICTIONS.jsonl",
   "predictions_sha256": "48eae7b626c0148bfc302dae08fe255e769b8dc466d54d8b9f22a2b44cefd846",
   "schema": "strict-numeric-proof-validation-result-v1",
   "scores": {
@@ -105,7 +105,7 @@
     "hasCapacity": 0.17,
     "personHasCityOfDeath": 0.47
   },
-  "validation_gold": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/data/val.jsonl",
+  "validation_gold": "data/val.jsonl",
   "validation_gold_sha256": "90e4f2475e7e69caf9316ffd3b2e0bc4fe2cd428a99027f2abf08c9f88c18d02",
   "validation_labels_opened_after_prediction_freeze": true,
   "validation_labels_used_for_policy_selection": false

@@ -22,7 +22,7 @@
     "rows_with_challenger": 41,
     "unique_challengers": 41
   },
-  "model": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/full_inventory_proof_action_decoder_20260808_v1/model/FROZEN_MODEL.json",
+  "model": "experiments/heterogeneous_agents/runs/full_inventory_proof_action_decoder_20260808_v1/model/FROZEN_MODEL.json",
   "model_sha256": "850ab3c89c9d0ba505cc12b92b94d86da45db955ba48dc2af5aedd22af6f075a",
   "nested_oof_action_audit": {
     "changed": 11,

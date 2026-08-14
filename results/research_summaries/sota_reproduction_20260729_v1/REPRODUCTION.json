@@ -43,15 +43,15 @@
   "official_pooled_macro_f1": 0.5184496147269507,
   "parser_mode": "legacy-20260729",
   "pipeline_id": "development_sota_0_518450_20260729",
-  "prediction": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/sota_reproduction_20260729_v1/VALIDATION_PREDICTIONS.jsonl",
+  "prediction": "experiments/heterogeneous_agents/runs/sota_reproduction_20260729_v1/VALIDATION_PREDICTIONS.jsonl",
   "prediction_sha256": "6c4d4bb1ed60054cb1b2d9a6aa728a1a5f0422c714bdd8486963cc986ca348ae",
   "reproduction_tier": "frozen_model_inference_and_evidence_replay",
   "rows": 478,
   "schema": "heterogeneous-sota-reproduction-result-v1",
-  "snapshot_manifest": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/results/heterogeneous/canonical_runtime/sota_0_518450_20260729/ARTIFACTS.json",
+  "snapshot_manifest": "results/heterogeneous/canonical_runtime/sota_0_518450_20260729/ARTIFACTS.json",
   "snapshot_manifest_sha256": "1f6e78f950a12d98e84f51fac5de7126cfdb4ac698c69776e7647fa85a271dc3",
   "unexplained_divergences": 0,
-  "unified_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/sota_reproduction_20260729_v1/graph/UNIFIED_VALIDATION_GRAPH.jsonl",
+  "unified_graph": "experiments/heterogeneous_agents/runs/sota_reproduction_20260729_v1/graph/UNIFIED_VALIDATION_GRAPH.jsonl",
   "unified_graph_sha256": "6f65087ba9b8a03a5dbd401424af99ed69840a55328f1b4914c7d6b145c57486",
   "validation_selected_lineage": true
 }

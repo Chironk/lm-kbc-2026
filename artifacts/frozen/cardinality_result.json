@@ -733,7 +733,7 @@
       "rows": 477
     }
   },
-  "predictions": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/explicit_cardinality_ablation/validation_predictions.jsonl",
+  "predictions": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/explicit_cardinality_ablation/validation_predictions.jsonl",
   "predictions_sha256": "56b80325c6b6a7e6554de7e5832eed9725f9ea76c9783247aa3d3bf05f9cfac4",
   "schema": "explicit-cardinality-ablation-v1",
   "scores": {
@@ -754,7 +754,7 @@
     "hasCapacity": 0.16,
     "personHasCityOfDeath": 0.49
   },
-  "source_train_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/graphs/train_graph.jsonl",
+  "source_train_graph": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/graphs/train_graph.jsonl",
   "source_train_graph_sha256": "b05d03f5e36dfd1da3923c5dfbfa898550414c03ae38cbac3295349fffbdcd99",
   "train_rows": 477,
   "validation_labels_used_for_selection": false,

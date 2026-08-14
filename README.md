@@ -110,14 +110,18 @@ pytest -q
 ## Verify the release without loading model weights
 
 ```bash
-python scripts/verify_release.py
+bash experiments/heterogeneous_agents/run_paper_system.sh verify-release
 bash experiments/heterogeneous_agents/run_paper_system.sh test
 ```
 
 The verifier checks split identities, the exact SyntheticCoT pool, the
 paper-system route contract, frozen decoder hashes, model revisions and
 parameter totals, both retained development candidates, and both the archive
-and inner `predictions.jsonl` hashes of the official submission.
+and inner `predictions.jsonl` hashes of the official submission. It also rejects
+tracked credential signatures, private-network endpoints, and user-specific
+workstation paths. These two commands and the `all` command below are the
+supported public interface; reviewers do not need to invoke internal research
+runners.
 
 ## Fresh blind-test inference
 

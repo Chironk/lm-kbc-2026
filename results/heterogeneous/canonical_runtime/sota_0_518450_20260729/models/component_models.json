@@ -25,7 +25,7 @@
       "personHasCityOfDeath": false
     }
   },
-  "folds": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
+  "folds": "experiments/heterogeneous_agents/runs/expanded_calibration_n1_20260723_v1/plan/FOLDS.jsonl",
   "folds_sha256": "c234d3b33b2b3f6dbfe941d77edeb34f09bc8cb268a4d9442579e57262f2963e",
   "guard_margins": [
     0.0,
@@ -5660,7 +5660,7 @@
       }
     }
   },
-  "source_train_graph": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/targeted_company_gemma_n3_20260724_v1/graphs/train_graph.jsonl",
+  "source_train_graph": "experiments/heterogeneous_agents/runs/targeted_company_gemma_n3_20260724_v1/graphs/train_graph.jsonl",
   "source_train_graph_sha256": "5d203e00aa128c744c5f57b6dedabe58d5f3aac75dda515f14e4921e18559855",
   "train_rows_calibration_eligible": 467,
   "training_incumbents": "frozen OOF baseline_objects from the relational train graph",

@@ -13,17 +13,17 @@ cd lm-kbc-2026
 conda create -n lm-kbc-2026 python=3.11 -y
 conda activate lm-kbc-2026
 pip install -r requirements-lock.txt
-python scripts/verify_release.py
-pytest -q
+bash experiments/heterogeneous_agents/run_paper_system.sh verify-release
+bash experiments/heterogeneous_agents/run_paper_system.sh test
 ```
 
 Use `pip install -r requirements-repro-cu130.txt` instead when reproducing the
 recorded CUDA 13.0 software stack on a compatible Linux host.
 
-`verify_release.py` is model-free. It verifies the official splits, parameter
-budget, frozen decoder artifacts, development replay snapshot, and exact
-official-test archive. It works both in a Git clone and in an unpacked source
-archive.
+The release verifier is model-free. It verifies the official splits, parameter
+budget, frozen decoder artifacts, development replay snapshot, exact
+official-test archive, and public-tree credential/path hygiene. It works both
+in a Git clone and in an unpacked source archive.
 
 ## 2. Exact result artifacts
 
@@ -87,10 +87,6 @@ OUT="$OUT" bash "$RUNNER" generate-ministral-n10
 OUT="$OUT" bash "$RUNNER" build
 OUT="$OUT" bash "$RUNNER" package
 ```
-
-The source commit for the archived 0.4845 lineage is additionally retained by
-the Git tag `provenance/historical-final-submission-20260803`. Clone or fetch
-tags when auditing historical provenance.
 
 Or execute all stages:
 

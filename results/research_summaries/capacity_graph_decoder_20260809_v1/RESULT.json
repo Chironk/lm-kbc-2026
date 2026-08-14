@@ -5,7 +5,7 @@
   },
   "development_only": true,
   "gate_passed": false,
-  "model": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/capacity_graph_decoder_20260809_v1/FROZEN_MODEL.json",
+  "model": "experiments/heterogeneous_agents/runs/capacity_graph_decoder_20260809_v1/FROZEN_MODEL.json",
   "model_sha256": "db386e278f77f9b2dd2b54adaf9d798743045952b3157edd93e3f65f30c605c4",
   "pooled_deltas": {
     "gated": 0.0,
@@ -42,7 +42,7 @@
     }
   },
   "test_labels_used": false,
-  "train_gate": "/home/hongjing/hongjing_project/dataset2026/lm-kbc-2026/dataset2026/experiments/heterogeneous_agents/runs/capacity_graph_decoder_20260809_v1/TRAIN_GATE.json",
+  "train_gate": "experiments/heterogeneous_agents/runs/capacity_graph_decoder_20260809_v1/TRAIN_GATE.json",
   "train_gate_sha256": "6efe33406fd7bb82e652fc7f2530f60506514cf971dffd8ec31fee500035d76c",
   "train_supply_diagnostic": {
     "incumbent_accuracy": 0.18,
