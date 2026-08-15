@@ -22,7 +22,7 @@ source manifest.
 Reproduce from the repository root with:
 
 ```bash
-python -m experiments.heterogeneous_agents.rekey_frozen_validation
+python -m lm_kbc.rekey_frozen_validation
 python -m pytest -q tests/test_rekey_frozen_validation.py
 ```
 
