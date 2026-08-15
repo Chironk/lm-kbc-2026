@@ -52,6 +52,8 @@ upstream repository; see [the task documentation](docs/OFFICIAL_TASK.md).
 ├── submissions/official_test/              exact submitted archive and manifest
 ├── results/heterogeneous/candidates/
 │   └── frozen_20260811_current_validation/ reported validation predictions
+├── results/paper/model_aggregation_ablation/
+│                                             reported model/aggregation controls
 │
 ├── tests/                                   unit and reproducibility tests
 ├── docs/

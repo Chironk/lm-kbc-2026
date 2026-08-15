@@ -23,7 +23,7 @@ From the repository root:
 
 ```bash
 python evaluate.py \
-  --predictions results/research_summaries/graphless_cot_ensemble_ablation_20260810_v1/artifacts/predictions/qwen_gemma_ministral_majority.jsonl \
+  --predictions results/paper/model_aggregation_ablation/artifacts/predictions/qwen_gemma_ministral_majority.jsonl \
   --ground_truth data/val.jsonl
 ```
 
@@ -33,15 +33,15 @@ First create the deterministic validation plan, then hydrate its response
 directory with the published caches and portable manifests:
 
 ```bash
-OUT=experiments/heterogeneous_agents/runs/published_graphless_replay \
+OUT=runs/published_graphless_replay \
   SPLIT=validation INPUT=data/val.jsonl QUESTION_CONTRACT=official-v1 \
   SYNTHETIC_COT=data/synthetic_cot_capacity_aligned_v2.jsonl \
-  bash experiments/heterogeneous_agents/run_end_to_end_pipeline.sh plan
+  bash scripts/ablations/run_end_to_end_pipeline.sh plan
 
-mkdir -p experiments/heterogeneous_agents/runs/published_graphless_replay/responses
-cp results/research_summaries/graphless_cot_ensemble_ablation_20260810_v1/artifacts/responses/* \
-  experiments/heterogeneous_agents/runs/published_graphless_replay/responses/
+mkdir -p runs/published_graphless_replay/responses
+cp results/paper/model_aggregation_ablation/artifacts/responses/* \
+  runs/published_graphless_replay/responses/
 
-OUT=experiments/heterogeneous_agents/runs/published_graphless_replay \
-  bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh score
+OUT=runs/published_graphless_replay \
+  bash scripts/ablations/run_graphless_cot_ensemble_ablation.sh score
 ```

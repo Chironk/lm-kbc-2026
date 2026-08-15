@@ -47,14 +47,14 @@ Create the locked project environment described in the repository, then run:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1 \
-  bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh generate
+  bash scripts/ablations/run_graphless_cot_ensemble_ablation.sh generate
 ```
 
 The generation stages are resumable. If the three validated response caches
 already exist, reproduce only the decoding and scores with:
 
 ```bash
-bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh score
+bash scripts/ablations/run_graphless_cot_ensemble_ablation.sh score
 ```
 
 The exact response caches and all eight graded prediction JSONL files are

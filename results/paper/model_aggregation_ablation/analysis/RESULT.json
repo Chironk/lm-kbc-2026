@@ -56,8 +56,8 @@
     }
   },
   "reproduce": {
-    "fresh_generation_and_score": "CUDA_VISIBLE_DEVICES=0,1 bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh generate",
-    "score_completed_caches": "bash experiments/heterogeneous_agents/run_graphless_cot_ensemble_ablation.sh score",
+    "fresh_generation_and_score": "CUDA_VISIBLE_DEVICES=0,1 bash scripts/ablations/run_graphless_cot_ensemble_ablation.sh generate",
+    "score_completed_caches": "bash scripts/ablations/run_graphless_cot_ensemble_ablation.sh score",
     "published_artifact_manifest": "../artifacts/MANIFEST.json",
     "generated_caches_tracked": true,
     "scope": "The run pins checkpoints, prompts, task order, dependencies, and task-derived seeds. Response hashes identify the reported run; fresh stochastic generation can still vary across hardware or numerical kernels."
