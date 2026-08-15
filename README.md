@@ -49,27 +49,46 @@ ignored and belong under `experiments/heterogeneous_agents/runs/`.
 
 ## Repository map
 
-| Path | Purpose |
-|---|---|
-| `experiments/heterogeneous_agents/run_paper_system.sh` | stable release launcher |
-| `experiments/heterogeneous_agents/historical_sota_test_pipeline.py` | hash-pinned paper-system planner, graph builder, decoder, and packager |
-| `experiments/heterogeneous_agents/run_sota_reproduction.sh` | deterministic development-evidence replay |
-| `experiments/heterogeneous_agents/components/` | retained graph and decoder dependency closure |
-| `experiments/heterogeneous_agents/analysis/` | optional post-hoc analyses; not runtime stages |
-| `configs/final/` | pinned model portfolio configurations |
-| `artifacts/frozen/` | compact decoder artifacts and integrity manifest |
-| `submissions/official_test/` | immutable submitted archive and score provenance |
-| `results/heterogeneous/canonical_runtime/` | portable development replay inputs |
-| `results/research_summaries/` | reviewed experiment outcomes; never runtime inputs |
-| `tests/` | unit and artifact-contract tests |
-| `docs/ARCHITECTURE.md` | architecture and code map |
-| `docs/REPRODUCIBILITY.md` | exact replay, fresh inference, and resume instructions |
-| `docs/RELEASE_SCOPE.md` | what is supported, retained, generated, and ignored |
+```text
+.
+├── experiments/heterogeneous_agents/
+│   ├── run_paper_system.sh                 supported end-to-end launcher
+│   ├── historical_sota_test_pipeline.py    planning, graph construction,
+│   │                                       decoding, and submission packaging
+│   ├── run_sota_reproduction.sh            deterministic validation replay
+│   └── components/
+│       ├── route_aware_candidate_graph.py   constructs route-aware candidates
+│       ├── relational_candidate_graph.py    constructs graph relations
+│       └── proof_carrying_graph_decoder.py  final rule-based graph correction
+│
+├── configs/final/
+│   ├── paper_system_contract.json          authoritative frozen system contract
+│   └── portfolio_cot.json                  model checkpoints and route settings
+│
+├── artifacts/frozen/
+│   └── MANIFEST.json                       hashes for retained decoder artifacts
+│
+├── submissions/official_test/              exact submitted archive and manifest
+├── results/heterogeneous/candidates/
+│   └── frozen_20260811_current_validation/ reported validation predictions
+│
+├── scripts/
+│   └── verify_release.py                    verifies contracts, hashes, and results
+├── tests/                                   unit and reproducibility tests
+├── docs/
+│   ├── ARCHITECTURE.md                      detailed architecture and code map
+│   ├── REPRODUCIBILITY.md                   replay and inference instructions
+│   └── OFFICIAL_TASK.md                     task and evaluator documentation
+│
+├── data/                                    official task data
+├── models/                                  model loading and inference wrappers
+├── evaluate.py                              official prediction evaluator
+└── requirements-lock.txt                    portable Python dependencies
+```
 
-Later research runners remain in the repository for auditability, but are not
-the public paper-system entry point. No retained component should be deleted
-merely because its filename reflects an earlier experiment: the final runtime
-imports much of this tested dependency closure.
+Start with `experiments/heterogeneous_agents/run_paper_system.sh`. Other
+experiment modules are retained for auditing earlier ablations, but they are
+not required to run the reported paper system.
 
 ## Setup
 
