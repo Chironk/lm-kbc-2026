@@ -21,26 +21,46 @@ within the shared task's 32B limit. Inference is closed-book: no external
 retrieval is used. The official task data and evaluator are retained from the
 upstream repository; see [the task documentation](docs/OFFICIAL_TASK.md).
 
+## Use these two entry points
+
+For the paper system, use only these two public launchers:
+
+```bash
+# Run or resume the complete inference pipeline.
+CUDA_VISIBLE_DEVICES=0,1,2,3 OUT=runs/paper_test \
+bash scripts/run_paper_system.sh all
+
+# Reproduce the reported validation result from frozen evidence.
+OUT=runs/development_replay \
+bash scripts/reproduce_validation.sh all
+```
+
+`scripts/run_paper_system.sh` is the supported fresh-inference interface, and
+`scripts/reproduce_validation.sh` is the supported deterministic validation
+replay. Files under `scripts/internal/` are implementation details; files
+under `scripts/ablations/` reproduce individual controls only. The Python
+modules under `src/lm_kbc/` are imported by these launchers and are not
+competing public entry points.
+
 ## Repository map
 
 ```text
 .
 ├── src/lm_kbc/
-│   ├── historical_sota_test_pipeline.py    planning, graph construction,
-│   │                                       decoding, and submission packaging
-│   ├── end_to_end_pipeline.py              label-free route planning
-│   ├── run_agent.py                        checkpoint-pinned model inference
+│   ├── historical_sota_test_pipeline.py    internal final-system orchestration
+│   ├── end_to_end_pipeline.py              internal label-free route planning
+│   ├── run_agent.py                        internal checkpoint-pinned inference
 │   └── components/
-│       ├── route_aware_candidate_graph.py   constructs route-aware candidates
-│       ├── relational_candidate_graph.py    constructs graph relations
-│       └── proof_carrying_graph_decoder.py  final rule-based graph correction
+│       ├── route_aware_candidate_graph.py   internal candidate construction
+│       ├── relational_candidate_graph.py    internal graph construction
+│       └── proof_carrying_graph_decoder.py  internal graph correction
 │
 ├── scripts/
-│   ├── run_paper_system.sh                 supported end-to-end launcher
-│   ├── reproduce_validation.sh             deterministic validation replay
+│   ├── run_paper_system.sh                 PUBLIC fresh-inference entry point
+│   ├── reproduce_validation.sh             PUBLIC validation-replay entry point
 │   ├── verify_release.py                   verifies contracts and result hashes
-│   ├── internal/                           launcher internals
-│   └── ablations/                          reported validation controls
+│   ├── internal/                           internal launcher implementation
+│   └── ablations/                          ablation-only launchers
 │
 ├── configs/final/
 │   ├── paper_system_contract.json          authoritative frozen system contract
@@ -66,9 +86,9 @@ upstream repository; see [the task documentation](docs/OFFICIAL_TASK.md).
 └── requirements-lock.txt                    portable Python dependencies
 ```
 
-Start with `scripts/run_paper_system.sh`. The installable implementation is in
-`src/lm_kbc/`; validation-control launchers are separated under
-`scripts/ablations/`.
+The installable implementation is in `src/lm_kbc/`, but normal use should go
+through the two public shell entry points above. Validation-control launchers
+are separated under `scripts/ablations/`.
 
 ## Setup
 
