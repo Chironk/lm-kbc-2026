@@ -69,8 +69,14 @@ experiments/city/out_val/
 # Historical artifacts already tracked by Git remain available in history and
 # in existing checkouts. New runs stay local unless a compact result is
 # deliberately copied to results/heterogeneous/.
-experiments/heterogeneous_agents/runs/**
-!experiments/heterogeneous_agents/runs/README.md
+runs/**
+!runs/README.md
+
+# Local recovery copy made before the public-runtime consolidation. The same
+# state is also preserved in the local Git branch
+# archive/pre-consolidation-20260814.
+archive/pre_consolidation_20260814/
+archive/research_modules_20260814/
 
 # Local artifact inventories and transfer staging.
 .local-artifacts/

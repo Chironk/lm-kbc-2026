@@ -15,6 +15,8 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT))
 EXPECTED_ROWS = {"train": 477, "val": 475, "test": 475}
 EXPECTED_TEST_SHA256 = (
     "67c31c8388c585634df55500612f522ad42da6735d4c89eb59a9ef5a39f043f1"
@@ -259,7 +261,7 @@ def verify_current_validation_candidates() -> dict:
     }
     gold = rows(ROOT / "data/val.jsonl")
     sys.path.insert(0, str(ROOT))
-    from experiments.heterogeneous_agents.assemble_and_audit import score
+    from lm_kbc.assemble_and_audit import score
 
     observed = {}
     for name, (filename, digest, expected_score) in expected.items():
@@ -338,7 +340,7 @@ def verify_paper_system_contract() -> dict:
     sys.path.insert(0, str(ROOT))
     import run_inference
     import run_submission
-    from experiments.heterogeneous_agents import end_to_end_pipeline as e2e
+    from lm_kbc import end_to_end_pipeline as e2e
     from models.baseline_qwen import BaselineQwenModel
 
     routes = contract["routes"]
@@ -484,8 +486,8 @@ def main() -> int:
     for raw in tracked:
         path = Path(raw)
         if (
-            (raw.startswith("experiments/heterogeneous_agents/runs/")
-             and raw != "experiments/heterogeneous_agents/runs/README.md")
+            (raw.startswith("runs/")
+             and raw != "runs/README.md")
             or path.name == ".env"
             or "__pycache__" in path.parts
             or ".pytest_cache" in path.parts
@@ -503,10 +505,10 @@ def main() -> int:
 
     # Import only after cheap filesystem checks so dependency errors are clear.
     sys.path.insert(0, str(ROOT))
-    from experiments.heterogeneous_agents import final_submission_pipeline
-    from experiments.heterogeneous_agents import historical_sota_test_pipeline
-    from experiments.heterogeneous_agents.assemble_and_audit import score
-    from experiments.heterogeneous_agents.sota_reproduction import verify_snapshot
+    from lm_kbc import final_submission_pipeline
+    from lm_kbc import historical_sota_test_pipeline
+    from lm_kbc.assemble_and_audit import score
+    from lm_kbc.sota_reproduction import verify_snapshot
     final_submission_pipeline._snapshot_artifacts()
     historical_sota_test_pipeline._archived_prediction_bytes()
     development = verify_snapshot()

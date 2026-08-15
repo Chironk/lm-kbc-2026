@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from experiments.heterogeneous_agents.components.proof_carrying_graph_decoder import (
+from lm_kbc.components.proof_carrying_graph_decoder import (
     _candidate_is_eligible,
     _decode,
     _event_records,

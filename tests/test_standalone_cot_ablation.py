@@ -1,5 +1,5 @@
-from experiments.heterogeneous_agents import standalone_cot_ablation as ablation
-from experiments.heterogeneous_agents.standalone_cot_ablation import (
+from lm_kbc import standalone_cot_ablation as ablation
+from lm_kbc.standalone_cot_ablation import (
     _generic_items,
     _route_native_base_predictions,
     _supported_objects,

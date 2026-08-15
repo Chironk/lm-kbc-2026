@@ -1,7 +1,7 @@
 import pytest
 
-from experiments.heterogeneous_agents import graphless_cot_ensemble_ablation as ablation
-from experiments.heterogeneous_agents.graphless_cot_ensemble_ablation import (
+from lm_kbc import graphless_cot_ensemble_ablation as ablation
+from lm_kbc.graphless_cot_ensemble_ablation import (
     ARMS,
     ROUTES,
     _route_predictions,

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pytest
 
-from experiments.heterogeneous_agents.core import ContractError
-from experiments.heterogeneous_agents.components.graph_event_contract import (
+from lm_kbc.core import ContractError
+from lm_kbc.components.graph_event_contract import (
     assert_event_support_invariants,
     repair_unsupported_candidate_set_events,
 )

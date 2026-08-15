@@ -1,13 +1,14 @@
 # Release checklist
 
-This checklist is intentionally non-destructive. It does not authorize removal
-of experiments, results, or untracked work.
+This checklist covers the compact public release. Earlier research modules and
+tests remain recoverable from Git history and the local pre-consolidation
+archive; they are not part of the supported runtime.
 
 ## Before committing
 
 - [ ] `python scripts/verify_release.py` passes.
 - [ ] `pytest -q` passes in the pinned environment.
-- [ ] `bash experiments/heterogeneous_agents/run_paper_system.sh test` passes.
+- [ ] `bash scripts/run_paper_system.sh test` passes.
 - [ ] The verifier passes from an unpacked `git archive` without `.git`.
 - [ ] `git status --short` has been reviewed file by file.
 - [ ] No `.env`, credentials, raw `runs/`, caches, or model weights are tracked.

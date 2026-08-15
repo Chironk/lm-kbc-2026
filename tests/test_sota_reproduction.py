@@ -8,8 +8,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from experiments.heterogeneous_agents.core import sha256
-from experiments.heterogeneous_agents.sota_reproduction import (
+from lm_kbc.core import sha256
+from lm_kbc.sota_reproduction import (
     EXPECTED_LEGACY_GRAPH_SHA256,
     EXPECTED_ROWS,
     EXPECTED_SCORE,

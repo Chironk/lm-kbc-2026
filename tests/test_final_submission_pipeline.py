@@ -7,8 +7,8 @@ from unittest import mock
 
 import pytest
 
-from experiments.heterogeneous_agents.core import ContractError
-from experiments.heterogeneous_agents import final_submission_pipeline as final
+from lm_kbc.core import ContractError
+from lm_kbc import final_submission_pipeline as final
 
 
 def _write_jsonl(path: Path, rows: list[dict]) -> None:
@@ -315,11 +315,3 @@ def test_cli_exposes_frozen_submission_stages() -> None:
     ):
         args = parser.parse_args([command, "--output-dir", "/tmp/final-test"])
         assert callable(args.function)
-
-
-def test_final_wrapper_uses_aligned_capacity_prompt_contract() -> None:
-    wrapper = (final.HERE / "run_final_submission_pipeline.sh").read_text()
-    assert "data/synthetic_cot_capacity_aligned_v2.jsonl" in wrapper
-    assert 'QUESTION_CONTRACT="${QUESTION_CONTRACT:-official-v1}"' in wrapper
-    assert 'SYNTHETIC_COT="$SYNTHETIC_COT"' in wrapper
-    assert 'QUESTION_CONTRACT="$QUESTION_CONTRACT"' in wrapper

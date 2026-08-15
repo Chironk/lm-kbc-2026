@@ -8,7 +8,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest import mock
 
-from experiments.heterogeneous_agents import historical_sota_test_pipeline as paired
+from lm_kbc import historical_sota_test_pipeline as paired
 
 
 def _write_jsonl(path: Path, rows: list[dict]) -> None:
@@ -158,7 +158,7 @@ def test_cli_exposes_resumable_cpu_stages() -> None:
 def test_shell_plan_is_cpu_safe_when_nvidia_smi_cannot_reach_driver() -> None:
     """CPU-only release stages must work on GPU-less login/container nodes."""
     runner = paired.ROOT / (
-        "experiments/heterogeneous_agents/run_historical_sota_test_pipeline.sh"
+        "scripts/internal/run_historical_sota_test_pipeline.sh"
     )
     with tempfile.TemporaryDirectory() as directory:
         root = Path(directory)

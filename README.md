@@ -21,45 +21,26 @@ within the shared task's 32B limit. Inference is closed-book: no external
 retrieval is used. The official task data and evaluator are retained from the
 upstream repository; see [the task documentation](docs/OFFICIAL_TASK.md).
 
-## What is authoritative
-
-- `experiments/heterogeneous_agents/run_paper_system.sh` is the public launcher
-  for fresh inference with the architecture associated with the reported test
-  submission.
-- `submissions/official_test/` contains the exact 475-row archive submitted to
-  Codabench, its SHA-256 manifest, and the owner-recorded official score of
-  **0.4845 macro-F1**.
-- `experiments/heterogeneous_agents/run_sota_reproduction.sh all`
-  deterministically replays the frozen 478-row development evidence and
-  reproduces the staged prediction artifact at **0.5184496 macro-F1**. The
-  tracked final graph-corrected development prediction is separately pinned at
-  **0.5207285 macro-F1** and labeled as a development-informed refinement.
-  Applying the organizer's published, label-free 478-to-475 query-key migration
-  gives the paper's revised-validation score of **0.5282279 macro-F1**; both the
-  migrated predictions and their official-evaluator score are hash-verified.
-- `artifacts/frozen/MANIFEST.json` binds the small trained decoder artifacts and
-  the 30.515B parameter contract.
-- `configs/final/paper_system_contract.json` is the machine-checked source of
-  truth for proposal counts, temperatures, auxiliary Qwen inference, model
-  revisions, decoder order, and the exact-result versus fresh-rerun boundary.
-
-The exact official archive is intentionally tracked. Newly generated model
-responses, logs, smoke outputs, and run-specific submission archives are
-ignored and belong under `experiments/heterogeneous_agents/runs/`.
-
 ## Repository map
 
 ```text
 .
-├── experiments/heterogeneous_agents/
-│   ├── run_paper_system.sh                 supported end-to-end launcher
+├── src/lm_kbc/
 │   ├── historical_sota_test_pipeline.py    planning, graph construction,
 │   │                                       decoding, and submission packaging
-│   ├── run_sota_reproduction.sh            deterministic validation replay
+│   ├── end_to_end_pipeline.py              label-free route planning
+│   ├── run_agent.py                        checkpoint-pinned model inference
 │   └── components/
 │       ├── route_aware_candidate_graph.py   constructs route-aware candidates
 │       ├── relational_candidate_graph.py    constructs graph relations
 │       └── proof_carrying_graph_decoder.py  final rule-based graph correction
+│
+├── scripts/
+│   ├── run_paper_system.sh                 supported end-to-end launcher
+│   ├── reproduce_validation.sh             deterministic validation replay
+│   ├── verify_release.py                   verifies contracts and result hashes
+│   ├── internal/                           launcher internals
+│   └── ablations/                          reported validation controls
 │
 ├── configs/final/
 │   ├── paper_system_contract.json          authoritative frozen system contract
@@ -72,13 +53,10 @@ ignored and belong under `experiments/heterogeneous_agents/runs/`.
 ├── results/heterogeneous/candidates/
 │   └── frozen_20260811_current_validation/ reported validation predictions
 │
-├── scripts/
-│   └── verify_release.py                    verifies contracts, hashes, and results
 ├── tests/                                   unit and reproducibility tests
 ├── docs/
-│   ├── ARCHITECTURE.md                      detailed architecture and code map
-│   ├── REPRODUCIBILITY.md                   replay and inference instructions
-│   └── OFFICIAL_TASK.md                     task and evaluator documentation
+│   ├── OFFICIAL_TASK.md                     task and evaluator documentation
+│   └── figures/                             paper architecture figure and source
 │
 ├── data/                                    official task data
 ├── models/                                  model loading and inference wrappers
@@ -86,9 +64,9 @@ ignored and belong under `experiments/heterogeneous_agents/runs/`.
 └── requirements-lock.txt                    portable Python dependencies
 ```
 
-Start with `experiments/heterogeneous_agents/run_paper_system.sh`. Other
-experiment modules are retained for auditing earlier ablations, but they are
-not required to run the reported paper system.
+Start with `scripts/run_paper_system.sh`. The installable implementation is in
+`src/lm_kbc/`; validation-control launchers are separated under
+`scripts/ablations/`.
 
 ## Setup
 
@@ -101,6 +79,7 @@ dependency closure recorded for the final Linux/CUDA 13.0 environment is
 conda create -n lm-kbc-2026 python=3.11 -y
 conda activate lm-kbc-2026
 pip install -r requirements-lock.txt
+pip install -e .
 ```
 
 On a compatible Linux/CUDA 13.0 host, use the fuller reproduction target:
@@ -129,8 +108,8 @@ pytest -q
 ## Verify the release without loading model weights
 
 ```bash
-bash experiments/heterogeneous_agents/run_paper_system.sh verify-release
-bash experiments/heterogeneous_agents/run_paper_system.sh test
+bash scripts/run_paper_system.sh verify-release
+bash scripts/run_paper_system.sh test
 ```
 
 The verifier checks split identities, the exact SyntheticCoT pool, the
@@ -142,12 +121,25 @@ workstation paths. These two commands and the `all` command below are the
 supported public interface; reviewers do not need to invoke internal research
 runners.
 
+## Validation replay
+
+```bash
+OUT=runs/development_replay \
+bash scripts/reproduce_validation.sh all
+
+python -m lm_kbc.rekey_frozen_validation
+```
+
+The first command reconstructs the retained 478-query staged prediction. The
+second verifies the paper's graph-corrected result on the revised 475-query
+validation split.
+
 ## Fresh blind-test inference
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1,2,3 \
-OUT=experiments/heterogeneous_agents/runs/paper_test \
-bash experiments/heterogeneous_agents/run_paper_system.sh all
+OUT=runs/paper_test \
+bash scripts/run_paper_system.sh all
 ```
 
 The launcher detects the number of visible GPUs and uses one quantized

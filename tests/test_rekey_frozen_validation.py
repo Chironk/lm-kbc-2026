@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from experiments.heterogeneous_agents import rekey_frozen_validation as subject
+from lm_kbc import rekey_frozen_validation as subject
 
 
 def test_official_migration_inventory_matches_current_rows() -> None:
